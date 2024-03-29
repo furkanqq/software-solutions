@@ -1,0 +1,34 @@
+@mixin scrollbar($scrollbarWidth: 7px,
+  $scrollbarHeight: 6px,
+  $offsetScrollbars: true) {
+  overflow: auto;
+
+  @if ($offsetScrollbars ==true) {
+    &.offsetScrollbars {
+      padding-right: 0.625rem;
+      padding-bottom: 0.625rem;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: $scrollbarWidth;
+    height: $scrollbarHeight;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: #878787;
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #0000001a;
+    border-radius: 4px;
+    height: 25px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 0;
+    background: #0000000d;
+  }
+}
