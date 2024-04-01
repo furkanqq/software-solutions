@@ -1,0 +1,30 @@
+$container-max-width: (
+  small: 100%,
+  medium: 640px,
+  large: 768px,
+  x-large: 1024px,
+  xx-large: 1320px,
+);
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @media (min-width: 640px) {
+    max-width: map-get($container-max-width, medium);
+  }
+
+  @media (min-width: 768px) {
+    max-width: map-get($container-max-width, large);
+  }
+
+  @media (min-width: 1024px) {
+    max-width: map-get($container-max-width, x-large);
+  }
+
+  @media (min-width: 1200px) {
+    max-width: map-get($container-max-width, xx-large);
+  }
+}

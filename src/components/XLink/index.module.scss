@@ -1,0 +1,20 @@
+.container {
+  color: inherit;
+  text-decoration: inherit;
+
+  &.textUnderline {
+    text-decoration: underline;
+  }
+
+  &.isHover {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &.disabled,
+  &[data-loading='true'] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}

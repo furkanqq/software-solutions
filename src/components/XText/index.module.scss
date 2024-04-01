@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+
+  .link {
+    font-weight: 400;
+    color: var(--colors-slightly-dark-gray);
+    line-height: 21px;
+  }
+
+  .text {
+    font-weight: 400;
+    color: var(--colors-slightly-dark-gray);
+    line-height: 21px;
+  }
+}
