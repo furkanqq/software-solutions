@@ -1,9 +1,6 @@
 import { MouseEventHandler } from 'react';
 
 export interface IXButtonProps {
-  color:
-    | 'black'
-    | 'white';
   type?: undefined | 'submit' | 'button' | 'reset';
   onClick?: MouseEventHandler | undefined;
   className?: undefined | string;
@@ -12,6 +9,7 @@ export interface IXButtonProps {
   rightIcon?: React.ReactNode;
   children?: React.ReactNode;
   leftIcon?: React.ReactNode;
+  color: 'black' | 'white';
   fullWidth?: boolean;
   loader?: boolean;
 }

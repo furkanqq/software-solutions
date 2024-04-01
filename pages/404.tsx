@@ -1,6 +1,6 @@
-import styles from "./../styles/pages/error.module.scss";
+import styles from './../styles/pages/error.module.scss';
 
-import Layouts from "@/src/layouts";
+import Layouts from '@/src/layouts';
 
 export default function ErrorNotFound() {
   return (
