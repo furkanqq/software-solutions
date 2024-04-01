@@ -1,5 +1,4 @@
 // Blog Section
-
 .blog {
   background-color: rgba(var(--colors-off-white));
   padding: 56px 0px 90px 0px;
@@ -76,6 +75,79 @@
             background-color: rgba(var(--colors-dark), 0.05);
             border-radius: 8px;
           }
+        }
+      }
+    }
+  }
+
+}
+
+// Faq Section
+
+.faq {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+
+  .tab_menu {
+    ul {
+      padding: 0;
+      margin: 0;
+
+      li {
+        list-style-type: none;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-weight: 500;
+        color: rgba(var(--colors-dark), 0.5);
+      }
+
+      .active {
+        color: rgba(var(--colors-dark), 1);
+
+
+      }
+    }
+  }
+
+  .tab_content {
+    .items {
+      display: flex;
+      flex-direction: column;
+
+      .item {
+        border-bottom: 1px solid rgba(var(--colors-dark), 0.1);
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+
+        &:last-child {
+          border-bottom: 0px;
+        }
+
+        &.active {
+          .content {
+            display: block;
+          }
+
+          .chevron {
+            transform: rotate(180deg);
+          }
+        }
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .title {
+            font-size: 20px;
+          }
+        }
+
+        .content {
+          display: none;
+          font-size: 14px;
+          padding: 24px 0px;
         }
       }
     }
