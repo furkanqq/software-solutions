@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { IconFooterArrow } from '@/src/assets/IconFooterArrow';
 import { IconChevronDown } from '@/src/assets/IconChevronDown';
 
+import XProjectCarousel from '@/src/composite/XProjectCarousel';
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
 import XFooter from '@/src/composite/XFooter';
@@ -16,6 +17,7 @@ export default function HomePage() {
     <Layouts>
       <main>
         <XHeader />
+        <XProjectCarousel />
         <section className={styles.faq}>
           <Container>
             <div className={styles.faq_wrapper}>
