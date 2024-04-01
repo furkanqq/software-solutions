@@ -1,18 +1,93 @@
 import styles from './index.module.scss';
+import cn from 'classnames';
 
 import { IconFooterArrow } from '@/src/assets/IconFooterArrow';
 
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
 import XFooter from '@/src/composite/XFooter';
-import Layouts from '@/src/layouts';
 import XHeader from '@/src/composite/XHeader';
+
+import Layouts from '@/src/layouts';
+import { IconChevronDown } from '@/src/assets/IconChevronDown';
 
 export default function HomePage() {
   return (
     <Layouts>
       <main>
         <XHeader />
+        <section>
+          <Container>
+            <div className={styles.faq}>
+              <div className={styles.tab_menu}>
+                <ul>
+                  <li className={styles.active}>Web Tasarım</li>
+                  <li>Mobil Uygulama</li>
+                  <li>Sosyal Medya Yönetimi</li>
+                  <li>Dijital Pazarlama</li>
+                  <li>Özel Yazılım Geliştirme</li>
+                </ul>
+              </div>
+              <div className={styles.tab_content}>
+                <div className={styles.items}>
+                  <div className={cn(styles.item, styles.active)}>
+                    <div className={styles.header}>
+                      <div className={styles.title}>
+                        Tasarım süreci nasıl ilerliyor?
+                      </div>
+                      <div className={styles.chevron}>
+                        <IconChevronDown height={30} width={30} />
+                      </div>
+                    </div>
+                    <div className={styles.content}>
+                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
+                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
+                      bir hurufat numune kitabı oluşturmak üzere bir yazı
+                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
+                      standardı sahte metinler olarak kullanılmıştır.
+                    </div>
+                  </div>
+
+                  <div className={cn(styles.item)}>
+                    <div className={styles.header}>
+                      <div className={styles.title}>
+                        Tasarım süreci nasıl ilerliyor?
+                      </div>
+                      <div className={styles.chevron}>
+                        <IconChevronDown height={30} width={30} />
+                      </div>
+                    </div>
+                    <div className={styles.content}>
+                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
+                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
+                      bir hurufat numune kitabı oluşturmak üzere bir yazı
+                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
+                      standardı sahte metinler olarak kullanılmıştır.
+                    </div>
+                  </div>
+
+                  <div className={cn(styles.item)}>
+                    <div className={styles.header}>
+                      <div className={styles.title}>
+                        Tasarım süreci nasıl ilerliyor?
+                      </div>
+                      <div className={styles.chevron}>
+                        <IconChevronDown height={30} width={30} />
+                      </div>
+                    </div>
+                    <div className={styles.content}>
+                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
+                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
+                      bir hurufat numune kitabı oluşturmak üzere bir yazı
+                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
+                      standardı sahte metinler olarak kullanılmıştır.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
         <section className={styles.blog}>
           <Container>
             <div className={styles.top}>
