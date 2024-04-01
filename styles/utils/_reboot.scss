@@ -115,7 +115,7 @@ ol,
 ul,
 dl {
   margin-top: 0;
-  margin-bottom: 0
+  margin-bottom: 0;
 }
 
 ol ol,
@@ -167,6 +167,10 @@ sup {
   top: -0.5em;
 }
 
+section {
+  margin-bottom: 56px !important;
+}
+
 a {
   text-decoration: none;
 }
@@ -203,7 +207,7 @@ code {
   word-wrap: break-word;
 }
 
-a>code {
+a > code {
   color: inherit;
 }
 
@@ -294,7 +298,9 @@ select:disabled {
   opacity: 1;
 }
 
-[list]:not([type='date']):not([type='datetime-local']):not([type='month']):not([type='week']):not([type='time'])::-webkit-calendar-picker-indicator {
+[list]:not([type='date']):not([type='datetime-local']):not([type='month']):not(
+    [type='week']
+  ):not([type='time'])::-webkit-calendar-picker-indicator {
   display: none !important;
 }
 
@@ -343,7 +349,7 @@ legend {
   }
 }
 
-legend+* {
+legend + * {
   clear: left;
 }
 

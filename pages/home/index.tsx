@@ -5,17 +5,14 @@ import { IconFooterArrow } from '@/src/assets/IconFooterArrow';
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
 import XFooter from '@/src/composite/XFooter';
-
 import Layouts from '@/src/layouts';
+import XHeader from '@/src/composite/XHeader';
 
 export default function HomePage() {
   return (
     <Layouts>
       <main>
-        <Container>
-          <div style={{ height: '600px' }}></div>
-        </Container>
-
+        <XHeader />
         <section className={styles.blog}>
           <Container>
             <div className={styles.top}>

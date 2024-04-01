@@ -1,0 +1,30 @@
+//header
+.header {
+  border-bottom: 1px solid rgba(var(--colors-dark), 0.1);
+  .header_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    height: 88px;
+    .header_logo {
+      width: 160px;
+
+      height: 55px;
+      position: relative;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .header_button {
+      display: grid;
+      justify-content: flex-end;
+      button {
+        height: 50px;
+        width: 100px;
+      }
+    }
+  }
+}

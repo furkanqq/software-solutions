@@ -16,10 +16,11 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  background-color: var(--x-body);
   font-size: 14px;
+  background-color: rgba(var(--colors-off-white));
 }
 
 body {
   font-family: var(--app-font);
 }
+

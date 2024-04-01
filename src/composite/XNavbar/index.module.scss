@@ -1,0 +1,53 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 88px;
+  .nav {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px;
+    height: 88px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    &:nth-child(1) {
+      a {
+        width: max-content;
+      }
+    }
+    span {
+      transition: 200ms ease;
+    }
+    &:hover {
+      .child {
+        visibility: visible;
+        opacity: 1;
+        top: 88px;
+        transition: 200ms ease;
+      }
+      span {
+        transform: rotate(-180deg);
+        transition: 250ms ease;
+      }
+    }
+    .child {
+      top: 96px;
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+      transition: 200ms ease;
+      display: grid;
+      gap: 16px;
+      min-width: 200px;
+      width: 100%;
+      padding: 20px;
+      background-color: rgba(var(--colors-light));
+      border: 1px solid rgba(var(--colors-dark), 0.1);
+    }
+  }
+}
