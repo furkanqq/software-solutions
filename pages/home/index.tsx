@@ -2,6 +2,7 @@ import styles from './index.module.scss';
 import cn from 'classnames';
 
 import { IconFooterArrow } from '@/src/assets/IconFooterArrow';
+import { IconChevronDown } from '@/src/assets/IconChevronDown';
 
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
@@ -9,19 +10,23 @@ import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
 import Layouts from '@/src/layouts';
-import { IconChevronDown } from '@/src/assets/IconChevronDown';
 
 export default function HomePage() {
   return (
     <Layouts>
       <main>
         <XHeader />
-        <section>
+        <section className={styles.faq}>
           <Container>
-            <div className={styles.faq}>
+            <div className={styles.faq_wrapper}>
               <div className={styles.tab_menu}>
                 <ul>
-                  <li className={styles.active}>Web Tasarım</li>
+                  <li className={styles.active}>
+                    Web Tasarım
+                    <span>
+                      <IconChevronDown height={20} width={20} />
+                    </span>
+                  </li>
                   <li>Mobil Uygulama</li>
                   <li>Sosyal Medya Yönetimi</li>
                   <li>Dijital Pazarlama</li>
