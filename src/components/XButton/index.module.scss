@@ -14,18 +14,7 @@ $height: 38px;
     @include hover;
   }
 
-  &.color-primary {
-    background: rgba(var(--colors-primary));
-    color: rgba(var(--colors-slightly-dark-gray));
-    ;
-    @include hover;
-  }
 
-  &.color-secondary {
-    background: var(--x-secondary);
-    color: var(--x-black);
-    @include hover;
-  }
 
   &.color-black {
     background: #000;
@@ -44,19 +33,6 @@ $height: 38px;
       color: #fff;
     }
   }
-
-  &.color-outline-blue {
-    border: 1px solid #5182FF;
-    background: transparent;
-    color: #8C8988;
-
-    &:hover {
-      background: #5182FF;
-      border: 1px solid transparent;
-      color: #fff;
-    }
-  }
-
 
 }
 
