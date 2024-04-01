@@ -1,5 +1,5 @@
-import { AuthProvider } from "@/src/provider/Auth";
-import { createStore, Provider } from "jotai";
+import { AuthProvider } from '@/src/provider/Auth';
+import { createStore, Provider } from 'jotai';
 
 interface IProps {
   children: React.ReactNode;
