@@ -85,69 +85,89 @@
 // Faq Section
 
 .faq {
-  display: grid;
-  grid-template-columns: 2fr 5fr;
+  background-color: rgba(var(--colors-light));
+  padding: 56px 0;
 
-  .tab_menu {
-    ul {
-      padding: 0;
-      margin: 0;
+  .faq_wrapper {
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+    gap: 24px;
 
-      li {
-        list-style-type: none;
-        margin-bottom: 24px;
-        text-transform: uppercase;
-        cursor: pointer;
-        font-weight: 500;
-        color: rgba(var(--colors-dark), 0.5);
-      }
+    .tab_menu {
+      ul {
+        padding: 0;
+        margin: 0;
 
-      .active {
-        color: rgba(var(--colors-dark), 1);
+        li {
+          list-style-type: none;
+          margin-bottom: 24px;
+          text-transform: uppercase;
+          cursor: pointer;
+          font-weight: 500;
+          color: rgba(var(--colors-dark), 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transition: .5s ease all;
+
+          &:hover {
+            color: rgba(var(--colors-dark), 1);
+            transition: .5s ease all;
+            margin-left: 10px;
+          }
+
+          span {
+            transform: rotate(-90deg);
+          }
+        }
+
+        .active {
+          color: rgba(var(--colors-dark), 1);
 
 
+        }
       }
     }
-  }
 
-  .tab_content {
-    .items {
-      display: flex;
-      flex-direction: column;
+    .tab_content {
+      .items {
+        display: flex;
+        flex-direction: column;
 
-      .item {
-        border-bottom: 1px solid rgba(var(--colors-dark), 0.1);
-        margin-bottom: 10px;
-        padding-bottom: 10px;
+        .item {
+          border-bottom: 1px solid rgba(var(--colors-dark), 0.1);
+          margin-bottom: 10px;
+          padding-bottom: 10px;
 
-        &:last-child {
-          border-bottom: 0px;
-        }
+          &:last-child {
+            border-bottom: 0px;
+          }
 
-        &.active {
+          &.active {
+            .content {
+              display: block;
+            }
+
+            .chevron {
+              transform: rotate(180deg);
+            }
+          }
+
+          .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .title {
+              font-size: 20px;
+            }
+          }
+
           .content {
-            display: block;
+            display: none;
+            font-size: 14px;
+            padding: 24px 0px;
           }
-
-          .chevron {
-            transform: rotate(180deg);
-          }
-        }
-
-        .header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          .title {
-            font-size: 20px;
-          }
-        }
-
-        .content {
-          display: none;
-          font-size: 14px;
-          padding: 24px 0px;
         }
       }
     }
