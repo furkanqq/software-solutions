@@ -1,0 +1,41 @@
+.projects {
+  background-color: rgba(var(--colors-light));
+  padding: 56px 0px;
+
+  .items {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    .item {
+      min-width: 800px;
+      height: 500px;
+      margin-right: 20px;
+      display: inline-flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .thumbnail {
+        background-color: #ccc;
+        min-width: 800px;
+        height: 500px;
+      }
+
+      .information {
+        margin-top: 24px;
+
+        .left {
+          .category {
+            color: rgba(var(--colors-dark), 0.5);
+            text-transform: uppercase;
+          }
+
+          .title {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}
