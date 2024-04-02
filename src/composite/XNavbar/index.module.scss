@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  height: 88px;
+  height: 80px;
   .nav {
     position: relative;
     display: grid;
@@ -10,7 +10,7 @@
     font-size: 14px;
     font-weight: 500;
     padding: 16px;
-    height: 88px;
+    height: 80px;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
@@ -27,7 +27,7 @@
       .child {
         visibility: visible;
         opacity: 1;
-        top: 88px;
+        top: 80px;
         transition: 200ms ease;
       }
       span {
