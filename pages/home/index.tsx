@@ -1,18 +1,81 @@
 import styles from './index.module.scss';
 
 import { IconFooterArrow } from '@/src/assets/IconFooterArrow';
+import { IconExplore } from '@/src/assets/IconExplore';
+import { IconPlay } from '@/src/assets/IconPlay';
 
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
 import XFooter from '@/src/composite/XFooter';
-import Layouts from '@/src/layouts';
 import XHeader from '@/src/composite/XHeader';
+
+import Layouts from '@/src/layouts';
+import { useState } from 'react';
+import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
+import { XLink } from '@/src/components/XLink';
 
 export default function HomePage() {
   return (
     <Layouts>
       <main>
         <XHeader />
+        <section className={styles.banner}>
+          <Container className={styles.container}>
+            <div className={styles.content}>
+              <h1>
+                HIGH END
+                <br /> <span>CREATIVE</span> AGENCY
+              </h1>
+              <p>
+                Through our years of experience, we've also learned that while
+                each channel has its own set of advantages.
+              </p>
+              <div className={styles.watch}>
+                <span>Watch</span>
+                <IconPlay />
+              </div>
+            </div>
+            <div className={styles.explore}>
+              <div className={styles.image_holder}>
+                <div className={styles.scale}>
+                  <XLink href={'/hizmetler'}>
+                    <IconExplore className={styles.icon_explore} />
+                    <IconExploreArrow
+                      className={styles.icon_explore_arrow}
+                      height={28}
+                      width={28}
+                    />
+                  </XLink>
+                </div>
+              </div>
+              <div className={styles.banner_image}>
+                <XImage
+                  src={'/assets/bannerImage.jpeg'}
+                  alt={'banner-image'}
+                  fill
+                />
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section className={styles.benefits}>
+          <Container className={styles.content}>
+            <div className={styles.title}>
+              <span>OUR BENEFITS</span>
+              <h1>Our Team of Dedicated Digital Professionals.</h1>
+            </div>
+            <div className={styles.describe}>
+              <p>
+                Through our years of experience, we’ve also learned that while
+                each channel has its own set of advantages, they all work best
+                when strategically paired with other channels.
+              </p>
+              <XLink href={'furkanilhan.com'}>View All</XLink>``
+            </div>
+          </Container>
+        </section>
+
         <section className={styles.blog}>
           <Container>
             <div className={styles.top}>

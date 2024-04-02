@@ -12,9 +12,9 @@ export type NavigationType = {
 
 export const Navigation: NavigationType[] = [
   {
+    title: 'Ana Sayfa',
     dropdown: false,
     children: null,
-    title: 'Ana Sayfa',
     path: '/'
   },
   {

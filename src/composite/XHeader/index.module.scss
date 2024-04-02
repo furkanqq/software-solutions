@@ -1,16 +1,20 @@
 //header
 .header {
+  position: fixed;
+  z-index: 99;
   border-bottom: 1px solid rgba(var(--colors-dark), 0.1);
+  background-color: rgba(var(--colors-off-white));
+  width: 100%;
   .header_content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-content: space-between;
-    height: 88px;
+    height: 80px;
     .header_logo {
       width: 160px;
 
-      height: 55px;
+      height: 56px;
       position: relative;
 
       img {
