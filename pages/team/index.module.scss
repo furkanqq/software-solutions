@@ -1,0 +1,12 @@
+.wrapper {
+  background-color: rgba(var(--colors-light));
+  padding-top: 112px;
+  padding-bottom: 24px;
+
+
+  .items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+}

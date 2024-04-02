@@ -40,6 +40,15 @@ export const XPageTitle: React.FC<IProps> = ({
               <div className={styles.item}>
                 <h2>{marqueTitle}</h2>
               </div>
+              <div className={styles.item}>
+                <h2>{marqueTitle}</h2>
+              </div>
+              <div className={styles.item}>
+                <h2>{marqueTitle}</h2>
+              </div>
+              <div className={styles.item}>
+                <h2>{marqueTitle}</h2>
+              </div>
             </div>
           </div>
         </div>
