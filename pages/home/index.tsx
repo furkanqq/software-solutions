@@ -15,7 +15,6 @@ import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
 import Layouts from '@/src/layouts';
-import { useState } from 'react';
 
 export default function HomePage() {
   return (
@@ -30,8 +29,8 @@ export default function HomePage() {
                 <br /> <span>CREATIVE</span> AGENCY
               </h1>
               <p>
-                Through our years of experience, we've also learned that while
-                each channel has its own set of advantages.
+                {`   Through our years of experience, we've also learned that while
+                each channel has its own set of advantages.`}
               </p>
               <div className={styles.watch}>
                 <span>Watch</span>

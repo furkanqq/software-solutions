@@ -1,14 +1,22 @@
 import styles from './index.module.scss';
 
+import { XImage } from '../XImage';
+
 interface IProps {
   fullName: string;
-  title: string;
+  position: string;
 }
 
-export const XTeamCard: React.FC<IProps> = ({ fullName, title }) => {
+export const XTeamCard: React.FC<IProps> = ({ fullName, position }) => {
   return (
-    <div
-      style={{ backgroundImage: `url(${'/assets/team.jpeg'})` }}
-      className={styles.item}></div>
+    <div className={styles.item}>
+      <div className={styles.image}>
+        <XImage src="/assets/team.jpeg" alt="user" fill />
+      </div>
+      <div className={styles.info}>
+        <div className={styles.full_name}>{fullName}</div>
+        <div className={styles.position}>{position}</div>
+      </div>
+    </div>
   );
 };

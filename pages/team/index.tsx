@@ -1,13 +1,12 @@
 import styles from './index.module.scss';
 
 import { XPageTitle } from '@/src/components/XPageTitle';
+import { XTeamCard } from '@/src/components/XTeamCard';
 import Container from '@/src/components/XContainer';
-import { XImage } from '@/src/components/XImage';
 import XHeader from '@/src/composite/XHeader';
 import XFooter from '@/src/composite/XFooter';
 
 import Layouts from '@/src/layouts';
-import { XTeamCard } from '@/src/components/XTeamCard';
 
 export default function TeamPage() {
   return (
@@ -22,12 +21,18 @@ export default function TeamPage() {
         <section className={styles.wrapper}>
           <Container>
             <div className={styles.items}>
-              <XTeamCard />
-              <XTeamCard />
-              <XTeamCard />
-              <XTeamCard />
-              <XTeamCard />
-              <XTeamCard />
+              <XTeamCard
+                position="Web / Mobile Developer"
+                fullName="Ümit Ünver"
+              />
+              <XTeamCard
+                position="Web / Mobile Developer"
+                fullName="Furkan Ilhan"
+              />
+              <XTeamCard
+                position="Web / Mobile Developer"
+                fullName="John Doe"
+              />
             </div>
           </Container>
         </section>
