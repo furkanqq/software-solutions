@@ -146,7 +146,6 @@
 }
 
 // Blog Section
-
 .blog {
   background-color: rgba(var(--colors-off-white));
   padding: 56px 0px 90px 0px;
@@ -220,6 +219,99 @@
             padding: 8px 12px;
             background-color: rgba(var(--colors-dark), 0.05);
             border-radius: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Faq Section
+
+.faq {
+  background-color: rgba(var(--colors-light));
+  padding: 112px 0;
+
+  .faq_wrapper {
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+    gap: 24px;
+
+    .tab_menu {
+      ul {
+        padding: 0;
+        margin: 0;
+
+        li {
+          list-style-type: none;
+          margin-bottom: 24px;
+          text-transform: uppercase;
+          cursor: pointer;
+          font-weight: 500;
+          color: rgba(var(--colors-dark), 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transition: .5s ease all;
+
+          &:hover {
+            color: rgba(var(--colors-dark), 1);
+            transition: .5s ease all;
+            margin-left: 10px;
+          }
+
+          span {
+            transform: rotate(-90deg);
+          }
+        }
+
+        .active {
+          color: rgba(var(--colors-dark), 1);
+
+
+        }
+      }
+    }
+
+    .tab_content {
+      .items {
+        display: flex;
+        flex-direction: column;
+
+        .item {
+          border-bottom: 1px solid rgba(var(--colors-dark), 0.1);
+          margin-bottom: 10px;
+          padding-bottom: 10px;
+
+          &:last-child {
+            border-bottom: 0px;
+          }
+
+          &.active {
+            .content {
+              display: block;
+            }
+
+            .chevron {
+              transform: rotate(180deg);
+            }
+          }
+
+          .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .title {
+              font-size: 20px;
+            }
+          }
+
+          .content {
+            display: none;
+            font-size: 14px;
+            padding: 24px 0px;
           }
         }
       }
