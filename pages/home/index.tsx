@@ -1,22 +1,21 @@
 import styles from './index.module.scss';
 import cn from 'classnames';
 
+import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
 import { IconFooterArrow } from '@/src/assets/IconFooterArrow';
+import { IconChevronDown } from '@/src/assets/IconChevronDown';
 import { IconExplore } from '@/src/assets/IconExplore';
 import { IconPlay } from '@/src/assets/IconPlay';
-import { IconChevronDown } from '@/src/assets/IconChevronDown';
 
 import XProjectCarousel from '@/src/composite/XProjectCarousel';
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
+import { XLink } from '@/src/components/XLink';
 import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
 import Layouts from '@/src/layouts';
 import { useState } from 'react';
-import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
-import { XLink } from '@/src/components/XLink';
-
 
 export default function HomePage() {
   return (
