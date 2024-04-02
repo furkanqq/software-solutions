@@ -171,6 +171,10 @@ a {
   text-decoration: none;
 }
 
+a:active {
+  transform: scale(0.98);
+}
+
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
   color: inherit;
