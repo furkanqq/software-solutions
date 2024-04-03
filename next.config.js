@@ -34,6 +34,10 @@ const nextConfig = {
         source: '/ekibimiz',
         destination: '/team',
       },
+      {
+        source: '/hizmetler',
+        destination: '/services',
+      },
     ]
   },
 };
