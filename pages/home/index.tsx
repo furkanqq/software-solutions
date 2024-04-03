@@ -358,7 +358,7 @@ export default function HomePage() {
           </Container>
         </section>
       </main>
-      <XFooter />
+      <XFooter bgColor="white" />
     </Layouts>
   );
 }

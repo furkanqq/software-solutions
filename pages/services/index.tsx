@@ -9,28 +9,31 @@ import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
 import {
+  OurServicesType,
+  ServicesPage,
+  ServiceType,
+  Service
+} from '@/src/config/service.config';
+import {
   keyPhrasesType,
   PortfolioType,
   Portfolio
 } from '@/src/config/portfolio.config';
-import { OurServicesType, ServicesPage } from '@/src/config/service.config';
 import { useEffect, useState, useRef } from 'react';
 import Layouts from '@/src/layouts';
+import { XLink } from '@/src/components/XLink';
 
 export default function Services() {
-  const sectionRef = useRef<any>(null); // Ref oluştur
-  const [src, setSrc] = useState('/assets/portfolio1.jpeg'); // Mesaj durumunu tutmak için state
+  const sectionRef = useRef(null);
+  const [src, setSrc] = useState<string>('/assets/portfolio1.jpeg');
+  const [activeService, setActiveService] = useState<ServiceType>(Service[0]);
 
+  // scroll takibi ile gorsel degistirme
   useEffect(() => {
-    // Scroll olayını dinleyen fonksiyon
     const handleScroll = () => {
       if (sectionRef.current) {
-        // Ref'i kullanarak ilgili DOM elemanını al
-        const sectionRect = sectionRef?.current?.getBoundingClientRect();
-        // Sayfanın yüksekliğini al
+        const sectionRect = sectionRef.current.getBoundingClientRect();
         const pageHeight = window.innerHeight;
-
-        // Hangi metnin gösterileceğini belirle
         if (window.scrollY >= sectionRect.top + pageHeight) {
           setSrc('/assets/portfolio1.jpeg');
         }
@@ -42,15 +45,11 @@ export default function Services() {
         }
       }
     };
-
-    // Scroll olayını dinle
     window.addEventListener('scroll', handleScroll);
 
-    // Component kaldırıldığında event'i temizle
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  console.log(src);
   return (
     <Layouts>
       <XHeader />
@@ -88,9 +87,10 @@ export default function Services() {
             ))}
           </Container>
         </section>
+
         <section className={styles.portfolio} ref={sectionRef}>
           <div className={styles.image_holder}>
-            <XImage src={src} alt={''} fill />
+            <XImage src={src} alt={'image'} fill />
           </div>
           <div className={styles.content}>
             {Portfolio.map((content: PortfolioType, index: number) => (
@@ -105,17 +105,81 @@ export default function Services() {
                     )
                   )}
                 {content.details && (
-                  <div className={styles.circle_color}>
+                  <XLink className={styles.circle_color} href={'/'}>
                     <IconExploreArrow />
                     <span>View Details</span>
-                  </div>
+                  </XLink>
                 )}
               </div>
             ))}
           </div>
         </section>
+
+        <section className={styles.service}>
+          <Container className={styles.content}>
+            <div className={styles.detail_part}>
+              <div className={styles.image_holder}>
+                <XImage
+                  src={activeService.image}
+                  alt={activeService.title}
+                  fill
+                />
+              </div>
+              <div className={styles.card}>
+                <XImage
+                  alt={activeService.title}
+                  src={activeService.icon}
+                  height={52}
+                  width={52}
+                />
+                <p>{activeService.description}</p>
+                {activeService.more && (
+                  <div className={styles.more}>
+                    <span>Read More</span>
+                    <IconExploreArrow />
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className={styles.choose_part}>
+              <div className={styles.first}>
+                <span>SERVICES</span>
+                <p>
+                  We help you to go online and increase your conversion rate
+                  Better design for your digital products.
+                </p>
+              </div>
+              <div className={styles.second}>
+                {Service.map((serve: ServiceType, index: number) => (
+                  <div
+                    onClick={() => setActiveService(serve)}
+                    className={styles.serve}
+                    key={index}>
+                    <span>{serve.id}</span>
+                    <h2>{serve.title}</h2>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section className={styles.parallax_part}>
+          <div className={styles.parallax_holder}>
+            <div></div>
+          </div>
+          <div className={styles.text_part}>
+            <div className={styles.text}>
+              <h1>Have a project in mind? Let’s get to work.</h1>
+              <XLink className={styles.circle_color} href={'/'}>
+                <IconExploreArrow />
+                <span>GET IN TOUCH</span>
+              </XLink>
+            </div>
+          </div>
+        </section>
       </main>
-      <XFooter />
+      <XFooter bgColor="transparent" />
     </Layouts>
   );
 }
