@@ -25,11 +25,7 @@ export const Navigation: NavigationType[] = [
       },
       {
         title: 'Ekibimiz',
-        path: '/ekip'
-      },
-      {
-        title: 'Basında Biz',
-        path: '/basinda-biz'
+        path: '/ekibimiz'
       },
       {
         title: 'Kariyer',
@@ -59,7 +55,7 @@ export const Navigation: NavigationType[] = [
     path: '/blog'
   },
   {
-    path: '/iletişim',
+    path: '/iletisim',
     title: 'İletişim',
     dropdown: false,
     children: null
