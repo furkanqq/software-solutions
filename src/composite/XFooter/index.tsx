@@ -6,9 +6,18 @@ import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
 import { XLink } from '@/src/components/XLink';
 
-export default function XFooter() {
+type propsType = {
+  color: string;
+};
+
+export default function XFooter(props: propsType) {
   return (
-    <footer className={styles.footer}>
+    <footer
+      style={{
+        backgroundColor:
+          props?.color === 'white' ? 'rgba(var(--colors-light))' : props?.color
+      }}
+      className={styles.footer}>
       <Container>
         <XLink href="/">
           <div className={styles.footer_offer}>

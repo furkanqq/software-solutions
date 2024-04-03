@@ -1,4 +1,5 @@
 import styles from './index.module.scss';
+
 import React, { useEffect, useState, useRef } from 'react';
 
 export default function XProjectCarousel() {
@@ -10,6 +11,8 @@ export default function XProjectCarousel() {
   const [isAtTop, setIsAtTop] = useState(false);
 
   const handleMouseWheel = (event: React.WheelEvent) => {
+    console.log('1');
+    console.log(event, 'event');
     if (containerRef.current && containerRef.current.contains(event.target)) {
       containerRef.current.scrollLeft += event.deltaY;
       event.preventDefault();
@@ -37,7 +40,7 @@ export default function XProjectCarousel() {
 
   useEffect(() => {
     if (containerRef.current) {
-      const width = containerRef.current.offsetWidth;
+      const width = containerRef.current.offsetWidth as number;
       setDivWidth(width);
     }
   }, [containerRef]);

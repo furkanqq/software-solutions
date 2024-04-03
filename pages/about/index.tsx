@@ -55,7 +55,7 @@ export default function AboutPage() {
           </Container>
         </section>
       </main>
-      <XFooter />
+      <XFooter color="white" />
     </Layouts>
   );
 }

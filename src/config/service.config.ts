@@ -1,3 +1,5 @@
+import { title } from 'process';
+
 export type OurServicesType = {
   description: string;
   more: boolean;
@@ -57,5 +59,53 @@ export const ServicesPage: OurServicesType[] = [
     label: 'Product Development',
     icon: '/assets/third.png',
     more: true
+  }
+];
+
+export type ServiceType = {
+  description: string;
+  title: string;
+  more: boolean;
+  image: string;
+  icon: string;
+  id: string;
+};
+
+export const Service: ServiceType[] = [
+  {
+    description:
+      'We are a creative studio specializing in design, development and strategy many different skills and disciplines in the production of all web.',
+    image: '/assets/uiux.jpeg',
+    icon: '/assets/first.png',
+    title: 'UI/UX Design',
+    more: true,
+    id: '01'
+  },
+  {
+    description:
+      'We are a creative studio specializing in design, development and strategy many different skills and disciplines in the production of all web.',
+    image: '/assets/branding.png',
+    icon: '/assets/second.png',
+    title: 'Branding',
+    more: true,
+    id: '02'
+  },
+  {
+    description:
+      'We are a creative studio specializing in design, development and strategy many different skills and disciplines in the production of all web.',
+    image: '/assets/development.png',
+    icon: '/assets/third.png',
+    title: 'Development',
+    more: true,
+    id: '03'
+  },
+  {
+    description:
+      'We are a creative studio specializing in design, development and strategy many different skills and disciplines in the production of all web.',
+    image: '/assets/marketing.png',
+    icon: '/assets/first.png',
+    title: 'Marketing',
+    more: true,
+    id: '04'
   }
 ];

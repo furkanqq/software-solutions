@@ -37,7 +37,7 @@ export default function TeamPage() {
           </Container>
         </section>
       </main>
-      <XFooter />
+      <XFooter color="white" />
     </Layouts>
   );
 }
