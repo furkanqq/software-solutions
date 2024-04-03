@@ -5,16 +5,20 @@ import Container from '../XContainer';
 interface IProps {
   marqueTitle?: string;
   multiTitle: string;
+  bgColor?: 'white';
   title: string;
 }
 
 export const XPageTitle: React.FC<IProps> = ({
   marqueTitle,
   multiTitle,
+  bgColor,
   title
 }) => {
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div
+      style={{ backgroundColor: bgColor === 'white' ? '#fff' : '' }}
+      className={styles.container}>
       <Container>
         <section className={styles.wrapper}>
           <div className={styles.multi_title}>{multiTitle}</div>
