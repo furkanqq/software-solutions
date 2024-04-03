@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import Container from '../XContainer';
 
 interface IProps {
-  bgColor: 'transparent' | 'white';
+  bgColor?: 'transparent' | 'white';
   marqueTitle?: string;
   multiTitle: string;
   title: string;
