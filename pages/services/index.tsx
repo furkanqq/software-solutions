@@ -26,7 +26,7 @@ import { useEffect, useState, useRef } from 'react';
 import Layouts from '@/src/layouts';
 
 export default function Services() {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<any>(null);
   const [src, setSrc] = useState<string>('/assets/portfolio1.jpeg');
   const [activeService, setActiveService] = useState<ServiceType>(Service[0]);
 
