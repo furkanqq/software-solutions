@@ -50,7 +50,6 @@ export default function Services() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  console.log(src);
   return (
     <Layouts>
       <XHeader />
@@ -91,7 +90,7 @@ export default function Services() {
 
         <section className={styles.portfolio} ref={sectionRef}>
           <div className={styles.image_holder}>
-            <XImage src={src} alt={''} fill />
+            <XImage src={src} alt={'image'} fill />
           </div>
           <div className={styles.content}>
             {Portfolio.map((content: PortfolioType, index: number) => (

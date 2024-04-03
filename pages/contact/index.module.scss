@@ -1,0 +1,131 @@
+.wrapper {
+  background-color: rgba(var(--colors-off-white));
+  padding-top: 112px;
+  padding-bottom: 112px;
+  position: relative;
+  overflow: hidden;
+
+
+  &::before {
+    content: '';
+    width: 80vw;
+    height: 80vw;
+    border: 200px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: -15vw;
+    right: -30vw;
+    opacity: .01;
+    pointer-events: none;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+
+    .info {
+      .title {
+        display: grid;
+        gap: 24px;
+
+        span {
+          width: fit-content;
+          border: 1px solid rgba(var(--colors-dark));
+          padding: 12px 32px;
+          border-radius: 24px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        h1 {
+          font-size: 44px;
+          font-weight: 600;
+        }
+      }
+
+      .describe {
+        display: grid;
+        align-items: center;
+        margin: 24px 0px;
+
+        .phone {
+          font-size: 30px;
+          font-weight: 600;
+          text-decoration: underline;
+        }
+
+        .address {
+          font-size: 20px;
+          margin-top: 24px;
+          font-weight: 600;
+        }
+
+        p {
+          font-size: 16px;
+          color: rgba(var(--colors-dark), 0.6);
+          width: 90%;
+        }
+
+        a {
+          position: relative;
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          width: fit-content;
+          height: fit-content;
+          font-weight: 300;
+
+          &::after {
+            position: absolute;
+            content: '';
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            left: -20px;
+            z-index: -1;
+            background-color: rgba(var(--colors-dark), 0.1);
+          }
+
+          svg {
+            margin-left: 6px;
+          }
+        }
+      }
+
+
+
+    }
+
+    .form {
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        input {
+          background-color: transparent;
+        }
+
+        .row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
+        }
+
+        .row_one {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .send_button {
+          display: block;
+          max-width: fit-content;
+          padding: 0px 24px;
+
+        }
+      }
+    }
+  }
+
+}
