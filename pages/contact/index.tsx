@@ -68,7 +68,7 @@ export default function ContactPage() {
           </Container>
         </section>
       </main>
-      <XFooter />
+      <XFooter bgColor="white" />
     </Layouts>
   );
 }

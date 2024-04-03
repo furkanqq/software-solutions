@@ -61,7 +61,7 @@ export default function CareerPage() {
           </Container>
         </section>
       </main>
-      <XFooter />
+      <XFooter bgColor="white" />
     </Layouts>
   );
 }

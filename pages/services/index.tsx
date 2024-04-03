@@ -1,6 +1,8 @@
 import styles from './index.module.scss';
+import cn from 'classnames';
 
 import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
+import { IconChevronDown } from '@/src/assets/IconChevronDown';
 
 import { XPageTitle } from '@/src/components/XPageTitle';
 import Container from '@/src/components/XContainer';
@@ -160,6 +162,71 @@ export default function Services() {
                     <h2>{serve.title}</h2>
                   </div>
                 ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section className={styles.faq}>
+          <Container>
+            <div className={styles.faq_wrapper}>
+              <h1>Watch the creative process behind our digital marketing.</h1>
+              <div className={styles.tab_content}>
+                <div className={styles.items}>
+                  <div className={cn(styles.item, styles.active)}>
+                    <div className={styles.header}>
+                      <div className={styles.title}>
+                        Tasarım süreci nasıl ilerliyor?
+                      </div>
+                      <div className={styles.chevron}>
+                        <IconChevronDown height={30} width={30} />
+                      </div>
+                    </div>
+                    <div className={styles.content}>
+                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
+                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
+                      bir hurufat numune kitabı oluşturmak üzere bir yazı
+                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
+                      standardı sahte metinler olarak kullanılmıştır.
+                    </div>
+                  </div>
+
+                  <div className={cn(styles.item)}>
+                    <div className={styles.header}>
+                      <div className={styles.title}>
+                        Tasarım süreci nasıl ilerliyor?
+                      </div>
+                      <div className={styles.chevron}>
+                        <IconChevronDown height={30} width={30} />
+                      </div>
+                    </div>
+                    <div className={styles.content}>
+                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
+                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
+                      bir hurufat numune kitabı oluşturmak üzere bir yazı
+                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
+                      standardı sahte metinler olarak kullanılmıştır.
+                    </div>
+                  </div>
+
+                  <div className={cn(styles.item)}>
+                    <div className={styles.header}>
+                      <div className={styles.title}>
+                        Tasarım süreci nasıl ilerliyor?
+                      </div>
+                      <div className={styles.chevron}>
+                        <IconChevronDown height={30} width={30} />
+                      </div>
+                    </div>
+                    <div className={styles.content}>
+                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
+                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
+                      bir hurufat numune kitabı oluşturmak üzere bir yazı
+                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
+                      standardı sahte metinler olarak kullanılmıştır.
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </Container>

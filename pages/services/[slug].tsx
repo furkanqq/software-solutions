@@ -144,7 +144,7 @@ export default function DetailPage() {
           </Container>
         </section>
       </main>
-      <XFooter />
+      <XFooter bgColor="white" />
     </Layouts>
   );
 }

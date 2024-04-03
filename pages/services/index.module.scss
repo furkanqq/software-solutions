@@ -243,6 +243,66 @@
   }
 }
 
+.faq {
+  background-color: rgba(var(--colors-off-white));
+  margin-top: 112px;
+
+  .faq_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+
+    h1 {
+      font-size: 60px;
+      font-weight: 600;
+      width: 80%;
+    }
+
+    .tab_content {
+      .items {
+        display: flex;
+        flex-direction: column;
+
+        .item {
+          border-bottom: 1px solid rgba(var(--colors-dark), 0.1);
+          margin-bottom: 10px;
+          padding-bottom: 10px;
+
+          &:last-child {
+            border-bottom: 0px;
+          }
+
+          &.active {
+            .content {
+              display: block;
+            }
+
+            .chevron {
+              transform: rotate(180deg);
+            }
+          }
+
+          .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .title {
+              font-size: 20px;
+            }
+          }
+
+          .content {
+            display: none;
+            font-size: 14px;
+            padding: 24px 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
 .parallax_part {
   margin-top: 112px;
   position: relative;
@@ -268,7 +328,7 @@
     bottom: 0px;
     z-index: 3;
     .text {
-      padding: 0px 60px;
+      padding: 0px 100px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -277,7 +337,7 @@
       background-color: rgba(var(--colors-light));
       h1 {
         font-size: 52px;
-        width: 60%;
+        width: 70%;
       }
       .circle_color {
         border: 1px solid rgba(var(--colors-dark));
