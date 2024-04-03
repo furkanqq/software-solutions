@@ -15,7 +15,27 @@ const nextConfig = {
     locales: ['tr', 'en'],
     defaultLocale: 'en',
     localeDetection: false
-  }
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/iletisim',
+        destination: '/contact',
+      },
+      {
+        source: '/hakkimizda',
+        destination: '/about',
+      },
+      {
+        source: '/kariyer',
+        destination: '/career',
+      },
+      {
+        source: '/ekibimiz',
+        destination: '/team',
+      },
+    ]
+  },
 };
 
 module.exports = nextConfig;
