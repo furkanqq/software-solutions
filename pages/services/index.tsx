@@ -180,7 +180,7 @@ export default function Services() {
           </div>
         </section>
       </main>
-      <XFooter color="transparent" />
+      <XFooter bgColor="transparent" />
     </Layouts>
   );
 }

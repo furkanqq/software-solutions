@@ -7,7 +7,7 @@ import { XImage } from '@/src/components/XImage';
 import { XLink } from '@/src/components/XLink';
 
 type propsType = {
-  color: string;
+  bgColor: string;
 };
 
 export default function XFooter(props: propsType) {
@@ -15,7 +15,9 @@ export default function XFooter(props: propsType) {
     <footer
       style={{
         backgroundColor:
-          props?.color === 'white' ? 'rgba(var(--colors-light))' : props?.color
+          props?.bgColor === 'white'
+            ? 'rgba(var(--colors-light))'
+            : props?.bgColor
       }}
       className={styles.footer}>
       <Container>
