@@ -62,6 +62,36 @@ export const Services: ServicesType[] = [
   },
   {
     title: '*'
+  },
+  {
+    title: 'Product Design'
+  },
+  {
+    title: '*'
+  },
+  {
+    title: 'Mobile Solutions'
+  },
+  {
+    title: '*'
+  },
+  {
+    title: 'UI-UX Experience'
+  },
+  {
+    title: '*'
+  },
+  {
+    title: 'Web Development'
+  },
+  {
+    title: '*'
+  },
+  {
+    title: 'Digital Marketing'
+  },
+  {
+    title: '*'
   }
 ];
 

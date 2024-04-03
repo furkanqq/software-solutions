@@ -279,11 +279,17 @@
 
 .brands {
   margin-top: 56px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
   .slide {
     transform: rotate(-3deg);
     background-color: rgba(var(--colors-off-white));
-    border: 1px solid rgba(var(--colors-dark), 0.3);
+    border-block: 1px solid rgba(var(--colors-dark), 0.3);
     padding: 48px 0px;
+    height: 148px;
     .box {
       animation: slide-har 60s linear infinite;
       display: flex;
@@ -502,6 +508,57 @@
             display: none;
             font-size: 14px;
             padding: 24px 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Slide section
+.projects {
+  background-color: rgba(var(--colors-light));
+  padding: 56px 0px;
+  margin-top: 56px;
+  height: 300vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .sticky_part {
+    // position: sticky;
+    top: 176px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    overflow: auto;
+    .items {
+      display: flex;
+      .item {
+        min-width: 800px;
+        height: 500px;
+        margin-right: 20px;
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .thumbnail {
+          background-color: #ccc;
+          min-width: 800px;
+          height: 500px;
+        }
+
+        .information {
+          margin-top: 24px;
+
+          .left {
+            .category {
+              color: rgba(var(--colors-dark), 0.5);
+              text-transform: uppercase;
+            }
+
+            .title {
+              font-size: 24px;
+            }
           }
         }
       }

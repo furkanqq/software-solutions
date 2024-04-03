@@ -22,5 +22,15 @@ html {
 
 body {
   font-family: var(--app-font);
+  position: relative;
 }
 
+.follower {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(var(--colors-primary));
+  border-radius: 50%;
+  transform: translate(160%, 120%);
+  z-index: 98;
+}

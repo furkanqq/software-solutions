@@ -1,39 +1,46 @@
 .projects {
   background-color: rgba(var(--colors-light));
-  padding: 56px 0px;
   margin-top: 56px;
-
-  .items {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .sticky_part {
+    position: sticky;
+    height: 100vh;
+    top: 0px;
+    padding-inline: 100px;
+    width: 100%;
     display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-
-    .item {
-      min-width: 800px;
-      height: 500px;
-      margin-right: 20px;
-      display: inline-flex;
-      justify-content: center;
-      flex-direction: column;
-
-      .thumbnail {
-        background-color: #ccc;
-        min-width: 800px;
+    align-items: center;
+    gap: 120px;
+    .items {
+      display: flex;
+      .item {
+        min-width: 500px;
         height: 500px;
-      }
+        margin-right: 20px;
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
 
-      .information {
-        margin-top: 24px;
+        .thumbnail {
+          background-color: #ccc;
+          min-width: 500px;
+          height: 500px;
+        }
 
-        .left {
-          .category {
-            color: rgba(var(--colors-dark), 0.5);
-            text-transform: uppercase;
-          }
+        .information {
+          margin-top: 24px;
 
-          .title {
-            font-size: 24px;
+          .left {
+            .category {
+              color: rgba(var(--colors-dark), 0.5);
+              text-transform: uppercase;
+            }
+
+            .title {
+              font-size: 24px;
+            }
           }
         }
       }

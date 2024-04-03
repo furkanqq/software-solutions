@@ -193,6 +193,50 @@ export default function HomePage() {
 
         <XProjectCarousel />
 
+        {/* <section className={styles.projects}>
+          <div className={styles.sticky_part}>
+            <div className={styles.items}>
+              <div className={styles.item}>
+                <div className={styles.thumbnail}></div>
+                <div className={styles.information}>
+                  <div className={styles.left}>
+                    <div className={styles.category}>Web Tasarım</div>
+                    <div className={styles.title}>
+                      Balance Network | NFT Project
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={styles.items}>
+              <div className={styles.item}>
+                <div className={styles.thumbnail}></div>
+                <div className={styles.information}>
+                  <div className={styles.left}>
+                    <div className={styles.category}>Web Tasarım</div>
+                    <div className={styles.title}>
+                      Balance Network | NFT Project
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={styles.items}>
+              <div className={styles.item}>
+                <div className={styles.thumbnail}></div>
+                <div className={styles.information}>
+                  <div className={styles.left}>
+                    <div className={styles.category}>Web Tasarım</div>
+                    <div className={styles.title}>
+                      Balance Network | NFT Project
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> */}
+
         <section className={styles.faq}>
           <Container>
             <div className={styles.faq_wrapper}>
