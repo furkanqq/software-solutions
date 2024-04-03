@@ -5,6 +5,7 @@ import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
 import { XPageTitle } from '@/src/components/XPageTitle';
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
+import { XLink } from '@/src/components/XLink';
 import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
@@ -21,7 +22,6 @@ import {
 } from '@/src/config/portfolio.config';
 import { useEffect, useState, useRef } from 'react';
 import Layouts from '@/src/layouts';
-import { XLink } from '@/src/components/XLink';
 
 export default function Services() {
   const sectionRef = useRef(null);
@@ -58,6 +58,7 @@ export default function Services() {
           title="We combine our passion for design and code."
           multiTitle="Buraya kısa bir bilgilendirme gelecek"
           marqueTitle="Hizmetler"
+          bgColor={'white'}
         />
         <section className={styles.benefits}>
           <Container className={styles.content}>
@@ -90,7 +91,7 @@ export default function Services() {
 
         <section className={styles.portfolio} ref={sectionRef}>
           <div className={styles.image_holder}>
-            <XImage src={src} alt={'image'} fill />
+            <XImage alt={'image'} src={src} fill />
           </div>
           <div className={styles.content}>
             {Portfolio.map((content: PortfolioType, index: number) => (

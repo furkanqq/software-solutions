@@ -1,5 +1,3 @@
-import { title } from 'process';
-
 export type OurServicesType = {
   description: string;
   more: boolean;

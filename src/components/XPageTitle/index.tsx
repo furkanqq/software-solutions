@@ -3,9 +3,9 @@ import styles from './index.module.scss';
 import Container from '../XContainer';
 
 interface IProps {
+  bgColor: 'transparent' | 'white';
   marqueTitle?: string;
   multiTitle: string;
-  bgColor?: 'white';
   title: string;
 }
 
@@ -17,7 +17,10 @@ export const XPageTitle: React.FC<IProps> = ({
 }) => {
   return (
     <div
-      style={{ backgroundColor: bgColor === 'white' ? '#fff' : '' }}
+      style={{
+        backgroundColor:
+          bgColor === 'white' ? 'rgba(var(--colors-light))' : bgColor
+      }}
       className={styles.container}>
       <Container>
         <section className={styles.wrapper}>

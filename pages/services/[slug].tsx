@@ -22,6 +22,7 @@ export default function DetailPage() {
           title="We combine our passion for design and code."
           multiTitle="Buraya kısa bir bilgilendirme gelecek"
           marqueTitle="mobil uygulama"
+          bgColor={'transparent'}
         />
         <section className={styles.wrapper}>
           <Container>
