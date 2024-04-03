@@ -18,7 +18,7 @@ import { useEffect, useState, useRef } from 'react';
 import Layouts from '@/src/layouts';
 
 export default function Services() {
-  const sectionRef = useRef(null); // Ref oluştur
+  const sectionRef = useRef<any>(null); // Ref oluştur
   const [src, setSrc] = useState('/assets/portfolio1.jpeg'); // Mesaj durumunu tutmak için state
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Services() {
     const handleScroll = () => {
       if (sectionRef.current) {
         // Ref'i kullanarak ilgili DOM elemanını al
-        const sectionRect = sectionRef.current.getBoundingClientRect();
+        const sectionRect = sectionRef?.current?.getBoundingClientRect();
         // Sayfanın yüksekliğini al
         const pageHeight = window.innerHeight;
 

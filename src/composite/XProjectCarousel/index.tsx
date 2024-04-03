@@ -1,8 +1,9 @@
 import styles from './index.module.scss';
+
 import React, { useEffect, useState, useRef } from 'react';
 
 export default function XProjectCarousel() {
-  const containerRef = useRef(null);
+  const containerRef = useRef<any>(null);
   const [containerPosition, setContainerPosition] = useState({
     left: 0,
     top: 0
