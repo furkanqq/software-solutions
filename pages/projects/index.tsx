@@ -3,13 +3,13 @@ import styles from './index.module.scss';
 import { XPageTitle } from '@/src/components/XPageTitle';
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
+import { XLink } from '@/src/components/XLink';
 import XHeader from '@/src/composite/XHeader';
 import XFooter from '@/src/composite/XFooter';
 
 import { ProjectsType, Projects } from '@/src/config/projects.config';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import Layouts from '@/src/layouts';
-import { XLink } from '@/src/components/XLink';
 
 export default function ContactPage() {
   return (

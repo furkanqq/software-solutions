@@ -1,14 +1,15 @@
-import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
 import styles from './slug.module.scss';
+
+import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
+import { IconAngledArrow } from '@/src/assets/IconAngledArrow';
 
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
+import { XLink } from '@/src/components/XLink';
 import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
 import Layouts from '@/src/layouts';
-import { IconAngledArrow } from '@/src/assets/IconAngledArrow';
-import { XLink } from '@/src/components/XLink';
 
 export default function DetailPage() {
   return (
