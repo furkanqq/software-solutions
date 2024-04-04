@@ -1,0 +1,222 @@
+.banner {
+  height: 50vh;
+  padding-top: 90px;
+  display: flex;
+  align-items: center;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    gap: 52px;
+    .title {
+      width: 40%;
+      font-size: 80px;
+      font-weight: 500;
+      line-height: 84px;
+    }
+    .detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      width: 50%;
+      .peace {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        span {
+          &:first-child {
+            font-size: 16px;
+            font-weight: 500;
+          }
+          &:last-child {
+            letter-spacing: 2px;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.image_part {
+  height: 50vh;
+  position: relative;
+  img {
+    object-fit: cover;
+  }
+}
+
+.detail_part {
+  padding-top: 112px;
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    .text_part {
+      display: flex;
+      gap: 200px;
+      .title {
+        width: 40%;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 48px;
+      }
+      .description {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        justify-content: space-between;
+        p {
+          color: rgba(var(--colors-dark), 0.6);
+          font-size: 16px;
+        }
+        .list {
+          display: flex;
+          gap: 100px;
+          ul {
+            li {
+              font-size: 16px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+    .image_cards {
+      display: flex;
+      justify-content: space-between;
+      .card {
+        position: relative;
+        height: 180px;
+        width: 388px;
+        overflow: hidden;
+        border-radius: 2px;
+        img {
+          object-fit: cover;
+        }
+      }
+    }
+    .attachment {
+      background-image: url(../../public/assets/parallax2.png);
+      min-height: 600px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .just_text {
+      text-align: center;
+      padding-inline: 300px;
+      font-size: 20px;
+      color: rgba(var(--colors-dark), 0.6);
+    }
+  }
+}
+
+.info {
+    margin-top: 56px;
+  padding-block: 56px;
+  background-color: rgba(var(--colors-light));
+  .text_part {
+    display: flex;
+    gap: 200px;
+    .title {
+      width: 40%;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 48px;
+    }
+    .description {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      justify-content: space-between;
+      p {
+        color: rgba(var(--colors-dark), 0.6);
+        font-size: 16px;
+      }
+      .list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        div {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.parallax_part {
+  margin-top: 112px;
+  position: relative;
+  height: 650px;
+  .parallax_holder {
+    display: flex;
+    justify-content: flex-end;
+    div {
+      background-image: url(../../public/assets/parallax3.png);
+      min-height: 400px;
+      width: 80%;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  .text_part {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    bottom: 0px;
+    z-index: 3;
+    .text {
+      padding: 0px 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 400px;
+      width: 80%;
+      background-color: rgba(var(--colors-light));
+      h1 {
+        font-size: 52px;
+        width: 70%;
+      }
+      .circle_color {
+        border: 1px solid rgba(var(--colors-dark));
+        width: 160px;
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+        z-index: 2;
+        &::after {
+          position: absolute;
+          content: '';
+          width: 0px;
+          height: 0px;
+          background-color: rgba(var(--colors-primary));
+          border-radius: 50%;
+          z-index: -1;
+          transition: 200ms linear;
+        }
+        &:hover {
+          &::after {
+            width: 100%;
+            height: 100%;
+            transition: 200ms linear;
+          }
+        }
+      }
+    }
+  }
+}
