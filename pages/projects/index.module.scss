@@ -1,0 +1,91 @@
+.projects {
+  background-color: rgba(var(--colors-light));
+  padding-block: 56px;
+  .content {
+    display: grid;
+    gap: 40px;
+    .filter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 80px;
+      font-size: 16px;
+      font-weight: 500;
+      .options {
+        display: flex;
+        gap: 40px;
+        span {
+          padding: 4px 8px;
+          border-radius: 4px;
+          text-align: center;
+          transition: 100ms linear;
+          cursor: pointer;
+          &:hover {
+            color: rgba(var(--colors-dark), 0.6);
+            transition: 100ms linear;
+          }
+        }
+      }
+    }
+    .card {
+      height: fit-content;
+      border-radius: 8px;
+      margin: 12px;
+      .card_content {
+        cursor: pointer;
+        position: relative;
+        border: 1px solid rgba(var(--colors-dark), 0.1);
+        overflow: hidden;
+        z-index: 2;
+        border-radius: 2px;
+        &::after {
+          position: absolute;
+          content: '';
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+          transition: 200ms;
+          opacity: 0.5;
+          z-index: 3;
+        }
+        &:hover {
+          &::after {
+            background-color: rgba(var(--colors-dark));
+            transition: 200ms;
+          }
+          .card_text {
+            bottom: 0px;
+            opacity: 1;
+            transition: 300ms ease-in;
+          }
+        }
+        .card_text {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          z-index: 4;
+          padding: 40px;
+          bottom: -200px;
+          opacity: 0;
+          transition: 300ms ease-in;
+
+          h1 {
+            letter-spacing: 2px;
+            color: rgba(var(--colors-off-white));
+            font-size: 32px;
+          }
+          label {
+            letter-spacing: 4px;
+            color: rgba(var(--colors-off-white));
+          }
+        }
+
+        img {
+          object-fit: cover;
+          z-index: -1;
+        }
+      }
+    }
+  }
+}
