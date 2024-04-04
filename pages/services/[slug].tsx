@@ -15,7 +15,7 @@ import Layouts from '@/src/layouts';
 export default function DetailPage() {
   return (
     <Layouts>
-      <XHeader />
+      <XHeader color="light" />
       <main>
         <XPageTitle
           title="We combine our passion for design and code."
