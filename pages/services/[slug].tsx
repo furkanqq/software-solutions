@@ -6,7 +6,6 @@ import { IconChevronDown } from '@/src/assets/IconChevronDown';
 
 import { XPageTitle } from '@/src/components/XPageTitle';
 import Container from '@/src/components/XContainer';
-import { XImage } from '@/src/components/XImage';
 import { XLink } from '@/src/components/XLink';
 import XHeader from '@/src/composite/XHeader';
 import XFooter from '@/src/composite/XFooter';
@@ -21,14 +20,13 @@ export default function DetailPage() {
         <XPageTitle
           title="We combine our passion for design and code."
           multiTitle="Buraya kısa bir bilgilendirme gelecek"
+          bgImage={'/assets/bannerImage.jpeg'}
           marqueTitle="mobil uygulama"
           bgColor={'transparent'}
+          offerForm={true}
         />
         <section className={styles.wrapper}>
           <Container>
-            <div className={styles.thumbnail}>
-              <XImage src="/assets/blog-thumbnail.jpeg" alt="" fill />
-            </div>
             <div className={styles.content}>
               <p>
                 {`  Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden
