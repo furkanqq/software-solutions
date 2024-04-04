@@ -3,6 +3,14 @@
   align-items: center;
   gap: 12px;
   height: 80px;
+
+
+  &.navbar_light {
+    .nav {
+      color: rgba(var(--colors-light));
+    }
+  }
+
   .nav {
     position: relative;
     display: grid;
@@ -15,14 +23,17 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
+
     &:nth-child(1) {
       a {
         width: max-content;
       }
     }
+
     span {
       transition: 200ms ease;
     }
+
     &:hover {
       .child {
         visibility: visible;
@@ -30,11 +41,13 @@
         top: 80px;
         transition: 200ms ease;
       }
+
       span {
         transform: rotate(-180deg);
         transition: 250ms ease;
       }
     }
+
     .child {
       top: 96px;
       position: absolute;

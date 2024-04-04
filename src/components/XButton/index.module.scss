@@ -41,6 +41,17 @@ $height: 38px;
       color: rgba(var(--colors-dark), 0.7);
     }
   }
+
+  &.color-outline-white {
+    border: 1px solid rgba(var(--colors-light));
+    background: transparent;
+    color: rgba(var(--colors-light));
+
+    &:hover {
+      border: 1px solid rgba(var(--colors-light), 0.7);
+      color: rgba(var(--colors-light), 0.7);
+    }
+  }
 }
 
 .container {

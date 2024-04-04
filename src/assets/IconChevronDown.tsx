@@ -13,8 +13,8 @@ export const IconChevronDown: React.FC<IconType> = (props) => {
         d="M6.90002 8.20001L10.5 11.8L14.1 8.20001"
         strokeLinejoin="round"
         strokeLinecap="round"
+        stroke="currentColor"
         strokeWidth="1.5"
-        stroke="black"
       />
     </svg>
   );
