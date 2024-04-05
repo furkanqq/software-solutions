@@ -20,26 +20,30 @@ const nextConfig = {
     return [
       {
         source: '/iletisim',
-        destination: '/contact',
+        destination: '/contact'
       },
       {
         source: '/hakkimizda',
-        destination: '/about',
+        destination: '/about'
       },
       {
         source: '/kariyer',
-        destination: '/career',
+        destination: '/career'
       },
       {
         source: '/ekibimiz',
-        destination: '/team',
+        destination: '/team'
       },
       {
         source: '/hizmetler',
-        destination: '/services',
+        destination: '/services'
       },
-    ]
-  },
+      {
+        source: '/projeler',
+        destination: '/projects'
+      }
+    ];
+  }
 };
 
 module.exports = nextConfig;

@@ -5,6 +5,7 @@ import Container from '@/src/components/XContainer';
 import { XButton } from '@/src/components/XButton';
 import { XImage } from '@/src/components/XImage';
 
+import { useEffect, useState } from 'react';
 import XNavbar from '../XNavbar';
 
 interface IProps {
@@ -12,11 +13,46 @@ interface IProps {
 }
 
 export default function XHeader(props: IProps) {
+  const [scrollY, setScrollY] = useState(0);
+  const [isHeaderVisible, setIsHeaderVisible] = useState<Boolean>(true);
+  const [headerBg, setHeaderBg] = useState<Boolean>(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollThreshold = 200;
+
+      if (currentScrollY > scrollY) {
+        setIsHeaderVisible(false);
+      } else if (
+        currentScrollY < scrollY - scrollThreshold ||
+        currentScrollY === 0
+      ) {
+        setIsHeaderVisible(true);
+      } else {
+        setIsHeaderVisible(true);
+      }
+
+      if (currentScrollY < scrollY - scrollThreshold || currentScrollY === 0) {
+        setHeaderBg(false);
+      } else {
+        setHeaderBg(true);
+      }
+
+      setScrollY(currentScrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollY]);
+
   return (
     <header
       className={cn(
         styles.header,
-        props.color === 'light' && styles.header_light
+        !isHeaderVisible && styles.active,
+        !headerBg && styles.bgColor
       )}>
       <Container>
         <div className={styles.header_content}>

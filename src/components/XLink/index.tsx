@@ -18,6 +18,7 @@ interface IProps {
   isHover?: boolean;
   href: string;
   as?: string;
+  ref?: any;
 }
 
 export const XLink: React.FC<IProps> = ({
@@ -33,6 +34,7 @@ export const XLink: React.FC<IProps> = ({
   target,
   href,
   dir,
+  ref,
   as
 }) => {
   if (!visible) return null;
@@ -50,6 +52,7 @@ export const XLink: React.FC<IProps> = ({
       target={target}
       locale={locale}
       href={href}
+      ref={ref}
       dir={dir}
       as={as}>
       {children}
