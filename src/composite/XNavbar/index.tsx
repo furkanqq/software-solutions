@@ -11,7 +11,7 @@ import {
   ChildrenType,
   Navigation
 } from '@/src/config/nav.config';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface IProps {
   color?: 'light' | 'dark';
@@ -19,6 +19,15 @@ interface IProps {
 
 export default function XNavbar(props: IProps) {
   const [chooseOption, setChooseOption] = useState('');
+
+  useEffect(() => {
+    const nav = Navigation.find((x) => x.big === true);
+    if (nav !== undefined && nav.children !== null) {
+      const child = nav.children[0];
+      setChooseOption(child?.title);
+    }
+  }, []);
+
   return (
     <nav
       className={cn(
