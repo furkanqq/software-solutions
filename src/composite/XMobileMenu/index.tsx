@@ -11,20 +11,12 @@ import {
   ChildrenType,
   Navigation
 } from '@/src/config/nav.config';
-import { useEffect, useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function XMobile() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [chooseOption, setChooseOption] = useState('');
-
-  useEffect(() => {
-    const nav = Navigation.find((x) => x.big === true);
-    if (nav !== undefined && nav.children !== null) {
-      const child = nav.children[0];
-      setChooseOption(child?.title);
-    }
-  }, []);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
 
   return (
     <section className={styles.mobile}>
@@ -42,7 +34,7 @@ export default function XMobile() {
             {Navigation.map((nav: NavigationType, index: number) => (
               <li className={styles.nav} key={index}>
                 {nav.dropdown ? (
-                  <span>
+                  <span onClick={() => setActiveMenu(nav.title)}>
                     <div>{nav.title}</div>
                     <IconChevronDown height={32} width={32} />
                   </span>
@@ -51,22 +43,33 @@ export default function XMobile() {
                     <XLink href={nav.path}>{nav.title}</XLink>
                   </span>
                 )}
-                {nav.children !== null && (
-                  <div className={styles.child}>
-                    {nav.children.map((child: ChildrenType, index: number) => (
-                      <React.Fragment key={index}>
-                        <XLink href={child.path}>{child.title}</XLink>
-                        {child.children && (
-                          <div>
-                            {child.children.map((grand, index) => (
-                              <div key={index}>{grand.title}</div>
-                            ))}
+                {nav.children !== null &&
+                  (nav.children.length > 0 && activeMenu === nav.title ? (
+                    <div className={cn(styles.child)}>
+                      {nav.children.map(
+                        (child: ChildrenType, index: number) => (
+                          <div className={styles.item} key={index}>
+                            <div onClick={() => setActiveSubMenu(child.title)}>
+                              {child.title}
+                            </div>
+                            {child.children &&
+                            child.children.length > 0 &&
+                            activeSubMenu === child.title ? (
+                              <div className={styles.grand_child}>
+                                {child.children.map((grand, index) => (
+                                  <XLink href={grand.path} key={index}>
+                                    - {grand.title}
+                                  </XLink>
+                                ))}
+                              </div>
+                            ) : null}
                           </div>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </div>
-                )}
+                        )
+                      )}
+                    </div>
+                  ) : (
+                    <></>
+                  ))}
               </li>
             ))}
           </ul>
