@@ -32,9 +32,9 @@
     }
 
     .header_button {
-      display: grid;
+      display: flex;
       justify-content: flex-end;
-
+      align-items: center;
       button {
         height: 50px;
         width: 100px;

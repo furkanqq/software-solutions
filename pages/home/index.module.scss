@@ -126,6 +126,7 @@
 // Benefits Section
 
 .benefits {
+  overflow: hidden;
   margin-block: 112px;
   display: grid;
   gap: 56px;
@@ -348,6 +349,7 @@
 .blog {
   background-color: rgba(var(--colors-off-white));
   padding: 56px 0px 90px 0px;
+  overflow: hidden;
 
   .top {
     display: flex;

@@ -6,6 +6,7 @@ import { XButton } from '@/src/components/XButton';
 import { XImage } from '@/src/components/XImage';
 
 import { useEffect, useState } from 'react';
+import XMobile from '../XMobileMenu';
 import XNavbar from '../XNavbar';
 
 interface IProps {
@@ -18,6 +19,7 @@ export default function XHeader(props: IProps) {
   const [headerBg, setHeaderBg] = useState<Boolean>(true);
 
   useEffect(() => {
+    if (window?.innerWidth < 992) return;
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const scrollThreshold = 200;
@@ -67,6 +69,7 @@ export default function XHeader(props: IProps) {
               color={props.color === 'light' ? 'outline-white' : 'black'}>
               Teklif Al
             </XButton>
+            <XMobile />
           </div>
         </div>
       </Container>
