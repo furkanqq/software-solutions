@@ -12,47 +12,133 @@
   //     background-color: rgba(var(--colors-dark));
   //     opacity: 0.1;
   //   }
-  .hamburger {
-    position: relative;
-    width: 30px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    cursor: pointer;
-    div {
+  .content {
+    .hamburger {
       position: relative;
-      width: 100%;
-      height: 5px;
-      border-radius: 4px;
-      background-color: rgba(var(--colors-dark));
-      transition: 300ms ease-in-out;
-      right: 0;
-      &:last-child {
-        top: 0;
+      width: 26px;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      div {
+        position: relative;
+        width: 100%;
+        height: 4px;
+        border-radius: 4px;
+        background-color: rgba(var(--colors-dark));
+        transition: 300ms ease-in-out;
+        right: 0;
+        &:last-child {
+          top: 0;
+        }
       }
     }
-  }
-  .menu {
-    position: absolute;
-    height: calc(100vh - 80px);
-    width: 40%;
-    right: -1000px;
-    transition: right 300ms linear;
-    top: 0;
-    z-index: -1;
-    .content {
-      position: relative;
-      border: 1px solid green;
-      margin-top: 80px;
-      height: 100%;
-      background-color: rgba(var(--colors-light));
+    .menu {
+      position: absolute;
+      height: calc(100vh - 80px);
+      width: 40%;
+      right: -1000px;
+      transition: right 300ms linear;
+      top: 0;
+      z-index: -1;
+      ul {
+        position: relative;
+        margin-top: 80px;
+        padding-block: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: rgba(var(--colors-light));
+        li {
+          span {
+            display: flex;
+            align-items: center;
+          }
+        }
+        .nav {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          font-size: 20px;
+          font-weight: 500;
+          padding: 16px;
+          height: fit-content;
+          gap: 8px;
+          list-style-type: none;
+          cursor: pointer;
+
+          &:nth-child(1) {
+            a {
+              width: max-content;
+            }
+          }
+
+          span {
+            svg {
+              transition: 200ms ease;
+            }
+          }
+
+          &:hover {
+            .child {
+              height: 200px;
+              transition: height 200ms ease;
+              font-size: 14px;
+            }
+
+            span {
+              svg {
+                transform: rotate(-180deg);
+                transition: 250ms ease;
+              }
+            }
+          }
+
+          .child {
+            height: 0px;
+            overflow: hidden;
+            transition: height 200ms ease;
+            display: grid;
+            min-width: 200px;
+            width: 100%;
+            padding-left: 8px;
+            background-color: rgba(var(--colors-light));
+            a {
+              position: relative;
+              display: flex;
+              align-items: center;
+              transition: 200ms;
+              &::after {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 0px;
+                height: 0px;
+                background-color: rgba(var(--colors-dark));
+                transition: 200ms ease-out;
+              }
+              &:hover {
+                padding-left: 10px;
+                transition: 200ms;
+                &::after {
+                  width: 6px;
+                  height: 1px;
+                  transition: 200ms ease-out;
+                }
+              }
+            }
+          }
+        }
+      }
     }
-  }
-  .close_menu {
-    right: 0px;
-    transition: right 300ms linear;
+    .close_menu {
+      right: 0px;
+      transition: right 300ms linear;
+    }
   }
 }
 
@@ -63,9 +149,9 @@
 }
 
 @media (max-width: 576px) {
-    .mobile {
-      .menu {
-        width: 100%;
-      }
+  .mobile {
+    .menu {
+      width: 100%;
     }
   }
+}
