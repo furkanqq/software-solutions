@@ -9,6 +9,15 @@
     font-size: 68px;
     font-weight: 700;
 
+    @media (max-width: 996px) {
+      font-size: 36px;
+
+      .icon {
+        width: 30px !important;
+        height: 30px !important;
+      }
+    }
+
     span {
       color: transparent;
       -webkit-text-stroke: 1px #1d1d1d;
@@ -27,6 +36,18 @@
     .top_footer {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
+
+      @media (max-width: 992px) {
+        display: block;
+
+        .widget {
+          margin-top: 24px !important;
+
+          ul {
+            margin-top: 4px !important;
+          }
+        }
+      }
 
       .widget {
         .title {
@@ -60,6 +81,15 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @media (max-width: 992px) {
+          flex-direction: column;
+          align-items: flex-start;
+
+          .copyright {
+            margin-top: 16px;
+          }
+        }
 
         .footer_logo {
           width: 160px;
