@@ -18,7 +18,7 @@ export default function ContactPage() {
       <main>
         <XPageTitle
           title="We combine our passion for design and code."
-          multiTitle="Buraya kısa bir bilgilendirme gelecek"
+          subTitle="Buraya kısa bir bilgilendirme gelecek"
           marqueTitle="İletişim"
           bgColor="white"
         />

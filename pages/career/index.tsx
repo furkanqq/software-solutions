@@ -17,7 +17,7 @@ export default function CareerPage() {
       <main>
         <XPageTitle
           title="We combine our passion for design and code."
-          multiTitle="Buraya kısa bir bilgilendirme gelecek"
+          subTitle="Buraya kısa bir bilgilendirme gelecek"
           marqueTitle="Kariyer"
           bgColor="white"
         />

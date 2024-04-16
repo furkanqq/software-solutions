@@ -11,8 +11,7 @@ import {
   ChildrenType,
   Navigation
 } from '@/src/config/nav.config';
-import { useEffect, useState } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function XMobile() {
   const [isOpen, setIsOpen] = useState(false);

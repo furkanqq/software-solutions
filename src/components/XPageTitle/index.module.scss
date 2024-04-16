@@ -9,6 +9,22 @@
     display: flex;
     justify-content: space-between;
 
+
+    @media (max-width: 992px) {
+      .info {
+        .title {
+          font-size: 28px !important;
+          line-height: 1 !important;
+          margin-top: 8px;
+        }
+
+        .sub_title {
+          font-size: 12px !important;
+          text-transform: capitalize !important;
+        }
+      }
+    }
+
     .info {
       .title {
         font-size: 56px;
@@ -17,7 +33,7 @@
         max-width: 600px;
       }
 
-      .multi_title {
+      .sub_title {
         font-size: 14px;
         font-weight: 300;
         text-transform: uppercase;
@@ -76,6 +92,20 @@
   .main_marq {
     margin-bottom: -60px;
 
+    @media (max-width: 992px) {
+      margin-bottom: -10px;
+
+      .slide {
+        .box {
+          .item {
+            h2 {
+              font-size: 14vw;
+            }
+          }
+        }
+      }
+    }
+
     .slide {
       .box {
         animation: slide-har 80s linear infinite;
@@ -129,6 +159,7 @@
     justify-content: space-between;
     position: relative;
     z-index: 2;
+
 
     .info {
       .title {

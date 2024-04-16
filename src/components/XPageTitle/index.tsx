@@ -10,15 +10,15 @@ interface IProps {
   bgColor?: 'transparent' | 'white';
   marqueTitle?: string;
   offerForm?: boolean;
-  multiTitle: string;
+  subTitle: string;
   bgImage?: string;
   title: string;
 }
 
 export const XPageTitle: React.FC<IProps> = ({
   marqueTitle,
-  multiTitle,
   offerForm,
+  subTitle,
   bgColor,
   bgImage,
   title
@@ -34,7 +34,7 @@ export const XPageTitle: React.FC<IProps> = ({
       <Container>
         <section className={styles.wrapper}>
           <div className={styles.info}>
-            <div className={styles.multi_title}>{multiTitle}</div>
+            <div className={styles.sub_title}>{subTitle}</div>
             <div className={styles.title}>{title}</div>
           </div>
           {offerForm && (
