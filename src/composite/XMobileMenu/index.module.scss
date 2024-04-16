@@ -51,7 +51,6 @@
         flex-direction: column;
         height: 100%;
         background-color: rgba(var(--colors-light));
-        border: 1px solid red;
         overflow: auto;
         li {
           span {
@@ -151,8 +150,6 @@
                 flex-direction: column;
                 gap: 6px;
                 padding-top: 12px;
-                a {
-                }
               }
             }
           }
@@ -175,7 +172,8 @@
 @media (max-width: 576px) {
   .mobile {
     .menu {
-      width: 100%;
+      width: 100% !important;
+      right: 0px;
     }
   }
 }
