@@ -58,7 +58,6 @@ export default function Services() {
       <main>
         <XPageTitle
           title="We combine our passion for design and code."
-          subTitle="Buraya kısa bir bilgilendirme gelecek"
           marqueTitle="Hizmetler"
           bgColor={'white'}
         />

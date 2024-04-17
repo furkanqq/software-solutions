@@ -15,7 +15,6 @@ export default function BlogPage() {
       <main>
         <XPageTitle
           title="We combine our passion for design and code."
-          subTitle="Buraya kısa bir bilgilendirme gelecek"
           bgColor={'transparent'}
           marqueTitle="Blog"
         />

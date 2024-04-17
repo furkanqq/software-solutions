@@ -8,7 +8,7 @@
   transition: 0.5s ease all;
 
   &.header_light {
-    background-color: transparent;
+    background-color: rgba(var(--colors-light));
     border-bottom: 1px solid rgba(var(--colors-light), 0.1);
   }
 
@@ -35,17 +35,19 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
+
       button {
         height: 50px;
         width: 100px;
       }
     }
   }
+
   &.active {
     opacity: 0;
   }
 
   &.bgColor {
-    background-color: var(--color-secondary);
+    background-color: transparent !important;
   }
 }

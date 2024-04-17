@@ -16,7 +16,7 @@ interface IProps {
 export default function XHeader(props: IProps) {
   const [scrollY, setScrollY] = useState(0);
   const [isHeaderVisible, setIsHeaderVisible] = useState<Boolean>(true);
-  const [headerBg, setHeaderBg] = useState<Boolean>(true);
+  const [headerBg, setHeaderBg] = useState<Boolean>(false);
 
   useEffect(() => {
     if (window?.innerWidth < 992) return;
@@ -54,7 +54,8 @@ export default function XHeader(props: IProps) {
       className={cn(
         styles.header,
         !isHeaderVisible && styles.active,
-        !headerBg && styles.bgColor
+        !headerBg && styles.bgColor,
+        props.color === 'light' && styles.header_light
       )}>
       <Container>
         <div className={styles.header_content}>
@@ -65,8 +66,7 @@ export default function XHeader(props: IProps) {
             <XNavbar color={props.color} />
           </div>
           <div className={styles.header_button}>
-            <XButton
-              color={props.color === 'light' ? 'outline-white' : 'black'}>
+            <XButton color={!headerBg ? 'outline-white' : 'outline'}>
               Teklif Al
             </XButton>
             <XMobile />

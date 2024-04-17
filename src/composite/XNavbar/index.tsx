@@ -28,10 +28,33 @@ export default function XNavbar(props: IProps) {
     }
   }, []);
 
+  const [scrollY, setScrollY] = useState(0);
+  const [headerBg, setHeaderBg] = useState<Boolean>(false);
+
+  useEffect(() => {
+    if (window?.innerWidth < 992) return;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollThreshold = 200;
+      if (currentScrollY < scrollY - scrollThreshold || currentScrollY === 0) {
+        setHeaderBg(false);
+      } else {
+        setHeaderBg(true);
+      }
+
+      setScrollY(currentScrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollY]);
+
   return (
     <nav
       className={cn(
         styles.navbar,
+        !headerBg && styles.bgColor,
         props.color === 'light' && styles.navbar_light
       )}>
       {Navigation.map((nav: NavigationType, index: number) => (
