@@ -1,5 +1,9 @@
 import styles from './index.module.scss';
 
+import { IconPhone } from '@/src/assets/IconPhone';
+import { IconMail } from '@/src/assets/IconMail';
+import { IconMap } from '@/src/assets/IconMap';
+
 import { XPageTitle } from '@/src/components/XPageTitle';
 import { XTextarea } from '@/src/components/XTextarea';
 import Container from '@/src/components/XContainer';
@@ -32,13 +36,15 @@ export default function ContactPage() {
                   bizimle iletişime geçebilirsiniz.
                 </p>
                 <XLink className={styles.address} href="/">
+                  <IconPhone height={30} width={30} />
                   +90 534 545 8176
                 </XLink>
                 <XLink className={styles.address} href="/">
-                  19 Mayıs, 19 Mayıs Cd. No:37, 34360 Şişli/İstanbul
+                  <IconMap height={30} width={30} /> 19 Mayıs, 19 Mayıs Cd.
+                  No:37, 34360 Şişli/İstanbul
                 </XLink>
                 <XLink className={styles.address} href="/">
-                  info@balance.software
+                  <IconMail height={30} width={30} /> info@balance.software
                 </XLink>
               </div>
             </div>

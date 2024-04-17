@@ -71,19 +71,15 @@
         margin: 24px 0px;
 
         .address {
-          font-size: 16px;
+          font-size: 20px;
           margin-top: 20px;
 
-          span {
-            margin-right: 8px;
-            font-weight: 600;
-          }
         }
 
         p {
-          font-size: 16px;
-          color: rgba(var(--colors-dark), 0.6);
-          width: 90%;
+          font-size: 24px;
+          color: rgba(var(--colors-dark));
+          width: 100%;
         }
 
         a {
@@ -95,19 +91,8 @@
           height: fit-content;
           font-weight: 300;
 
-          &::after {
-            position: absolute;
-            content: '';
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            left: -20px;
-            z-index: -1;
-            background-color: rgba(var(--colors-dark), 0.1);
-          }
-
           svg {
-            margin-left: 6px;
+            margin-right: 6px;
           }
         }
       }
@@ -117,6 +102,10 @@
     }
 
     .form {
+      background-color: rgba(var(--colors-light));
+      padding: 36px;
+      border-radius: 8px;
+
       form {
         display: flex;
         flex-direction: column;
