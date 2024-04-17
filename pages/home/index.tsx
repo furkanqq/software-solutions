@@ -145,11 +145,18 @@ export default function HomePage() {
             </div>
           </div>
           <div className={styles.brand}>
-            {Brands.map((brand: BrandsType, index: number) => (
-              <div className={styles.brand_item} key={index}>
-                <XImage src={brand.icon} alt={'icon'} width={120} height={32} />
-              </div>
-            ))}
+            <div className={styles.slider}>
+              {Brands.map((brand: BrandsType, index: number) => (
+                <div className={styles.brand_item} key={index}>
+                  <XImage
+                    src={brand.icon}
+                    alt={'icon'}
+                    width={120}
+                    height={32}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

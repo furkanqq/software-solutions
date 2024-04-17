@@ -50,4 +50,20 @@
   &.bgColor {
     background-color: transparent !important;
   }
+
 }
+
+@media (max-width: 576px) {
+  .header {
+    .header_content {
+      .header_button {
+        button {
+          height: 40px;
+          width: 80px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+

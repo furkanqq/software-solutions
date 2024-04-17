@@ -26,7 +26,7 @@ export default function XMobile() {
           <div style={isOpen ? { transform: 'rotate(45deg)' } : {}}></div>
           <div
             style={
-              isOpen ? { transform: 'rotate(-45deg)', top: '-9px' } : {}
+              isOpen ? { transform: 'rotate(-45deg)', top: '-6.5px' } : {}
             }></div>
         </div>
         <div className={cn(styles.menu, isOpen && styles.close_menu)}>
@@ -49,16 +49,26 @@ export default function XMobile() {
                       {nav.children.map(
                         (child: ChildrenType, index: number) => (
                           <div className={styles.item} key={index}>
-                            <div onClick={() => setActiveSubMenu(child.title)}>
-                              {child.title}
-                            </div>
+                            {child.path === '' ? (
+                              <div
+                                onClick={() => setActiveSubMenu(child.title)}>
+                                {child.title}
+                              </div>
+                            ) : (
+                              <XLink
+                                onClick={() => setActiveSubMenu(child.title)}
+                                href={child.path}>
+                                {child.title}
+                              </XLink>
+                            )}
+
                             {child.children &&
                             child.children.length > 0 &&
                             activeSubMenu === child.title ? (
                               <div className={styles.grand_child}>
                                 {child.children.map((grand, index) => (
                                   <XLink href={grand.path} key={index}>
-                                    - {grand.title}
+                                    {grand.title}
                                   </XLink>
                                 ))}
                               </div>
