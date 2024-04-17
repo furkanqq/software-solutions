@@ -14,28 +14,24 @@ import Layouts from '@/src/layouts';
 export default function ContactPage() {
   return (
     <Layouts>
-      <XHeader />
+      <XHeader color="light" />
       <main>
         <XPageTitle
-          title="We combine our passion for design and code."
-          multiTitle="Buraya kısa bir bilgilendirme gelecek"
+          title="Talep ve İsteklerinizi Bize Yazabilirsiniz."
+          bgImage={'/assets/bannerImage2.jpg'}
           marqueTitle="İletişim"
           bgColor="white"
         />
         <section className={styles.wrapper}>
           <Container className={styles.container}>
             <div className={styles.info}>
-              <div className={styles.title}>
-                <span>İletişim </span>
-                <h1>Bizimle İletişime Geçebilirsiniz.</h1>
-              </div>
               <div className={styles.describe}>
                 <p>
                   Yeni bir projeniz mi var? sizi dinlemek için
                   sabırsızlanıyoruz. Formu doldurarak veya direkt arayarak
                   bizimle iletişime geçebilirsiniz.
                 </p>
-                <XLink className={styles.phone} href="/">
+                <XLink className={styles.address} href="/">
                   +90 534 545 8176
                 </XLink>
                 <XLink className={styles.address} href="/">

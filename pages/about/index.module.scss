@@ -1,9 +1,16 @@
-
-
 .wrapper {
   background-color: rgba(var(--colors-light));
   padding-top: 112px;
   padding-bottom: 24px;
+
+  @media (max-width: 992px) {
+    padding-top: 60px;
+
+    .content {
+      padding: 0px !important;
+      margin-top: 36px !important;
+    }
+  }
 
   .thumbnail {
     position: relative;

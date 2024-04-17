@@ -23,10 +23,28 @@
     display: grid;
     grid-template-columns: 5fr 5fr;
 
+    @media (max-width: 992px) {
+      display: block;
+
+      .info {
+
+        .describe {
+
+          .address {
+            font-size: 16px !important;
+            margin-top: 8px !important;
+          }
+        }
+      }
+
+    }
+
     .info {
       .title {
         display: grid;
         gap: 24px;
+
+
 
         span {
           width: fit-content;
@@ -40,6 +58,10 @@
         h1 {
           font-size: 44px;
           font-weight: 600;
+
+          @media (max-width: 992px) {
+            font-size: 36px;
+          }
         }
       }
 
@@ -48,16 +70,14 @@
         align-items: center;
         margin: 24px 0px;
 
-        .phone {
-          font-size: 30px;
-          font-weight: 600;
-          text-decoration: underline;
-        }
-
         .address {
-          font-size: 20px;
-          margin-top: 24px;
-          font-weight: 600;
+          font-size: 16px;
+          margin-top: 20px;
+
+          span {
+            margin-right: 8px;
+            font-weight: 600;
+          }
         }
 
         p {

@@ -18,7 +18,6 @@ export default function DetailPage() {
       <main>
         <XPageTitle
           title="Google Play Store'da uygulama nasıl yayınlanır?"
-          multiTitle="Buraya kısa bir bilgilendirme gelecek"
           bgColor={'transparent'}
         />
         <section className={styles.wrapper}>
