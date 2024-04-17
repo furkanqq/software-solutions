@@ -11,12 +11,13 @@ import Layouts from '@/src/layouts';
 export default function TeamPage() {
   return (
     <Layouts>
-      <XHeader />
+      <XHeader color="light" />
       <main>
         <XPageTitle
-          title="We combine our passion for design and code."
-          bgColor={'transparent'}
+          bgImage={'/assets/bannerImage2.jpg'}
+          title="Proje Geliştirme Ekibimiz"
           marqueTitle="Ekibimiz"
+          bgColor="white"
         />
         <section className={styles.wrapper}>
           <Container>

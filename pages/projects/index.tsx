@@ -14,12 +14,13 @@ import Layouts from '@/src/layouts';
 export default function ContactPage() {
   return (
     <Layouts>
-      <XHeader />
+      <XHeader color="light" />
       <main>
         <XPageTitle
-          title="We combine our passion for design and code."
+          title="Yazılım ve Tasarım Projeleri"
+          bgImage={'/assets/bannerImage2.jpg'}
           marqueTitle="Projeler"
-          bgColor="transparent"
+          bgColor="white"
         />
         <section className={styles.projects}>
           <Container className={styles.content}>

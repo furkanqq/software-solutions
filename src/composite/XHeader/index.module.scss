@@ -2,14 +2,12 @@
 .header {
   position: fixed;
   z-index: 99;
-  border-bottom: 1px solid rgba(var(--colors-dark), 0.1);
   background-color: rgba(var(--colors-off-white));
   width: 100%;
   transition: 0.5s ease all;
 
   &.header_light {
     background-color: rgba(var(--colors-light));
-    border-bottom: 1px solid rgba(var(--colors-light), 0.1);
   }
 
   .header_content {
@@ -66,4 +64,3 @@
     }
   }
 }
-

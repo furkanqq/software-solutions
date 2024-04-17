@@ -11,12 +11,13 @@ import Layouts from '@/src/layouts';
 export default function BlogPage() {
   return (
     <Layouts>
-      <XHeader />
+      <XHeader color="light" />
       <main>
         <XPageTitle
-          title="We combine our passion for design and code."
-          bgColor={'transparent'}
+          bgImage={'/assets/bannerImage2.jpg'}
+          title="Blog Yazıları"
           marqueTitle="Blog"
+          bgColor="white"
         />
 
         <section className={styles.blog}>

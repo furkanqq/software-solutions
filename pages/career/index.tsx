@@ -13,10 +13,11 @@ import Layouts from '@/src/layouts';
 export default function CareerPage() {
   return (
     <Layouts>
-      <XHeader />
+      <XHeader color="light" />
       <main>
         <XPageTitle
-          title="We combine our passion for design and code."
+          title="Bizimle Çalışmak İster Misiniz?"
+          bgImage={'/assets/bannerImage2.jpg'}
           marqueTitle="Kariyer"
           bgColor="white"
         />
