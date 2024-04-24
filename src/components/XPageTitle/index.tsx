@@ -24,9 +24,11 @@ export const XPageTitle: React.FC<IProps> = ({
   return (
     <div
       style={{
+        backgroundImage: bgImage
+          ? `url(${process.env.NEXT_PUBLIC_API_URL + '/assets/' + bgImage})`
+          : 'none',
         backgroundColor:
-          bgColor === 'white' ? 'rgba(var(--colors-light))' : bgColor,
-        backgroundImage: bgImage ? `url(${bgImage})` : 'none'
+          bgColor === 'white' ? 'rgba(var(--colors-light))' : bgColor
       }}
       className={cn(bgImage ? styles.container_image : styles.container)}>
       <Container>

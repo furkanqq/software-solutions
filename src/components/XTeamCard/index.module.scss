@@ -12,6 +12,7 @@
     border-radius: 8px;
     cursor: pointer;
 
+
     &:hover {
       img {
         filter: none;
@@ -26,6 +27,7 @@
       -webkit-transition: all .4s;
       -o-transition: all .4s;
       transition: all .4s;
+      object-fit: cover;
     }
   }
 

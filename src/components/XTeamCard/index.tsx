@@ -5,13 +5,14 @@ import { XImage } from '../XImage';
 interface IProps {
   fullName: string;
   position: string;
+  image: string;
 }
 
-export const XTeamCard: React.FC<IProps> = ({ fullName, position }) => {
+export const XTeamCard: React.FC<IProps> = ({ fullName, position, image }) => {
   return (
     <div className={styles.item}>
       <div className={styles.image}>
-        <XImage src="/assets/team.jpeg" alt="user" fill />
+        <XImage src={image} alt="user" fill />
       </div>
       <div className={styles.info}>
         <div className={styles.full_name}>{fullName}</div>

@@ -10,46 +10,62 @@ import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import Layouts from '@/src/layouts';
 
 interface IProps {
-  data: {
-    image: undefined | string;
-    spot_text: string;
-    title: string;
-  };
+  image: undefined | string;
+  spot_text: string;
+  title: string;
+}
+
+interface IPropsTeam {
+  image: undefined | string;
+  full_name: string;
+  status: string;
+  title: string;
 }
 
 TeamPage.getInitialProps = async () => {
   const data = await nextFetcher(
     `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_team_area'}`
   );
-  return { data: data.data[0] };
+
+  const teamAreaData = data.data[0];
+
+  const dataTeamFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_team'}`
+  );
+  const dataTeam = dataTeamFetch?.data;
+  return { teamAreaData, dataTeam };
 };
 
-export default function TeamPage({ data }: IProps) {
+interface ITeamPageProps {
+  dataTeam: IPropsTeam[];
+  teamAreaData: IProps;
+}
+
+export default function TeamPage({ teamAreaData, dataTeam }: ITeamPageProps) {
   return (
     <Layouts>
       <XHeader color="light" />
       <main>
         <XPageTitle
-          marqueTitle={data?.title}
-          title={data?.spot_text}
-          bgImage={data?.image}
+          marqueTitle={teamAreaData?.title}
+          title={teamAreaData?.spot_text}
+          bgImage={teamAreaData?.image}
           bgColor="white"
         />
         <section className={styles.wrapper}>
           <Container>
             <div className={styles.items}>
-              <XTeamCard
-                position="Web / Mobile Developer"
-                fullName="Ümit Ünver"
-              />
-              <XTeamCard
-                position="Web / Mobile Developer"
-                fullName="Furkan Ilhan"
-              />
-              <XTeamCard
-                position="Web / Mobile Developer"
-                fullName="John Doe"
-              />
+              {dataTeam &&
+                dataTeam?.map((item: IPropsTeam, index: number) => (
+                  <XTeamCard
+                    image={
+                      process.env.NEXT_PUBLIC_API_URL + '/assets/' + item?.image
+                    }
+                    fullName={item?.full_name}
+                    position={item.title}
+                    key={index}
+                  />
+                ))}
             </div>
           </Container>
         </section>
