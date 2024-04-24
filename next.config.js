@@ -5,7 +5,7 @@ const nextConfig = {
     optimizePackageImports: ['lodash', 'axios']
   },
   images: {
-    domains: ['cdn.jsdelivr.net', 'raw.githubusercontent.com', 'picsum.photos'],
+    domains: ['cdn.jsdelivr.net', 'raw.githubusercontent.com', 'picsum.photos', 'https://gw.balancenetwork.io/'],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
