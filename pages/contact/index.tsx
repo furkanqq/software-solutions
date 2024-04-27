@@ -22,7 +22,7 @@ export default function ContactPage() {
       <main>
         <XPageTitle
           title="Talep ve İsteklerinizi Bize Yazabilirsiniz."
-          bgImage={'/assets/bannerImage2.jpg'}
+          bgImage={'/assets/contact-us.jpg'}
           marqueTitle="İletişim"
           bgColor="white"
         />

@@ -31,9 +31,9 @@ export default function AboutPage({ data }: IProps) {
       <XHeader color="light" />
       <main>
         <XPageTitle
+          bgImage={process.env.NEXT_PUBLIC_API_URL + '/assets/' + data?.image}
           marqueTitle={data?.title}
           title={data?.head_text}
-          bgImage={data?.image}
           bgColor="white"
         />
         <section className={styles.wrapper}>

@@ -3,11 +3,16 @@ import styles from './index.module.scss';
 import { XPageTitle } from '@/src/components/XPageTitle';
 import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
+import { XLink } from '@/src/components/XLink';
 import XHeader from '@/src/composite/XHeader';
 import XFooter from '@/src/composite/XFooter';
 
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import Layouts from '@/src/layouts';
+import moment from 'moment';
+import 'moment/locale/tr';
+
+moment.locale('tr');
 
 interface IProps {
   image: undefined | string;
@@ -17,10 +22,12 @@ interface IProps {
 
 interface IPropsBlog {
   image: undefined | string;
+  date_created: string;
   content: string;
   status: string;
   title: string;
   tags: string;
+  slug: string;
 }
 
 BlogPage.getInitialProps = async () => {
@@ -48,9 +55,11 @@ export default function BlogPage({ blogAreaData, dataBlog }: IBlogPageProps) {
       <XHeader color="light" />
       <main>
         <XPageTitle
+          bgImage={
+            process.env.NEXT_PUBLIC_API_URL + '/assets/' + blogAreaData?.image
+          }
           marqueTitle={blogAreaData?.title}
           title={blogAreaData?.spot_text}
-          bgImage={blogAreaData?.image}
           bgColor="white"
         />
 
@@ -72,11 +81,20 @@ export default function BlogPage({ blogAreaData, dataBlog }: IBlogPageProps) {
                       />
                     </div>
                     <div className={styles.content}>
-                      <div className={styles.date}>24 Mart 2024</div>
-                      <div className={styles.title}>{item?.title}</div>
+                      <div className={styles.date}>
+                        {moment(item?.date_created).format('Do MMMM YYYY')}{' '}
+                      </div>
+                      <XLink
+                        href={'/blog/' + item?.slug}
+                        className={styles.title}>
+                        {item?.title}
+                      </XLink>
                       <div className={styles.tags}>
-                        <span>React</span>
-                        <span>Mobil Uygulama</span>
+                        {item?.tags.split(',').map((tag, index) => (
+                          <span className={styles.tag} key={index}>
+                            {tag.trim()}{' '}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>

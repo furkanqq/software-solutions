@@ -9,17 +9,33 @@ import XFooter from '@/src/composite/XFooter';
 
 import { ProjectsType, Projects } from '@/src/config/projects.config';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import Layouts from '@/src/layouts';
 
-export default function ContactPage() {
+interface IProps {
+  data: {
+    image: undefined | string;
+    spot_text: string;
+    title: string;
+  };
+}
+
+ContactPage.getInitialProps = async () => {
+  const repoInfo = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_project_area'}`
+  );
+  return { data: repoInfo.data[0] };
+};
+
+export default function ContactPage({ data }: IProps) {
   return (
     <Layouts>
       <XHeader color="light" />
       <main>
         <XPageTitle
-          title="Yazılım ve Tasarım Projeleri"
-          bgImage={'/assets/bannerImage2.jpg'}
-          marqueTitle="Projeler"
+          bgImage={process.env.NEXT_PUBLIC_API_URL + '/assets/' + data?.image}
+          marqueTitle={data?.title}
+          title={data?.spot_text}
           bgColor="white"
         />
         <section className={styles.projects}>

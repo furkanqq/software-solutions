@@ -47,9 +47,11 @@ export default function TeamPage({ teamAreaData, dataTeam }: ITeamPageProps) {
       <XHeader color="light" />
       <main>
         <XPageTitle
+          bgImage={
+            process.env.NEXT_PUBLIC_API_URL + '/assets/' + teamAreaData?.image
+          }
           marqueTitle={teamAreaData?.title}
           title={teamAreaData?.spot_text}
-          bgImage={teamAreaData?.image}
           bgColor="white"
         />
         <section className={styles.wrapper}>
