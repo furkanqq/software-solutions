@@ -34,6 +34,7 @@ interface IServices {
   title: string;
   image: string;
   icon: string;
+  slug: string;
 }
 export default function XNavbar(props: IProps) {
   const [categoryId, setCategoryId] = useState<number>(1);
@@ -113,12 +114,18 @@ export default function XNavbar(props: IProps) {
                           onClick={() => setCategoryId(child.id)}
                           className={styles.option}
                           key={index}>
-                          <XImage
-                            src={'/assets/cloud.png'}
-                            alt={'Asd'}
-                            height={40}
-                            width={40}
-                          />
+                          {child?.icon && (
+                            <XImage
+                              src={
+                                process.env.NEXT_PUBLIC_API_URL +
+                                '/assets/' +
+                                child.icon
+                              }
+                              alt={'Asd'}
+                              height={40}
+                              width={40}
+                            />
+                          )}
                           <div className={styles.title}>{child.title}</div>
                         </div>
                       )
@@ -128,20 +135,27 @@ export default function XNavbar(props: IProps) {
                   {services.map((item: IServices, index: number) => (
                     <div className={styles.contents} key={index}>
                       {categoryId === item.category_id && (
-                        <div className={styles.content} key={index}>
+                        <XLink
+                          href={'hizmet/' + item?.slug}
+                          className={styles.content}
+                          key={index}>
                           <div className={styles.header}>
                             <div className={styles.title}>{item.title}</div>
                             {item.icon && (
                               <XImage
+                                src={
+                                  process.env.NEXT_PUBLIC_API_URL +
+                                  '/assets/' +
+                                  item.icon
+                                }
                                 alt={item.title}
-                                src={item.icon}
                                 height={40}
                                 width={40}
                               />
                             )}
                           </div>
                           <p>{item.short_description}</p>
-                        </div>
+                        </XLink>
                       )}
                     </div>
                   ))}
