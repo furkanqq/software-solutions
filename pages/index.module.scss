@@ -3,7 +3,7 @@
 .banner {
   overflow: hidden;
   height: 100vh;
-  background-image: url(../../public/assets/pattern.png);
+  background-image: url(../public/assets/pattern.png);
   padding-top: 80px;
   display: flex;
   align-items: center;
@@ -242,7 +242,7 @@
           border: 6px solid rgba(var(--colors-off-white));
           bottom: 0;
           right: -180px;
-          background-image: url(../../public/assets/thinking.jpeg);
+          background-image: url(../public/assets/thinking.jpeg);
           background-size: cover;
         }
         img {
