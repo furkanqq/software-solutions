@@ -7,3 +7,11 @@ export interface IAboutResponse {
     id: string;
   }>;
 }
+
+export interface ICategoryResponse {
+  data: Array<{
+    title: string;
+    icon: string;
+    id: string;
+  }>;
+}

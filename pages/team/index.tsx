@@ -26,13 +26,13 @@ TeamPage.getInitialProps = async () => {
   const data = await nextFetcher(
     `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_team_area'}`
   );
-
   const teamAreaData = data.data[0];
 
   const dataTeamFetch = await nextFetcher(
     `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_team'}`
   );
   const dataTeam = dataTeamFetch?.data;
+
   return { teamAreaData, dataTeam };
 };
 
