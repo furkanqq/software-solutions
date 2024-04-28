@@ -14,6 +14,8 @@ import { XLink } from '@/src/components/XLink';
 import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
+import parse from 'html-react-parser';
+
 import {
   ServicesType,
   BrandsType,
@@ -38,6 +40,27 @@ interface IPropsBlog {
   slug: string;
 }
 
+interface IPropsHome {
+  two_feature_one_title: string;
+  two_feature_two_title: string;
+  two_feature_one_text: string;
+  two_feature_one_icon: string;
+  two_feature_two_text: string;
+  two_feature_two_icon: string;
+  marquee_services: string;
+  one_sub_title: string;
+  one_link_text: string;
+  two_image_one: string;
+  two_image_two: string;
+  banner_title: string;
+  banner_image: string;
+  banner_text: string;
+  one_title: string;
+  two_title: string;
+  one_text: string;
+  one_link: string;
+}
+
 HomePage.getInitialProps = async () => {
   const blogDataFetch = await nextFetcher(
     `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_blog'}`
@@ -45,14 +68,21 @@ HomePage.getInitialProps = async () => {
 
   const blogData = blogDataFetch?.data;
 
-  return { blogData };
+  const homeSettingsFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_home_settings'}`
+  );
+
+  const homeData = homeSettingsFetch?.data[0];
+
+  return { blogData, homeData };
 };
 
 interface IProps {
   blogData: IPropsBlog[];
+  homeData: IPropsHome;
 }
 
-export default function HomePage({ blogData }: IProps) {
+export default function HomePage({ blogData, homeData }: IProps) {
   return (
     <Layouts>
       <main>
@@ -60,14 +90,8 @@ export default function HomePage({ blogData }: IProps) {
         <section className={styles.banner}>
           <Container className={styles.container}>
             <div className={styles.content}>
-              <h1>
-                HIGH END
-                <br /> <span>CREATIVE</span> AGENCY
-              </h1>
-              <p>
-                {`   Through our years of experience, we've also learned that while
-                each channel has its own set of advantages.`}
-              </p>
+              <h1>{parse(homeData?.banner_title)}</h1>
+              <p>{homeData?.banner_text}</p>
               <div className={styles.watch}>
                 <span>Watch</span>
                 <IconPlay />
@@ -88,7 +112,7 @@ export default function HomePage({ blogData }: IProps) {
               </div>
               <div className={styles.banner_image}>
                 <XImage
-                  src={'/assets/bannerImage.jpeg'}
+                  src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + homeData?.banner_image}`}
                   alt={'banner-image'}
                   fill
                 />
@@ -100,17 +124,13 @@ export default function HomePage({ blogData }: IProps) {
         <section className={styles.benefits}>
           <Container className={styles.content}>
             <div className={styles.title}>
-              <span>OUR BENEFITS</span>
-              <h1>Our Team of Dedicated Digital Professionals.</h1>
+              <span>{homeData?.one_sub_title}</span>
+              <h1>{homeData?.one_title}</h1>
             </div>
             <div className={styles.describe}>
-              <p>
-                Through our years of experience, we’ve also learned that while
-                each channel has its own set of advantages, they all work best
-                when strategically paired with other channels.
-              </p>
-              <XLink href={'furkanilhan.com'}>
-                View All Blabla <IconExploreArrow />
+              <p>{homeData?.one_text}</p>
+              <XLink href={homeData?.one_link}>
+                {homeData?.one_link_text} <IconExploreArrow />
               </XLink>
             </div>
           </Container>
@@ -120,40 +140,38 @@ export default function HomePage({ blogData }: IProps) {
           <Container className={styles.content}>
             <div className={styles.image_part}>
               <div className={styles.image_holder}>
-                <XImage src={'/assets/office.jpeg'} alt={'office'} fill />
+                <XImage
+                  src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + homeData?.two_image_one}`}
+                  alt={'office'}
+                  fill
+                />
               </div>
             </div>
             <div className={styles.describe_part}>
-              <h1>Unlock Revenue Growth for Your Business.</h1>
+              <h1>{homeData?.two_title}</h1>
               <div className={styles.properties}>
                 <div className={styles.first}>
                   <XImage
-                    src={'/assets/first.png'}
+                    src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + homeData?.two_feature_one_icon}`}
                     alt={'first-icon'}
                     height={52}
                     width={52}
                   />
                   <div>
-                    <h3>High Standerd</h3>
-                    <p>
-                      Adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.
-                    </p>
+                    <h3>{homeData?.two_feature_one_title}</h3>
+                    <p>{homeData?.two_feature_one_text}</p>
                   </div>
                 </div>
                 <div className={styles.first}>
                   <XImage
-                    src={'/assets/second.png'}
+                    src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + homeData?.two_feature_two_icon}`}
                     alt={'first-icon'}
                     height={52}
                     width={52}
                   />
                   <div>
-                    <h3>Ease of Communication</h3>
-                    <p>
-                      Adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.
-                    </p>
+                    <h3>{homeData?.two_feature_two_title}</h3>
+                    <p>{homeData?.two_feature_two_text}</p>
                   </div>
                 </div>
               </div>
@@ -164,10 +182,10 @@ export default function HomePage({ blogData }: IProps) {
         <section className={styles.brands}>
           <div className={styles.slide}>
             <div className={styles.box}>
-              {Services.map((service: ServicesType, index: number) => (
+              {homeData?.marquee_services.split(',').map((tag, index) => (
                 <div className={styles.item} key={index}>
                   <h2>
-                    <span>{service.title}</span>
+                    <span> {tag.trim()} </span>
                   </h2>
                 </div>
               ))}
