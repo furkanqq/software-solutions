@@ -15,7 +15,6 @@ import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
 import { OurServicesType, OurServices } from '@/src/config/service.config';
-import { BrandsType, Brands } from '@/src/config/brand.config';
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import parse from 'html-react-parser';
 import Layouts from '@/src/layouts';
@@ -90,7 +89,7 @@ interface IProps {
   homeData: IPropsHome;
 }
 
-export default function HomePage({ blogData, homeData, brandsData }: IProps) {
+export default function HomePage({ brandsData, blogData, homeData }: IProps) {
   return (
     <Layouts>
       <main>
