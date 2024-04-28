@@ -14,16 +14,10 @@ import { XLink } from '@/src/components/XLink';
 import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
-import parse from 'html-react-parser';
-
-import {
-  ServicesType,
-  BrandsType,
-  Services,
-  Brands
-} from '@/src/config/brand.config';
 import { OurServicesType, OurServices } from '@/src/config/service.config';
+import { BrandsType, Brands } from '@/src/config/brand.config';
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
+import parse from 'html-react-parser';
 import Layouts from '@/src/layouts';
 import moment from 'moment';
 import 'moment/locale/tr';
