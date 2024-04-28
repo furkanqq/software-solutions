@@ -34,6 +34,10 @@ interface IPropsBlog {
   slug: string;
 }
 
+interface IPropsBrands {
+  image: string;
+}
+
 interface IPropsHome {
   two_feature_one_title: string;
   two_feature_two_title: string;
@@ -41,11 +45,14 @@ interface IPropsHome {
   two_feature_one_icon: string;
   two_feature_two_text: string;
   two_feature_two_icon: string;
+  services_sub_title: string;
   marquee_services: string;
+  services_title: string;
   one_sub_title: string;
   one_link_text: string;
   two_image_one: string;
   two_image_two: string;
+  services_text: string;
   banner_title: string;
   banner_image: string;
   banner_text: string;
@@ -62,21 +69,28 @@ HomePage.getInitialProps = async () => {
 
   const blogData = blogDataFetch?.data;
 
+  const brandsDataFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_brands'}`
+  );
+
+  const brandsData = brandsDataFetch?.data;
+
   const homeSettingsFetch = await nextFetcher(
     `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_home_settings'}`
   );
 
   const homeData = homeSettingsFetch?.data[0];
 
-  return { blogData, homeData };
+  return { brandsData, blogData, homeData };
 };
 
 interface IProps {
+  brandsData: IPropsBrands[];
   blogData: IPropsBlog[];
   homeData: IPropsHome;
 }
 
-export default function HomePage({ blogData, homeData }: IProps) {
+export default function HomePage({ blogData, homeData, brandsData }: IProps) {
   return (
     <Layouts>
       <main>
@@ -187,10 +201,14 @@ export default function HomePage({ blogData, homeData }: IProps) {
           </div>
           <div className={styles.brand}>
             <div className={styles.slider}>
-              {Brands.map((brand: BrandsType, index: number) => (
+              {brandsData.map((brand: IPropsBrands, index: number) => (
                 <div className={styles.brand_item} key={index}>
                   <XImage
-                    src={brand.icon}
+                    src={
+                      process.env.NEXT_PUBLIC_API_URL +
+                      '/assets/' +
+                      brand?.image
+                    }
                     alt={'icon'}
                     width={120}
                     height={32}
@@ -204,14 +222,11 @@ export default function HomePage({ blogData, homeData }: IProps) {
         <section className={styles.benefits}>
           <Container className={styles.content}>
             <div className={styles.title}>
-              <span>FEATURED SERVICES</span>
-              <h1>Our Services</h1>
+              <span>{homeData?.services_sub_title}</span>
+              <h1>{homeData?.services_title}</h1>
             </div>
             <div className={styles.describe}>
-              <p>
-                Nemo enim ipsam voluptatem quia voluptas sit odit aut fugit, sed
-                quia.
-              </p>
+              <p>{homeData?.services_text}</p>
             </div>
           </Container>
           <Container className={styles.card_part}>
