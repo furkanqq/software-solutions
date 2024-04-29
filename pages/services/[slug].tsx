@@ -10,68 +10,117 @@ import { XLink } from '@/src/components/XLink';
 import XHeader from '@/src/composite/XHeader';
 import XFooter from '@/src/composite/XFooter';
 
+import { nextFetcher } from '@/src/helpers/fetcherHelper';
+import parse from 'html-react-parser';
 import Layouts from '@/src/layouts';
+import { useState } from 'react';
 
-export default function DetailPage() {
+interface IPropsDetail {
+  short_description: string;
+  category_id: number;
+  highlight: boolean;
+  spot_text: string;
+  content: string;
+  status: string;
+  title: string;
+  image: string;
+  icon: string;
+  slug: string;
+}
+
+interface IPropsFaqFilter {
+  title: string;
+  id: number;
+}
+
+interface IPropsFaq {
+  filter_id: number;
+  content: string;
+  title: string;
+  id: number;
+}
+
+interface IPropsHome {
+  one_sub_title: string;
+  one_link_text: string;
+  one_title: string;
+  one_text: string;
+  one_link: string;
+}
+
+DetailPage.getInitialProps = async (context: any) => {
+  const { slug } = context.query;
+
+  const dataFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + `/items/bs_services?filter[slug][_eq]=${encodeURIComponent(slug)}`}`
+  );
+
+  const data = dataFetch?.data[0];
+
+  const faqFilterDataFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_faq_filter'}`
+  );
+
+  const faqFilterData = faqFilterDataFetch?.data;
+
+  const faqDataFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_faq'}`
+  );
+
+  const faqData = faqDataFetch?.data;
+
+  const homeSettingsFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_home_settings'}`
+  );
+
+  const homeData = homeSettingsFetch?.data[0];
+
+  return { faqFilterData, homeData, faqData, data };
+};
+
+interface IProps {
+  faqFilterData: IPropsFaqFilter[];
+  faqData: IPropsFaq[];
+  homeData: IPropsHome;
+  data: IPropsDetail;
+}
+export default function DetailPage({
+  faqFilterData,
+  homeData,
+  faqData,
+  data
+}: IProps) {
+  const [faqFilter, setFaqFilter] = useState<number>(0);
+  const [faqFilterId, setFaqFilterId] = useState<number>(faqFilterData[0]?.id);
+  const [faqContent, setFaqContent] = useState<number>(0);
+
   return (
     <Layouts>
-      <XHeader />
+      <XHeader color="light" />
       <main>
         <XPageTitle
-          title="We combine our passion for design and code."
-          bgImage={'/assets/bannerImage.jpeg'}
-          marqueTitle="mobil uygulama"
+          bgImage={process.env.NEXT_PUBLIC_API_URL + '/assets/' + data?.image}
+          marqueTitle={data?.title}
+          title={data?.spot_text}
           bgColor={'transparent'}
           offerForm={true}
         />
         <section className={styles.wrapper}>
           <Container>
-            <div className={styles.content}>
-              <p>
-                {`  Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden
-                oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin
-                edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır.
-                Virginia'daki Hampden-Sydney College'dan Latince profesörü
-                Richard McClintock, bir Lorem Ipsum pasajında geçen ve
-                anlaşılması en güç sözcüklerden biri olan 'consectetur'
-                sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin
-                bir kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45
-                tarihinde kaleme alınan "de Finibus Bonorum et Malorum" (İyi ve
-                Kötünün Uç Sınırları) eserinin 1.10.32 ve 1.10.33 sayılı
-                bölümlerinden gelmektedir. Bu kitap, ahlak kuramı üzerine bir
-                tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum
-                pasajının ilk satırı olan "Lorem ipsum dolor sit amet" 1.10.32
-                sayılı bölümdeki bir satırdan gelmektedir.`}
-              </p>
-
-              <p>
-                {`Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden
-                oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin
-                edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır.
-                Virginia'daki Hampden-Sydney College'dan Latince profesörü
-                Richard McClintock, bir Lorem Ipsum pasajında geçen ve
-                anlaşılması en güç sözcüklerden biri olan 'consectetur'
-                sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin
-                bir kaynağa ulaşmıştır.`}
-              </p>
-            </div>
+            <div className={styles.content}>{parse(data?.content)}</div>
           </Container>
         </section>
 
         <section className={styles.benefits}>
           <Container className={styles.content}>
             <div className={styles.title}>
-              <span>OUR BENEFITS</span>
-              <h1>Our Team of Dedicated Digital Professionals.</h1>
+              <span>{homeData?.one_sub_title}</span>
+              <h1>{homeData?.one_title}</h1>
             </div>
             <div className={styles.describe}>
-              <p>
-                Through our years of experience, we’ve also learned that while
-                each channel has its own set of advantages, they all work best
-                when strategically paired with other channels.
-              </p>
-              <XLink href={'furkanilhan.com'}>
-                View All Blabla <IconExploreArrow />
+              <p>{homeData?.one_text}</p>
+              <XLink href={homeData?.one_link}>
+                {homeData?.one_link_text} <IconExploreArrow />
               </XLink>
             </div>
           </Container>
@@ -80,61 +129,51 @@ export default function DetailPage() {
         <section className={styles.faq}>
           <Container>
             <div className={styles.faq_wrapper}>
+              <div className={styles.tab_menu}>
+                <ul>
+                  {faqFilterData?.map(
+                    (item: IPropsFaqFilter, index: number) => (
+                      <li
+                        onClick={() => {
+                          setFaqFilter(index);
+                          setFaqFilterId(item?.id);
+                        }}
+                        className={cn(faqFilter === index && styles.active)}
+                        key={index}>
+                        {item?.title}{' '}
+                        {faqFilter === index && (
+                          <span>
+                            <IconChevronDown height={20} width={20} />
+                          </span>
+                        )}
+                      </li>
+                    )
+                  )}
+                </ul>
+              </div>
               <div className={styles.tab_content}>
                 <div className={styles.items}>
-                  <div className={cn(styles.item, styles.active)}>
-                    <div className={styles.header}>
-                      <div className={styles.title}>
-                        Tasarım süreci nasıl ilerliyor?
+                  {faqData
+                    ?.filter((x) => x?.filter_id === faqFilterId)
+                    .map((item: IPropsFaq, index: number) => (
+                      <div
+                        className={cn(
+                          styles.item,
+                          faqContent === index && styles.active
+                        )}
+                        onClick={() => {
+                          setFaqContent(index);
+                        }}
+                        key={index}>
+                        <div className={styles.header}>
+                          <div className={styles.title}>{item?.title}</div>
+                          <div className={styles.chevron}>
+                            <IconChevronDown height={30} width={30} />
+                          </div>
+                        </div>
+                        <div className={styles.content}>{item?.content}</div>
                       </div>
-                      <div className={styles.chevron}>
-                        <IconChevronDown height={30} width={30} />
-                      </div>
-                    </div>
-                    <div className={styles.content}>
-                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
-                      bir hurufat numune kitabı oluşturmak üzere bir yazı
-                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
-                      standardı sahte metinler olarak kullanılmıştır.
-                    </div>
-                  </div>
-
-                  <div className={cn(styles.item)}>
-                    <div className={styles.header}>
-                      <div className={styles.title}>
-                        Tasarım süreci nasıl ilerliyor?
-                      </div>
-                      <div className={styles.chevron}>
-                        <IconChevronDown height={30} width={30} />
-                      </div>
-                    </div>
-                    <div className={styles.content}>
-                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
-                      bir hurufat numune kitabı oluşturmak üzere bir yazı
-                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
-                      standardı sahte metinler olarak kullanılmıştır.
-                    </div>
-                  </div>
-
-                  <div className={cn(styles.item)}>
-                    <div className={styles.header}>
-                      <div className={styles.title}>
-                        Tasarım süreci nasıl ilerliyor?
-                      </div>
-                      <div className={styles.chevron}>
-                        <IconChevronDown height={30} width={30} />
-                      </div>
-                    </div>
-                    <div className={styles.content}>
-                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
-                      bir hurufat numune kitabı oluşturmak üzere bir yazı
-                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
-                      standardı sahte metinler olarak kullanılmıştır.
-                    </div>
-                  </div>
+                    ))}
                 </div>
               </div>
             </div>

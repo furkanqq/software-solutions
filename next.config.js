@@ -41,7 +41,11 @@ const nextConfig = {
       {
         source: '/projeler',
         destination: '/projects'
-      }
+      },
+      {
+        source: '/hizmet/:slug',
+        destination: '/services/:slug', 
+      },
     ];
   }
 };
