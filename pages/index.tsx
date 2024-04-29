@@ -14,10 +14,10 @@ import { XLink } from '@/src/components/XLink';
 import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
-import { OurServicesType, OurServices } from '@/src/config/service.config';
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import parse from 'html-react-parser';
 import Layouts from '@/src/layouts';
+import { useState } from 'react';
 import moment from 'moment';
 import 'moment/locale/tr';
 
@@ -61,12 +61,57 @@ interface IPropsHome {
   one_link: string;
 }
 
+interface IPropsServices {
+  short_description: string;
+  image: string | null;
+  sort: number | null;
+  category_id: number;
+  highlight: boolean;
+  spot_text: string;
+  content: string;
+  status: string;
+  title: string;
+  icon: string;
+  slug: string;
+  id: number;
+}
+
+interface IPropsFaqFilter {
+  title: string;
+  id: number;
+}
+
+interface IPropsFaq {
+  filter_id: number;
+  content: string;
+  title: string;
+  id: number;
+}
+
 HomePage.getInitialProps = async () => {
+  const faqFilterDataFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_faq_filter'}`
+  );
+
+  const faqFilterData = faqFilterDataFetch?.data;
+
+  const faqDataFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_faq'}`
+  );
+
+  const faqData = faqDataFetch?.data;
+
   const blogDataFetch = await nextFetcher(
     `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_blog'}`
   );
 
   const blogData = blogDataFetch?.data;
+
+  const servicesDataFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_services'}`
+  );
+
+  const servicesData = servicesDataFetch?.data;
 
   const brandsDataFetch = await nextFetcher(
     `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_brands'}`
@@ -80,16 +125,36 @@ HomePage.getInitialProps = async () => {
 
   const homeData = homeSettingsFetch?.data[0];
 
-  return { brandsData, blogData, homeData };
+  return {
+    faqFilterData,
+    servicesData,
+    brandsData,
+    blogData,
+    homeData,
+    faqData
+  };
 };
 
 interface IProps {
+  faqFilterData: IPropsFaqFilter[];
+  servicesData: IPropsServices[];
   brandsData: IPropsBrands[];
   blogData: IPropsBlog[];
   homeData: IPropsHome;
+  faqData: IPropsFaq[];
 }
 
-export default function HomePage({ brandsData, blogData, homeData }: IProps) {
+export default function HomePage({
+  faqFilterData,
+  servicesData,
+  brandsData,
+  blogData,
+  homeData,
+  faqData
+}: IProps) {
+  const [faqFilter, setFaqFilter] = useState<number>(0);
+  const [faqFilterId, setFaqFilterId] = useState<number>(faqFilterData[0]?.id);
+  const [faqContent, setFaqContent] = useState<number>(0);
   return (
     <Layouts>
       <main>
@@ -229,148 +294,87 @@ export default function HomePage({ brandsData, blogData, homeData }: IProps) {
             </div>
           </Container>
           <Container className={styles.card_part}>
-            {OurServices.map((service: OurServicesType, index: number) => (
-              <div className={styles.card} key={index}>
-                <XImage
-                  src={service.icon}
-                  alt={'icon'}
-                  height={52}
-                  width={52}
-                />
-                <label>{service.label}</label>
-                <h2>{service.title}</h2>
-                <p>{service.description}</p>
-                {service.more && (
-                  <XLink href={'furkanilhan.com'} className={styles.more}>
-                    <span>Read More</span>
-                    <span>
-                      <IconExploreArrow />
-                    </span>
-                  </XLink>
-                )}
-              </div>
-            ))}
+            {servicesData.map(
+              (service: IPropsServices, index: number) =>
+                service?.highlight && (
+                  <div className={styles.card} key={index}>
+                    <XImage
+                      src={
+                        process.env.NEXT_PUBLIC_API_URL +
+                        '/assets/' +
+                        service?.icon
+                      }
+                      alt={'icon'}
+                      height={52}
+                      width={52}
+                    />
+                    <label>{service.spot_text}</label>
+                    <h2>{service.title}</h2>
+                    <p>{service.short_description}</p>
+                    <XLink
+                      href={'hizmet/' + service?.slug}
+                      className={styles.more}>
+                      <span>Bilgi Al</span>
+                      <span>
+                        <IconExploreArrow />
+                      </span>
+                    </XLink>
+                  </div>
+                )
+            )}
           </Container>
         </section>
 
         <XProjectCarousel />
-
-        {/* <section className={styles.projects}>
-          <div className={styles.sticky_part}>
-            <div className={styles.items}>
-              <div className={styles.item}>
-                <div className={styles.thumbnail}></div>
-                <div className={styles.information}>
-                  <div className={styles.left}>
-                    <div className={styles.category}>Web Tasarım</div>
-                    <div className={styles.title}>
-                      Balance Network | NFT Project
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.items}>
-              <div className={styles.item}>
-                <div className={styles.thumbnail}></div>
-                <div className={styles.information}>
-                  <div className={styles.left}>
-                    <div className={styles.category}>Web Tasarım</div>
-                    <div className={styles.title}>
-                      Balance Network | NFT Project
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.items}>
-              <div className={styles.item}>
-                <div className={styles.thumbnail}></div>
-                <div className={styles.information}>
-                  <div className={styles.left}>
-                    <div className={styles.category}>Web Tasarım</div>
-                    <div className={styles.title}>
-                      Balance Network | NFT Project
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
 
         <section className={styles.faq}>
           <Container>
             <div className={styles.faq_wrapper}>
               <div className={styles.tab_menu}>
                 <ul>
-                  <li className={styles.active}>
-                    Web Tasarım
-                    <span>
-                      <IconChevronDown height={20} width={20} />
-                    </span>
-                  </li>
-                  <li>Mobil Uygulama</li>
-                  <li>Sosyal Medya Yönetimi</li>
-                  <li>Dijital Pazarlama</li>
-                  <li>Özel Yazılım Geliştirme</li>
+                  {faqFilterData?.map(
+                    (item: IPropsFaqFilter, index: number) => (
+                      <li
+                        onClick={() => {
+                          setFaqFilter(index);
+                          setFaqFilterId(item?.id);
+                        }}
+                        className={cn(faqFilter === index && styles.active)}
+                        key={index}>
+                        {item?.title}{' '}
+                        {faqFilter === index && (
+                          <span>
+                            <IconChevronDown height={20} width={20} />
+                          </span>
+                        )}
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
               <div className={styles.tab_content}>
                 <div className={styles.items}>
-                  <div className={cn(styles.item, styles.active)}>
-                    <div className={styles.header}>
-                      <div className={styles.title}>
-                        Tasarım süreci nasıl ilerliyor?
+                  {faqData
+                    ?.filter((x) => x?.filter_id === faqFilterId)
+                    .map((item: IPropsFaq, index: number) => (
+                      <div
+                        className={cn(
+                          styles.item,
+                          faqContent === index && styles.active
+                        )}
+                        onClick={() => {
+                          setFaqContent(index);
+                        }}
+                        key={index}>
+                        <div className={styles.header}>
+                          <div className={styles.title}>{item?.title}</div>
+                          <div className={styles.chevron}>
+                            <IconChevronDown height={30} width={30} />
+                          </div>
+                        </div>
+                        <div className={styles.content}>{item?.content}</div>
                       </div>
-                      <div className={styles.chevron}>
-                        <IconChevronDown height={30} width={30} />
-                      </div>
-                    </div>
-                    <div className={styles.content}>
-                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
-                      bir hurufat numune kitabı oluşturmak üzere bir yazı
-                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
-                      standardı sahte metinler olarak kullanılmıştır.
-                    </div>
-                  </div>
-
-                  <div className={cn(styles.item)}>
-                    <div className={styles.header}>
-                      <div className={styles.title}>
-                        Tasarım süreci nasıl ilerliyor?
-                      </div>
-                      <div className={styles.chevron}>
-                        <IconChevronDown height={30} width={30} />
-                      </div>
-                    </div>
-                    <div className={styles.content}>
-                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
-                      bir hurufat numune kitabı oluşturmak üzere bir yazı
-                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
-                      standardı sahte metinler olarak kullanılmıştır.
-                    </div>
-                  </div>
-
-                  <div className={cn(styles.item)}>
-                    <div className={styles.header}>
-                      <div className={styles.title}>
-                        Tasarım süreci nasıl ilerliyor?
-                      </div>
-                      <div className={styles.chevron}>
-                        <IconChevronDown height={30} width={30} />
-                      </div>
-                    </div>
-                    <div className={styles.content}>
-                      Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
-                      metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının
-                      bir hurufat numune kitabı oluşturmak üzere bir yazı
-                      galerisini alarak karıştırdığı 1500 lerden beri endüstri
-                      standardı sahte metinler olarak kullanılmıştır.
-                    </div>
-                  </div>
+                    ))}
                 </div>
               </div>
             </div>
