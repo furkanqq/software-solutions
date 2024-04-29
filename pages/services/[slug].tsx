@@ -13,7 +13,7 @@ import XFooter from '@/src/composite/XFooter';
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import parse from 'html-react-parser';
 import Layouts from '@/src/layouts';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface IPropsDetail {
   short_description: string;
