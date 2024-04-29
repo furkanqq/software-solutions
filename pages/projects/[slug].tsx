@@ -9,32 +9,65 @@ import { XLink } from '@/src/components/XLink';
 import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
+import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import Layouts from '@/src/layouts';
 
-export default function DetailPage() {
+interface IProps {
+  data: {
+    status: 'published' | 'archived' | 'draft';
+    meta_description: string;
+    spot_text_two: string;
+    features_two: string;
+    sort: number | null;
+    public_date: string;
+    content_two: string;
+    spot_text: string;
+    filter_id: number;
+    category: string;
+    customer: string;
+    features: string;
+    location: string;
+    content: string;
+    title: string;
+    slug: string;
+    id: number;
+  };
+}
+
+DetailPage.getInitialProps = async (context: any) => {
+  const { slug } = context.query;
+
+  const data = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + `/items/bs_projects?filter[slug][_eq]=${slug}`}`
+  );
+
+  return { data: data.data[0] };
+};
+
+export default function DetailPage({ data }: IProps) {
   return (
     <Layouts>
       <XHeader />
       <main>
         <section className={styles.banner}>
           <Container className={styles.content}>
-            <div className={styles.title}>Luxury Glassware.</div>
+            <div className={styles.title}>{data?.title}.</div>
             <div className={styles.detail}>
               <div className={styles.peace}>
-                <span>Category</span>
-                <span>DIGITAL DESIGN</span>
+                <span>Kategori</span>
+                <span>{data?.category}</span>
               </div>
               <div className={styles.peace}>
-                <span>Customer</span>
-                <span>UI-THEMEZ</span>
+                <span>Müşteri</span>
+                <span>{data?.customer}</span>
               </div>
               <div className={styles.peace}>
-                <span>Date</span>
-                <span>AUGUST 6, 2020</span>
+                <span>Tarih</span>
+                <span>{data?.public_date}</span>
               </div>
               <div className={styles.peace}>
-                <span>Location</span>
-                <span>MELBOURNE, AUSTRALIA</span>
+                <span>Lokasyon</span>
+                <span>{data?.location}</span>
               </div>
             </div>
           </Container>

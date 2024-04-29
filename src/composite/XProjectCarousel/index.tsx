@@ -1,8 +1,10 @@
 import styles from './index.module.scss';
 
+import { XImage } from '@/src/components/XImage';
+
 import React, { useEffect, useState, useRef } from 'react';
 
-export default function XProjectCarousel() {
+export default function XProjectCarousel({ data }: any) {
   const containerRef = useRef<any>(null);
   const [containerPosition, setContainerPosition] = useState({
     left: 0,
@@ -60,71 +62,29 @@ export default function XProjectCarousel() {
         }}
         className={styles.sticky_part}
         ref={containerRef}>
-        <div className={styles.items}>
-          <div className={styles.item}>
-            <div className={styles.thumbnail}></div>
-            <div className={styles.information}>
-              <div className={styles.left}>
-                <div className={styles.category}>Web Tasarım</div>
-                <div className={styles.title}>
-                  Balance Network | NFT Project
+        {data?.map((item: any, index: number) => (
+          <div className={styles.items} key={index}>
+            <div className={styles.item}>
+              <div className={styles.thumbnail}>
+                <XImage
+                  src={
+                    process.env.NEXT_PUBLIC_API_URL +
+                    '/assets/' +
+                    item?.highlight_image
+                  }
+                  alt={item.title}
+                  fill
+                />
+              </div>
+              <div className={styles.information}>
+                <div className={styles.left}>
+                  <div className={styles.category}>{item?.category}</div>
+                  <div className={styles.title}>{item?.title}</div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.items}>
-          <div className={styles.item}>
-            <div className={styles.thumbnail}></div>
-            <div className={styles.information}>
-              <div className={styles.left}>
-                <div className={styles.category}>Web Tasarım</div>
-                <div className={styles.title}>
-                  Balance Network | NFT Project
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.items}>
-          <div className={styles.item}>
-            <div className={styles.thumbnail}></div>
-            <div className={styles.information}>
-              <div className={styles.left}>
-                <div className={styles.category}>Web Tasarım</div>
-                <div className={styles.title}>
-                  Balance Network | NFT Project
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.items}>
-          <div className={styles.item}>
-            <div className={styles.thumbnail}></div>
-            <div className={styles.information}>
-              <div className={styles.left}>
-                <div className={styles.category}>Web Tasarım</div>
-                <div className={styles.title}>
-                  Balance Network | NFT Project
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.items}>
-          <div className={styles.item}>
-            <div className={styles.thumbnail}></div>
-            <div className={styles.information}>
-              <div className={styles.left}>
-                <div className={styles.category}>Web Tasarım</div>
-                <div className={styles.title}>
-                  Balance Network | NFT Project
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

@@ -51,9 +51,8 @@ interface IPropsHome {
 DetailPage.getInitialProps = async (context: any) => {
   const { slug } = context.query;
 
-  console.log('slug', slug);
   const dataFetch = await nextFetcher(
-    `${process.env.NEXT_PUBLIC_API_URL + `/items/bs_services?filter[slug][_eq]=${slug}`}`
+    `${process.env.NEXT_PUBLIC_API_URL + `/items/bs_services?filter[slug][_eq]=${encodeURIComponent(slug && slug)}`}`
   );
 
   const data = dataFetch?.data[0];
@@ -95,6 +94,7 @@ export default function DetailPage({
   const [faqFilterId, setFaqFilterId] = useState<number>(faqFilterData[0]?.id);
   const [faqContent, setFaqContent] = useState<number>(0);
 
+  console.log(faqFilterData, homeData, faqData, data);
   return (
     <Layouts>
       <XHeader color="light" />

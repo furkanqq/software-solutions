@@ -88,6 +88,18 @@ interface IPropsFaq {
   id: number;
 }
 
+interface IPropsProjects {
+  status: 'published' | 'archived' | 'draft';
+  highlight_image: string;
+  sort: number | null;
+  highlight: boolean;
+  spot_text: string;
+  filter_id: number;
+  image: string;
+  title: string;
+  id: number;
+}
+
 HomePage.getInitialProps = async () => {
   const faqFilterDataFetch = await nextFetcher(
     `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_faq_filter'}`
@@ -125,9 +137,16 @@ HomePage.getInitialProps = async () => {
 
   const homeData = homeSettingsFetch?.data[0];
 
+  const projectsDataFetch = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_projects'}`
+  );
+
+  const projectsData = projectsDataFetch?.data;
+
   return {
     faqFilterData,
     servicesData,
+    projectsData,
     brandsData,
     blogData,
     homeData,
@@ -138,6 +157,7 @@ HomePage.getInitialProps = async () => {
 interface IProps {
   faqFilterData: IPropsFaqFilter[];
   servicesData: IPropsServices[];
+  projectsData: IPropsProjects[];
   brandsData: IPropsBrands[];
   blogData: IPropsBlog[];
   homeData: IPropsHome;
@@ -147,6 +167,7 @@ interface IProps {
 export default function HomePage({
   faqFilterData,
   servicesData,
+  projectsData,
   brandsData,
   blogData,
   homeData,
@@ -325,7 +346,7 @@ export default function HomePage({
           </Container>
         </section>
 
-        <XProjectCarousel />
+        <XProjectCarousel data={projectsData} />
 
         <section className={styles.faq}>
           <Container>

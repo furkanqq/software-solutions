@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
   .sticky_part {
     position: sticky;
     height: 100vh;
@@ -13,8 +14,10 @@
     display: flex;
     align-items: center;
     gap: 120px;
+
     .items {
       display: flex;
+
       .item {
         min-width: 800px;
         height: 500px;
@@ -27,6 +30,14 @@
           background-color: #ccc;
           min-width: 500px;
           height: 500px;
+          position: relative;
+
+          img {
+            min-width: 500px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px;
+          }
         }
 
         .information {
