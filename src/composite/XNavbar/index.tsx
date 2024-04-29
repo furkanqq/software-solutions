@@ -136,7 +136,7 @@ export default function XNavbar(props: IProps) {
                     <div className={styles.contents} key={index}>
                       {categoryId === item.category_id && (
                         <XLink
-                          href={'hizmet/' + item?.slug}
+                          href={'/hizmet/' + item?.slug}
                           className={styles.content}
                           key={index}>
                           <div className={styles.header}>

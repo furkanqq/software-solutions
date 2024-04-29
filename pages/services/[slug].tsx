@@ -13,7 +13,7 @@ import XFooter from '@/src/composite/XFooter';
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import parse from 'html-react-parser';
 import Layouts from '@/src/layouts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface IPropsDetail {
   short_description: string;
@@ -51,8 +51,9 @@ interface IPropsHome {
 DetailPage.getInitialProps = async (context: any) => {
   const { slug } = context.query;
 
+  console.log('slug', slug);
   const dataFetch = await nextFetcher(
-    `${process.env.NEXT_PUBLIC_API_URL + `/items/bs_services?filter[slug][_eq]=${encodeURIComponent(slug)}`}`
+    `${process.env.NEXT_PUBLIC_API_URL + `/items/bs_services?filter[slug][_eq]=${slug}`}`
   );
 
   const data = dataFetch?.data[0];
@@ -107,7 +108,9 @@ export default function DetailPage({
         />
         <section className={styles.wrapper}>
           <Container>
-            <div className={styles.content}>{parse(data?.content)}</div>
+            <div className={styles.content}>
+              {data?.content && parse(data?.content)}
+            </div>
           </Container>
         </section>
 
