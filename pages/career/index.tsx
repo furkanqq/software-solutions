@@ -41,7 +41,7 @@ export default function CareerPage() {
 
     const url = `${process.env.NEXT_PUBLIC_API_URL}/items/bs_career`;
 
-    if (!emailRegex.test(form.mail)) {
+    if (!emailRegex.test(form.mail as string)) {
       setError('Please enter a valid email');
       setLoading(false);
       return;

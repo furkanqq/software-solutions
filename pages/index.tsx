@@ -234,9 +234,11 @@ export default function HomePage({
           <Container className={styles.content}>
             <div className={styles.image_part}>
               <div
-                style={{
-                  '--bg-image': `url(${process.env.NEXT_PUBLIC_API_URL + '/assets/' + homeData?.two_image_two})`
-                }}
+                style={
+                  {
+                    '--bg-image': `url(${process.env.NEXT_PUBLIC_API_URL + '/assets/' + homeData?.two_image_two})`
+                  } as React.CSSProperties
+                }
                 className={styles.image_holder}>
                 <XImage
                   src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + homeData?.two_image_one}`}

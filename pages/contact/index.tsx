@@ -49,8 +49,8 @@ export default function ContactPage() {
     const url = `${process.env.NEXT_PUBLIC_API_URL}/items/bs_contact`;
 
     if (
-      !emailRegex.test(form.mail) ||
-      !phoneNumberRegex.test(form.phone_number)
+      !emailRegex.test(form.mail as string) ||
+      !phoneNumberRegex.test(form.phone_number as string)
     ) {
       setError('Please enter a valid email or phone number');
       setLoading(false);
