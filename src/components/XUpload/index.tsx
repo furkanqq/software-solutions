@@ -1,4 +1,5 @@
 import styles from './index.module.scss';
+
 import React, { useState } from 'react';
 
 interface IProps {
@@ -35,7 +36,8 @@ export const XUpload: React.FC<IProps> = ({ label, func }) => {
   };
 
   const handleClick = () => {
-    document.getElementById('fileInput').click();
+    const fileInput = document.getElementById('fileInput') as HTMLElement;
+    fileInput.click();
   };
 
   return (

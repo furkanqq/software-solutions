@@ -4,11 +4,11 @@ import cn from 'classnames';
 import Container from '@/src/components/XContainer';
 import { XButton } from '@/src/components/XButton';
 import { XImage } from '@/src/components/XImage';
+import { XLink } from '@/src/components/XLink';
 
 import { useEffect, useState } from 'react';
 import XMobile from '../XMobileMenu';
 import XNavbar from '../XNavbar';
-import { XLink } from '@/src/components/XLink';
 
 interface IProps {
   color?: 'light' | 'dark';
