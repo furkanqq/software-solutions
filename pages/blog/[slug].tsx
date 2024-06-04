@@ -15,6 +15,7 @@ import Layouts from '@/src/layouts';
 
 interface IProps {
   data: {
+    wide_image: undefined | string;
     image: undefined | string;
     date_created: string;
     content: string;
@@ -53,7 +54,9 @@ export default function DetailPage({ data }: IProps) {
               <div className={styles.thumbnail}>
                 <XImage
                   src={
-                    process.env.NEXT_PUBLIC_API_URL + '/assets/' + data?.image
+                    process.env.NEXT_PUBLIC_API_URL +
+                    '/assets/' +
+                    data?.wide_image
                   }
                   alt=""
                   fill
