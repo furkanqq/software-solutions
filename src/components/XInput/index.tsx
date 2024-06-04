@@ -17,11 +17,11 @@ interface IProps {
   className?: undefined | string;
   icon?: React.ReactNode;
   errorMessage?: string;
+  value?: string | null;
   isPassword?: boolean;
   readOnly?: boolean;
   visible?: boolean;
   label?: string;
-  value?: string;
   name?: string;
 }
 
@@ -78,13 +78,13 @@ export const XInput: React.FC<IProps> = ({
         })}
         x-attr="x-inner-wrapper">
         <input
+          value={value === null ? '' : value}
           type={isShowEye ? 'text' : type}
           placeholder={placeholder}
           onChange={handleOnChange}
           className={styles.input}
           onFocus={handleOnFocus}
           onBlur={handleOnBlur}
-          value={value}
           name={name}
           ref={ref}
         />

@@ -8,6 +8,7 @@ import { XImage } from '@/src/components/XImage';
 import { useEffect, useState } from 'react';
 import XMobile from '../XMobileMenu';
 import XNavbar from '../XNavbar';
+import { XLink } from '@/src/components/XLink';
 
 interface IProps {
   color?: 'light' | 'dark';
@@ -59,14 +60,33 @@ export default function XHeader(props: IProps) {
       )}>
       <Container>
         <div className={styles.header_content}>
-          <div className={styles.header_logo}>
-            <XImage alt={'balance-software'} src="/assets/logo.png" fill />
-          </div>
+          <XLink href="/">
+            <div className={styles.header_logo}>
+              <XImage
+                src={
+                  props.color === 'light'
+                    ? !headerBg
+                      ? '/assets/balance_dark.png'
+                      : '/assets/balance_light.png'
+                    : '/assets/balance_light.png'
+                }
+                alt={'balance-software'}
+                fill
+              />
+            </div>
+          </XLink>
           <div className={styles.header_nav}>
             <XNavbar color={props.color} />
           </div>
           <div className={styles.header_button}>
-            <XButton color={!headerBg ? 'outline-white' : 'outline'}>
+            <XButton
+              color={
+                props.color === 'light'
+                  ? !headerBg
+                    ? 'outline-white'
+                    : 'outline'
+                  : 'outline'
+              }>
               Teklif Al
             </XButton>
             <XMobile />

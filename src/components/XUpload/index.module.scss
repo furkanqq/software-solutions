@@ -1,0 +1,41 @@
+.label {
+  color: rgba(var(--colors-slightly-dark-gray));
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  svg {
+    margin-right: 1.5px;
+  }
+}
+
+.file_upload {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgb(234, 234, 234);
+  }
+
+  &.drag_over {
+    border-color: #000;
+  }
+
+  .raquo {
+    transform: rotate(90deg);
+    font-size: 16px;
+  }
+
+  input[type='file'] {
+    display: none;
+  }
+}

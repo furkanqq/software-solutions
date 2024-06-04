@@ -1,57 +1,62 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true,
-  experimental: {
-    optimizePackageImports: ['lodash', 'axios']
-  },
-  images: {
-    domains: ['cdn.jsdelivr.net', 'raw.githubusercontent.com', 'picsum.photos', 'gw.balancenetwork.io'],
-    formats: ['image/avif', 'image/webp'],
-    dangerouslyAllowSVG: true,
-    contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
-  },
-  i18n: {
-    locales: ['tr', 'en'],
-    defaultLocale: 'en',
-    localeDetection: false
-  },
   async rewrites() {
     return [
       {
-        source: '/iletisim',
-        destination: '/contact'
+        destination: '/contact',
+        source: '/iletisim'
       },
       {
         source: '/hakkimizda',
         destination: '/about'
       },
       {
-        source: '/kariyer',
-        destination: '/career'
+        destination: '/career',
+        source: '/kariyer'
       },
       {
-        source: '/ekibimiz',
-        destination: '/team'
+        destination: '/team',
+        source: '/ekibimiz'
       },
       {
-        source: '/hizmetler',
-        destination: '/services'
+        destination: '/services',
+        source: '/hizmetler'
       },
       {
-        source: '/projeler',
-        destination: '/projects'
+        destination: '/projects',
+        source: '/projeler'
       },
       {
-        source: '/hizmet/:slug',
-        destination: '/services/:slug', 
+        destination: '/services/:slug',
+        source: '/hizmetler/:slug'
       },
       {
-        source: '/proje/:slug',
-        destination: '/projects/:slug', 
-      },
+        destination: '/projects/:slug',
+        source: '/projeler/:slug'
+      }
     ];
-  }
+  },
+  images: {
+    domains: [
+      'cdn.jsdelivr.net',
+      'raw.githubusercontent.com',
+      'picsum.photos',
+      'gw.balancenetwork.io'
+    ],
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    formats: ['image/avif', 'image/webp'],
+    contentDispositionType: 'attachment',
+    dangerouslyAllowSVG: true
+  },
+  i18n: {
+    localeDetection: false,
+    locales: ['tr', 'en'],
+    defaultLocale: 'en'
+  },
+  experimental: {
+    optimizePackageImports: ['lodash', 'axios']
+  },
+  swcMinify: true
 };
 
 module.exports = nextConfig;

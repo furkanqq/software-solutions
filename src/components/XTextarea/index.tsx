@@ -9,11 +9,11 @@ interface IProps {
   className?: undefined | string;
   rows?: undefined | number;
   errorMessage?: string;
+  value?: string | null;
   infoMessage?: string;
   readOnly?: boolean;
   visible?: boolean;
   label?: string;
-  value?: string;
   name?: string;
 }
 
@@ -65,12 +65,12 @@ export const XTextarea: React.FC<IProps> = ({
           [styles.error]: isError
         })}>
         <textarea
+          value={value === null ? '' : value}
           className={styles.textarea}
           placeholder={placeholder}
           onChange={handleOnChange}
           onFocus={handleOnFocus}
           onBlur={handleOnBlur}
-          value={value}
           rows={rows}
           name={name}
         />

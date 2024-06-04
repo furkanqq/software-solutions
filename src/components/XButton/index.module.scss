@@ -103,22 +103,23 @@ $height: 38px;
 }
 
 .loaderLayer {
-  width: calc($height / 2.5);
-  height: calc($height / 2.5);
-  border: 2px solid #ffffff4a;
-  border-bottom-color: #fff;
+  width: calc($height / 2);
+  height: calc($height / 2);
+  border: 3px solid #8484844a;
+  border-bottom-color: rgba(var(--colors-primary));
   border-radius: 50%;
+  margin-top: 4px;
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 
   &.loader-secondary {
-    border: 2px solid rgb(0 0 0 / 0.3);
+    border: 3px solid rgb(0 0 0 / 0.3);
     border-bottom-color: #fff;
   }
 
   &.loader-white {
-    border: 2px solid rgb(0 0 0 / 0.7);
+    border: 3px solid rgb(0 0 0 / 0.7);
     border-bottom-color: #fff;
   }
 

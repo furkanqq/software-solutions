@@ -37,7 +37,7 @@ interface IServices {
   slug: string;
 }
 export default function XNavbar(props: IProps) {
-  const [categoryId, setCategoryId] = useState<number>(1);
+  const [categoryId, setCategoryId] = useState<number>(5);
   const [category, setCategory] = useState<ICategory[]>([]);
   const [services, setServices] = useState<IServices[]>([]);
 
@@ -121,7 +121,7 @@ export default function XNavbar(props: IProps) {
                                 '/assets/' +
                                 child.icon
                               }
-                              alt={'Asd'}
+                              alt={'icon'}
                               height={40}
                               width={40}
                             />
@@ -135,8 +135,8 @@ export default function XNavbar(props: IProps) {
                   {services.map((item: IServices, index: number) => (
                     <div className={styles.contents} key={index}>
                       {categoryId === item.category_id && (
-                        <XLink
-                          href={'/hizmet/' + item?.slug}
+                        <a
+                          href={'/hizmetler/' + item?.slug}
                           className={styles.content}
                           key={index}>
                           <div className={styles.header}>
@@ -155,7 +155,7 @@ export default function XNavbar(props: IProps) {
                             )}
                           </div>
                           <p>{item.short_description}</p>
-                        </XLink>
+                        </a>
                       )}
                     </div>
                   ))}

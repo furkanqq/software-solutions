@@ -41,7 +41,7 @@ DetailPage.getInitialProps = async (context: any) => {
     `${process.env.NEXT_PUBLIC_API_URL + `/items/bs_projects?filter[slug][_eq]=${slug}`}`
   );
 
-  return { data: data.data[0] };
+  return { data: data };
 };
 
 export default function DetailPage({ data }: IProps) {

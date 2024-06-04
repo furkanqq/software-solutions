@@ -64,24 +64,25 @@
       position: relative;
       padding-block: 20px;
       .banner_image {
-        // position: absolute;
-        // bottom: -132px;
-        // right: -100px;
-        // width: 840px;
-        // height: 372px;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 4px;
         img {
           position: absolute;
           object-fit: cover;
         }
       }
       .image_holder {
+        position: absolute;
         padding: 10px;
         height: fit-content;
         height: 200px;
         width: 200px;
         &:hover {
           .scale {
-            transform: scale(1.2);
+            transform: scale(1.15);
             transition: 200ms ease-in-out;
           }
         }
@@ -91,6 +92,9 @@
           justify-content: center;
           align-items: center;
           transition: 200ms ease-in-out;
+          top: -60px;
+          left: -180px;
+          z-index: 1;
           cursor: pointer;
           .icon_explore {
             animation: rotate 12s linear infinite;
@@ -134,6 +138,7 @@
   .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 24px;
     .title {
       display: grid;
       gap: 12px;
@@ -156,7 +161,7 @@
       p {
         font-size: 16px;
         color: rgba(var(--colors-dark), 0.6);
-        width: 80%;
+        width: 90%;
       }
       a {
         position: relative;
@@ -185,15 +190,16 @@
   .card_part {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 60px;
+    gap: 20px;
     .card {
-      padding: 60px;
+      padding: 48px;
       border: 1px solid rgba(var(--colors-dark), 0.3);
       border-radius: 4px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 460px;
+      height: 480px;
+      gap: 20px;
       label {
         opacity: 0.7;
       }
@@ -242,7 +248,7 @@
           border: 6px solid rgba(var(--colors-off-white));
           bottom: 0;
           right: -180px;
-          background-image: url(../public/assets/thinking.jpeg);
+          background-image: var(--bg-image);
           background-size: cover;
         }
         img {
@@ -430,7 +436,6 @@
         li {
           list-style-type: none;
           margin-bottom: 24px;
-          text-transform: uppercase;
           cursor: pointer;
           font-weight: 500;
           color: rgba(var(--colors-dark), 0.5);
@@ -438,6 +443,7 @@
           align-items: center;
           justify-content: space-between;
           transition: 0.5s ease all;
+          font-size: 16px;
 
           &:hover {
             color: rgba(var(--colors-dark), 1);
@@ -580,6 +586,14 @@
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .benefits {
+    .card_part {
+      grid-template-columns: 1fr;
     }
   }
 }

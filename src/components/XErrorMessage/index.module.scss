@@ -1,0 +1,25 @@
+.container {
+  position: fixed;
+  border: 1px solid #af1400;
+  width: fit-content;
+  padding: 10px 16px;
+  z-index: 99;
+  right: -400px;
+  transition: 200ms;
+  top: 40px;
+  max-width: 450px;
+  background-color: #af1400;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.location {
+  right: 24px !important;
+  transition: 200ms;
+}

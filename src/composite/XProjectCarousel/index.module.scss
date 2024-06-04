@@ -4,9 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
+  height: 100vh;
+  overflow: hidden;
   .sticky_part {
-    position: sticky;
     height: 100vh;
     top: 0px;
     padding-inline: 100px;

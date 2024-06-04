@@ -94,7 +94,6 @@ export default function DetailPage({
   const [faqFilterId, setFaqFilterId] = useState<number>(faqFilterData[0]?.id);
   const [faqContent, setFaqContent] = useState<number>(0);
 
-  console.log(faqFilterData, homeData, faqData, data);
   return (
     <Layouts>
       <XHeader color="light" />

@@ -55,6 +55,7 @@ interface IPropsHome {
   banner_title: string;
   banner_image: string;
   banner_text: string;
+  banner_link: string;
   one_title: string;
   two_title: string;
   one_text: string;
@@ -193,7 +194,7 @@ export default function HomePage({
             <div className={styles.explore}>
               <div className={styles.image_holder}>
                 <div className={styles.scale}>
-                  <XLink href={'/hizmetler'}>
+                  <XLink href={homeData.banner_link}>
                     <IconExplore className={styles.icon_explore} />
                     <IconExploreArrow
                       className={styles.icon_explore_arrow}
@@ -232,7 +233,11 @@ export default function HomePage({
         <section className={styles.about}>
           <Container className={styles.content}>
             <div className={styles.image_part}>
-              <div className={styles.image_holder}>
+              <div
+                style={{
+                  '--bg-image': `url(${process.env.NEXT_PUBLIC_API_URL + '/assets/' + homeData?.two_image_two})`
+                }}
+                className={styles.image_holder}>
                 <XImage
                   src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + homeData?.two_image_one}`}
                   alt={'office'}
@@ -314,6 +319,7 @@ export default function HomePage({
               <p>{homeData?.services_text}</p>
             </div>
           </Container>
+
           <Container className={styles.card_part}>
             {servicesData.map(
               (service: IPropsServices, index: number) =>
@@ -412,7 +418,7 @@ export default function HomePage({
             </div>
             <div className={styles.items}>
               {blogData &&
-                blogData?.map((item: IPropsBlog, index: number) => (
+                blogData?.slice(-4).map((item: IPropsBlog, index: number) => (
                   <div className={styles.item} key={index}>
                     <div className={styles.thumbnail}>
                       <XImage
