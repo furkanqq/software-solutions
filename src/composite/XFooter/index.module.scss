@@ -92,14 +92,13 @@
         }
 
         .footer_logo {
-          width: 160px;
-
-          height: 55px;
+          width: 228px;
+          height: 56px;
           position: relative;
 
           img {
             width: 100%;
-            object-fit: cover;
+            object-fit: contain;
           }
         }
 

@@ -42,7 +42,6 @@ export default function DetailPage({ data }: IProps) {
       window.location.href = '/';
     }
   }
-
   return (
     <Layouts>
       <XHeader />

@@ -18,14 +18,13 @@
     height: 80px;
 
     .header_logo {
-      width: 128px;
-
+      width: 228px;
       height: 56px;
       position: relative;
 
       img {
         width: 100%;
-        object-fit: cover;
+        object-fit: content;
       }
     }
 
@@ -48,7 +47,6 @@
   &.bgColor {
     background-color: transparent !important;
   }
-
 }
 
 @media (max-width: 576px) {

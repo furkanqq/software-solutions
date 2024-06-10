@@ -56,6 +56,11 @@ export default function TeamPage({ teamAreaData, dataTeam }: ITeamPageProps) {
         />
         <section className={styles.wrapper}>
           <Container>
+            <div className={styles.title}>
+              Yeni nesil yazılım çözümleriyle işinizi bir üst seviyeye taşıyın.
+              Yenilikçi ve etkili çözümler sunan ekibimize katılın ve büyüyen
+              ailemizin bir parçası olun.
+            </div>
             <div className={styles.items}>
               {dataTeam &&
                 dataTeam?.map((item: IPropsTeam, index: number) => (

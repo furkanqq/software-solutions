@@ -1,22 +1,51 @@
 interface FetchOptions {
   method?: 'DELETE' | 'POST' | 'GET' | 'PUT';
+  body?: Record<string, any> | FormData;
   headers?: Record<string, string>;
   revalidate?: number;
-  body?: any;
 }
 
-export const nextFetcher = (url: string, options: FetchOptions = {}) => {
-  const { revalidate = 6000, method = 'GET', headers = {}, body } = options;
-  return fetch(url, {
-    headers: {
-      Authorization: `Bearer ${'JowDg7K9IcfWuS_KsfzGnUynDi45iOAs'}`,
-      'Content-Type': 'application/json',
-      ...headers
-    },
-    body: method !== 'GET' ? JSON.stringify(body) : undefined,
-    next: {
-      revalidate
-    },
+export const nextFetcher = async (
+  url: string,
+  options: FetchOptions = {}
+): Promise<any> => {
+  const { method = 'GET', headers = {}, body } = options;
+  const commonHeaders: Record<string, string> = {
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+    ...headers
+  };
+
+  const fetchOptions: RequestInit = {
+    headers: commonHeaders,
     method
-  }).then((res) => res.json());
+  };
+
+  if (method !== 'GET') {
+    if (body instanceof FormData) {
+      fetchOptions.body = body;
+    } else {
+      fetchOptions.body = JSON.stringify(body);
+      fetchOptions.headers = {
+        ...commonHeaders,
+        'Content-Type': 'application/json'
+      };
+    }
+  }
+
+  try {
+    const response = await fetch(url, fetchOptions);
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Fetch error data:', errorData);
+      throw new Error(
+        `Fetch error: ${response.status} - ${response.statusText}`
+      );
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error('Error in nextFetcher:', error);
+    throw error;
+  }
 };

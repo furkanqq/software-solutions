@@ -9,7 +9,7 @@
     gap: 52px;
     .title {
       width: 40%;
-      font-size: 80px;
+      font-size: 5em;
       font-weight: 500;
       line-height: 84px;
     }
@@ -97,7 +97,7 @@
       }
     }
     .attachment {
-      background-image: url(../../public/assets/parallax2.png);
+      background-image: var(--parallax-img);
       min-height: 600px;
       background-attachment: fixed;
       background-position: center;
@@ -114,7 +114,7 @@
 }
 
 .info {
-    margin-top: 56px;
+  margin-top: 56px;
   padding-block: 56px;
   background-color: rgba(var(--colors-light));
   .text_part {

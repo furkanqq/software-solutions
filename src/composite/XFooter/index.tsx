@@ -98,7 +98,11 @@ export default function XFooter(props: propsType) {
           <Container>
             <div className={styles.sub_footer_container}>
               <div className={styles.footer_logo}>
-                <XImage alt="balance-footer-logo" src="/assets/logo.png" fill />
+                <XImage
+                  src="/assets/balance_light.svg"
+                  alt="balance-footer-logo"
+                  fill
+                />
               </div>
               <div className={styles.copyright}>
                 2024 © All rights reserved by Balance Software.

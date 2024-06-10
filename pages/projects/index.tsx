@@ -26,6 +26,7 @@ interface IPropsProjects {
   filter_id: number;
   image: string;
   title: string;
+  slug: string;
   id: number;
 }
 
@@ -104,7 +105,7 @@ export default function ProjectPage({
                 {projectsData
                   ?.filter((x) => filter === 0 || x?.filter_id === filter)
                   .map((item: IPropsProjects, index: number) => (
-                    <div key={index}>
+                    <a href={'projeler/' + item.slug} key={index}>
                       <div className={styles.card}>
                         <div
                           style={{
@@ -126,7 +127,7 @@ export default function ProjectPage({
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   ))}
               </Masonry>
             </ResponsiveMasonry>

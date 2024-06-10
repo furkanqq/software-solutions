@@ -1,8 +1,6 @@
 import styles from './index.module.scss';
-import cn from 'classnames';
 
 import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
-import { IconChevronDown } from '@/src/assets/IconChevronDown';
 
 import { XPageTitle } from '@/src/components/XPageTitle';
 import Container from '@/src/components/XContainer';
@@ -11,45 +9,98 @@ import { XLink } from '@/src/components/XLink';
 import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
-import {
-  OurServicesType,
-  ServicesPage,
-  ServiceType,
-  Service
-} from '@/src/config/service.config';
-import {
-  keyPhrasesType,
-  PortfolioType,
-  Portfolio
-} from '@/src/config/portfolio.config';
+import { PortfolioType } from '@/src/config/portfolio.config';
+import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import { useEffect, useState, useRef } from 'react';
 import Layouts from '@/src/layouts';
 
-export default function Services() {
-  const sectionRef = useRef<any>(null);
-  const [src, setSrc] = useState<string>('/assets/portfolio1.jpeg');
-  const [activeService, setActiveService] = useState<ServiceType>(Service[0]);
+interface PortfolioPartType {
+  data: {
+    short_description: string;
+    category_id: number;
+    highlight: boolean;
+    spot_text: string;
+    tag_line: string;
+    content: string;
+    status: string;
+    image: string;
+    title: string;
+    icon: string;
+    slug: string;
+    id: number;
+    sort: null;
+  }[];
+}
 
-  // scroll takibi ile gorsel degistirme
+Services.getInitialProps = async () => {
+  const data = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_service_area'}`
+  );
+
+  const serviceArea = data.data[0];
+
+  const services = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_services'}`
+  );
+
+  const servicesData = services;
+
+  const dataCategories = await nextFetcher(
+    `${process.env.NEXT_PUBLIC_API_URL + '/items/bs_service_categories'}`
+  );
+
+  const dataCategory = dataCategories;
+  return { dataCategory, servicesData, serviceArea };
+};
+
+export default function Services({
+  dataCategory,
+  servicesData,
+  serviceArea
+}: {
+  servicesData: PortfolioPartType;
+  dataCategory: any;
+  serviceArea: any;
+}) {
+  // const sectionRef = useRef<HTMLInputElement>(null);
+  const [activeService, setActiveService] = useState<any>(
+    dataCategory?.data[0]
+  );
+
+  console.log(servicesData, 'servicesData');
+
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [visibleIndex, setVisibleIndex] = useState<number | null>(null);
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        const sectionRect = sectionRef.current.getBoundingClientRect();
-        const pageHeight = window.innerHeight;
-        if (window.scrollY >= sectionRect.top + pageHeight) {
-          setSrc('/assets/portfolio1.jpeg');
-        }
-        if (window.scrollY >= sectionRect.top + 3 * pageHeight) {
-          setSrc('/assets/portfolio2.jpeg');
-        }
-        if (window.scrollY >= sectionRect.top + 4 * pageHeight) {
-          setSrc('/assets/portfolio3.jpeg');
-        }
-      }
+    const options = {
+      rootMargin: '0px',
+      threshold: 0.1,
+      root: null
     };
-    window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
+        if (entry.isIntersecting) {
+          const index = parseInt(
+            entry.target.getAttribute('data-index') || '0',
+            10
+          );
+          setVisibleIndex(index);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+    const elements = document.querySelectorAll<HTMLElement>(`.${styles.part}`);
+    elements.forEach((el: HTMLElement, index: number) => {
+      el.setAttribute('data-index', index.toString());
+      observer.observe(el);
+    });
+
+    return () => {
+      elements.forEach((el: HTMLElement) => observer.unobserve(el));
+    };
   }, []);
 
   return (
@@ -57,24 +108,21 @@ export default function Services() {
       <XHeader />
       <main>
         <XPageTitle
-          title="We combine our passion for design and code."
-          marqueTitle="Hizmetler"
+          marqueTitle={serviceArea.banner_slide}
+          title={serviceArea.banner_title}
           bgColor={'white'}
         />
         <section className={styles.benefits}>
           <Container className={styles.content}>
             <div className={styles.title}>
-              <span>FEATURED SERVICES</span>
-              <h1>Our Services</h1>
+              <span>{serviceArea.benefits_tag}</span>
+              <h1>{serviceArea.benefits_title}</h1>
             </div>
             <div className={styles.describe}>
-              <p>
-                Nemo enim ipsam voluptatem quia voluptas sit odit aut fugit, sed
-                quia.
-              </p>
+              <p>{serviceArea.benefits_description}</p>
             </div>
           </Container>
-          <Container className={styles.card_part}>
+          {/* <Container className={styles.card_part}>
             {ServicesPage.map((service: OurServicesType, index: number) => (
               <div className={styles.card} key={index}>
                 <XImage
@@ -87,33 +135,45 @@ export default function Services() {
                 <p>{service.description}</p>
               </div>
             ))}
-          </Container>
+          </Container> */}
         </section>
 
         <section className={styles.portfolio} ref={sectionRef}>
           <div className={styles.image_holder}>
-            <XImage alt={'image'} src={src} fill />
+            {visibleIndex !== null &&
+              servicesData?.data[visibleIndex]?.image && (
+                <XImage
+                  src={
+                    process.env.NEXT_PUBLIC_API_URL +
+                    '/assets/' +
+                    servicesData.data[visibleIndex].image
+                  }
+                  alt={'image'}
+                  fill
+                />
+              )}
           </div>
           <div className={styles.content}>
-            {Portfolio.map((content: PortfolioType, index: number) => (
-              <div className={styles.part} key={index}>
-                <label>{content.label}</label>
-                <h1>{content.title}</h1>
-                <p>{content.description}</p>
-                {content.keyPhrases &&
-                  content.keyPhrases.map(
-                    (phrase: keyPhrasesType, index: number) => (
-                      <span key={index}>{phrase.phrase}</span>
-                    )
-                  )}
-                {content.details && (
+            {servicesData?.data
+              ?.slice(0, 3)
+              .map((content: PortfolioPartType['data'][0], index: number) => (
+                <div className={styles.part} key={index}>
+                  <label></label>
+                  <h1>{content.title}</h1>
+                  <p>{content.short_description}</p>
+                  {content.tag_line &&
+                    content.tag_line
+                      .split(',')
+                      .map((feature: string) => feature.trim())
+                      .map((phrase: string, index: number) => (
+                        <span key={index}>{phrase}</span>
+                      ))}
                   <XLink className={styles.circle_color} href={'/'}>
                     <IconExploreArrow />
-                    <span>View Details</span>
+                    <span>Görüntüle</span>
                   </XLink>
-                )}
-              </div>
-            ))}
+                </div>
+              ))}
           </div>
         </section>
 
@@ -122,37 +182,37 @@ export default function Services() {
             <div className={styles.detail_part}>
               <div className={styles.image_holder}>
                 <XImage
-                  src={activeService.image}
-                  alt={activeService.title}
+                  src={
+                    process.env.NEXT_PUBLIC_API_URL +
+                    '/assets/' +
+                    activeService?.img
+                  }
+                  alt={activeService?.title}
                   fill
                 />
               </div>
               <div className={styles.card}>
                 <XImage
-                  alt={activeService.title}
-                  src={activeService.icon}
+                  src={
+                    process.env.NEXT_PUBLIC_API_URL +
+                    '/assets/' +
+                    activeService?.icon
+                  }
+                  alt={activeService?.title}
                   height={52}
                   width={52}
                 />
-                <p>{activeService.description}</p>
-                {activeService.more && (
-                  <div className={styles.more}>
-                    <span>Read More</span>
-                    <IconExploreArrow />
-                  </div>
-                )}
+                <div className={styles.hr}></div>
+                <p>{activeService?.description}</p>
               </div>
             </div>
             <div className={styles.choose_part}>
               <div className={styles.first}>
-                <span>SERVICES</span>
-                <p>
-                  We help you to go online and increase your conversion rate
-                  Better design for your digital products.
-                </p>
+                <span>{serviceArea.services_tag}</span>
+                <p>{serviceArea.service_info}</p>
               </div>
               <div className={styles.second}>
-                {Service.map((serve: ServiceType, index: number) => (
+                {/* {Service.map((serve: ServiceType, index: number) => (
                   <div
                     onClick={() => setActiveService(serve)}
                     className={styles.serve}
@@ -160,17 +220,66 @@ export default function Services() {
                     <span>{serve.id}</span>
                     <h2>{serve.title}</h2>
                   </div>
-                ))}
+                ))} */}
+                {dataCategory &&
+                  dataCategory?.data.map((category: any, index: number) => (
+                    <div
+                      onClick={() => setActiveService(category)}
+                      className={styles.serve}
+                      key={index}>
+                      <span>{category._id}</span>
+                      <h2>{category.title}</h2>
+                    </div>
+                  ))}
               </div>
             </div>
           </Container>
         </section>
 
+        <section className={styles.portfolio} ref={sectionRef}>
+          <div className={styles.content}>
+            {servicesData?.data
+              ?.slice(3, 6)
+              .map((content: PortfolioPartType['data'][0], index: number) => (
+                <div className={styles.part} key={index}>
+                  <label></label>
+                  <h1>{content.title}</h1>
+                  <p>{content.short_description}</p>
+                  {content.tag_line &&
+                    content.tag_line
+                      .split(',')
+                      .map((feature: string) => feature.trim())
+                      .map((phrase: string, index: number) => (
+                        <span key={index}>{phrase}</span>
+                      ))}
+                  <XLink className={styles.circle_color} href={'/'}>
+                    <IconExploreArrow />
+                    <span>Görüntüle</span>
+                  </XLink>
+                </div>
+              ))}
+          </div>
+          <div className={styles.image_holder}>
+            {visibleIndex !== null &&
+              servicesData?.data[visibleIndex]?.image && (
+                <XImage
+                  src={
+                    process.env.NEXT_PUBLIC_API_URL +
+                    '/assets/' +
+                    servicesData.data[visibleIndex].image
+                  }
+                  alt={'image'}
+                  fill
+                />
+              )}
+          </div>
+        </section>
+
         <section className={styles.faq}>
           <Container>
             <div className={styles.faq_wrapper}>
-              <h1>Watch the creative process behind our digital marketing.</h1>
-              <div className={styles.tab_content}>
+              <h1>{serviceArea.tagline}</h1>
+              {/* <div className={styles.tab_content}>
                 <div className={styles.items}>
                   <div className={cn(styles.item, styles.active)}>
                     <div className={styles.header}>
@@ -226,7 +335,7 @@ export default function Services() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </Container>
         </section>
@@ -237,10 +346,10 @@ export default function Services() {
           </div>
           <div className={styles.text_part}>
             <div className={styles.text}>
-              <h1>Have a project in mind? Let’s get to work.</h1>
+              <h1>Hayalinizdeki projeler hayata geçsin. Hadi başlayalım.</h1>
               <XLink className={styles.circle_color} href={'/'}>
                 <IconExploreArrow />
-                <span>GET IN TOUCH</span>
+                <span>İletişime Geç</span>
               </XLink>
             </div>
           </div>

@@ -18,12 +18,18 @@
       height: auto;
       overflow: visible;
       margin-top: 36px;
+      &:hover {
+        border: 1px solid rgba(var(--colors-dark), 0.5);
+
+      }
 
       .thumbnail {
         position: relative;
         min-height: 300px;
         width: 250px;
         bottom: -30px;
+        border-radius: 4px;
+        overflow: hidden;
 
         img {
           position: relative;
@@ -45,6 +51,10 @@
           font-weight: 500;
           line-height: 1.5;
           margin-top: 8px;
+          &:hover{
+            transform: scale(0.98);
+            color: rgba(var(--colors-dark), 0.7);
+          }
         }
 
         .tags {

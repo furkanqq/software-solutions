@@ -16,8 +16,8 @@ import { useEffect, useState } from 'react';
 import Layouts from '@/src/layouts';
 
 type FormType = {
+  cv: undefined | string | File | null;
   detailed_message: string | null;
-  CV: undefined | FileList | null;
   full_name: string | null;
   mail: string | null;
 };
@@ -30,8 +30,34 @@ export default function CareerPage() {
     detailed_message: null,
     full_name: null,
     mail: null,
-    CV: null
+    cv: null
   });
+
+  useEffect(() => {
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/files`;
+
+    const fetchData = async () => {
+      if (form.cv === null || form.cv === '') return;
+
+      const formData = new FormData();
+      formData.append('cv', form.cv as File);
+
+      try {
+        const response = await nextFetcher(url, {
+          method: 'POST',
+          body: formData
+        });
+        setForm((current) => ({
+          ...current,
+          cv: response.data.id
+        }));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [form.cv]);
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -58,13 +84,10 @@ export default function CareerPage() {
           }
         }
         setLoading(false);
-        setForm({
-          detailed_message: null,
-          full_name: null,
-          mail: null,
-          CV: null
-        });
         setSuccess('Başarıyla Gönderildi.');
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((err: Error) => {
         setLoading(false);
@@ -90,7 +113,7 @@ export default function CareerPage() {
         <XErrorMessage text={error} />
         <XPageTitle
           title="Bizimle Çalışmak İster Misiniz?"
-          bgImage={'/assets/bannerImage2.jpg'}
+          bgImage={'/assets/career.jpg'}
           marqueTitle="KARİYER"
           bgColor="white"
         />
@@ -121,10 +144,9 @@ export default function CareerPage() {
                   handleSubmit(e)
                 }
                 action="">
-                {' '}
                 <div className={styles.row}>
                   <XInput
-                    onChange={(value) =>
+                    onChange={(value: string) =>
                       setForm((current) => ({
                         ...current,
                         full_name: value
@@ -136,7 +158,7 @@ export default function CareerPage() {
                     type="text"
                   />
                   <XInput
-                    onChange={(value) =>
+                    onChange={(value: string) =>
                       setForm((current) => ({
                         ...current,
                         mail: value
@@ -150,10 +172,10 @@ export default function CareerPage() {
                 </div>
                 <div className={styles.row_one}>
                   <XUpload
-                    func={(data) => {
+                    func={(data: File | null) => {
                       setForm((current) => ({
                         ...current,
-                        CV: data
+                        cv: data
                       }));
                     }}
                     label="Bir dosyayı buraya sürükleyip bırakın veya bir dosya seçmek için tıklayın"
@@ -161,7 +183,7 @@ export default function CareerPage() {
                 </div>
                 <div className={styles.row_one}>
                   <XTextarea
-                    onChange={(value) =>
+                    onChange={(value: string) =>
                       setForm((current) => ({
                         ...current,
                         detailed_message: value

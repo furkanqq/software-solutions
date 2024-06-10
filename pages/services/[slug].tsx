@@ -1,12 +1,10 @@
 import styles from './slug.module.scss';
 import cn from 'classnames';
 
-import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
 import { IconChevronDown } from '@/src/assets/IconChevronDown';
 
 import { XPageTitle } from '@/src/components/XPageTitle';
 import Container from '@/src/components/XContainer';
-import { XLink } from '@/src/components/XLink';
 import XHeader from '@/src/composite/XHeader';
 import XFooter from '@/src/composite/XFooter';
 
@@ -84,6 +82,7 @@ interface IProps {
   homeData: IPropsHome;
   data: IPropsDetail;
 }
+
 export default function DetailPage({
   faqFilterData,
   homeData,
@@ -121,9 +120,9 @@ export default function DetailPage({
             </div>
             <div className={styles.describe}>
               <p>{homeData?.one_text}</p>
-              <XLink href={homeData?.one_link}>
+              {/* <XLink href={homeData?.one_link}>
                 {homeData?.one_link_text} <IconExploreArrow />
-              </XLink>
+              </XLink> */}
             </div>
           </Container>
         </section>

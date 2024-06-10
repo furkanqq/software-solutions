@@ -8,8 +8,8 @@ export const IconExplore: React.FC<IconType> = (props) => {
       viewBox="0 0 810 809.999993"
       zoomAndPan="magnify"
       version="1.0"
-      height="152"
-      width="152"
+      height="100"
+      width="100"
       {...props}>
       <defs>
         <g />

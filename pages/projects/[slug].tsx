@@ -11,18 +11,31 @@ import XHeader from '@/src/composite/XHeader';
 
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import Layouts from '@/src/layouts';
+import { useEffect, useState } from 'react';
 
 interface IProps {
   data: {
     status: 'published' | 'archived' | 'draft';
+    section_one_description: string;
+    section_two_description: string;
+    section_one_title: string;
+    section_two_title: string;
     meta_description: string;
+    highlight_image: string;
     spot_text_two: string;
+    parallax_text: string;
+    key_words_two: string;
     features_two: string;
+    little_three: string;
+    parallax_img: string;
     sort: number | null;
     public_date: string;
     content_two: string;
+    little_one: string;
+    little_two: string;
     spot_text: string;
     filter_id: number;
+    key_words: string;
     category: string;
     customer: string;
     features: string;
@@ -31,7 +44,7 @@ interface IProps {
     title: string;
     slug: string;
     id: number;
-  };
+  }[];
 }
 
 DetailPage.getInitialProps = async (context: any) => {
@@ -41,116 +54,122 @@ DetailPage.getInitialProps = async (context: any) => {
     `${process.env.NEXT_PUBLIC_API_URL + `/items/bs_projects?filter[slug][_eq]=${slug}`}`
   );
 
-  return { data: data };
+  return { data: data.data };
 };
 
 export default function DetailPage({ data }: IProps) {
+  const project = data[0];
+
+  const keyWords = project?.key_words
+    .split(',')
+    .map((feature) => feature.trim());
+
+  const keyWordsTwo = project?.key_words_two
+    .split(',')
+    .map((feature) => feature.trim());
+
   return (
     <Layouts>
       <XHeader />
       <main>
         <section className={styles.banner}>
           <Container className={styles.content}>
-            <div className={styles.title}>{data?.title}.</div>
+            <div className={styles.title}>{project?.title}</div>
             <div className={styles.detail}>
               <div className={styles.peace}>
                 <span>Kategori</span>
-                <span>{data?.category}</span>
+                <span>{project?.category}</span>
               </div>
               <div className={styles.peace}>
                 <span>Müşteri</span>
-                <span>{data?.customer}</span>
+                <span>{project?.customer}</span>
               </div>
               <div className={styles.peace}>
                 <span>Tarih</span>
-                <span>{data?.public_date}</span>
+                <span>{project?.public_date}</span>
               </div>
               <div className={styles.peace}>
                 <span>Lokasyon</span>
-                <span>{data?.location}</span>
+                <span>{project?.location}</span>
               </div>
             </div>
           </Container>
         </section>
         <section className={styles.image_part}>
-          <XImage src={'/assets/project-detail.png'} alt={'detail'} fill />
+          <XImage
+            src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + project.highlight_image}`}
+            alt={'detail'}
+            fill
+          />
         </section>
         <section className={styles.detail_part}>
           <Container className={styles.content}>
             <div className={styles.text_part}>
-              <div className={styles.title}>
-                We create everything digital, printable and analytical.
-              </div>
+              <div className={styles.title}>{project.section_one_title}</div>
               <div className={styles.description}>
-                <p>
-                  Won’t seasons, appear days them stars replenish divided. All
-                  second forth. Him place was seas man and gathering creepeth
-                  called fly. Them sea place lights, midst bearing fourth above.
-                </p>
+                <p>{project.section_one_description}</p>
                 <div className={styles.list}>
                   <ul>
-                    <li>Brand Development</li>
-                    <li>Art Direction</li>
-                    <li>Marketing Strategy</li>
-                    <li>Mobile App Design</li>
+                    {keyWords &&
+                      keyWords
+                        .slice(0, 4)
+                        .map((key, index) => <li key={index}>{key}</li>)}
                   </ul>
                   <ul>
-                    <li>Brand Development</li>
-                    <li>Art Direction</li>
-                    <li>Marketing Strategy</li>
-                    <li>Mobile App Design</li>
+                    {keyWords &&
+                      keyWords
+                        .slice(4)
+                        .map((key, index) => <li key={index}>{key}</li>)}
                   </ul>
                 </div>
               </div>
             </div>
             <div className={styles.image_cards}>
               <div className={styles.card}>
-                <XImage src={'/assets/1.png'} alt={'first'} fill />
+                <XImage
+                  src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + project?.little_one}`}
+                  alt={'first'}
+                  fill
+                />
               </div>
               <div className={styles.card}>
-                <XImage src={'/assets/2.png'} alt={'second'} fill />
+                <XImage
+                  src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + project?.little_two}`}
+                  alt={'second'}
+                  fill
+                />
               </div>
               <div className={styles.card}>
-                <XImage src={'/assets/3.png'} alt={'third'} fill />
+                <XImage
+                  src={`${process.env.NEXT_PUBLIC_API_URL + '/assets/' + project?.little_three}`}
+                  alt={'third'}
+                  fill
+                />
               </div>
             </div>
-            <div className={styles.attachment}></div>
-            <div className={styles.just_text}>
-              Working collaboratively with brands and agencies worldwide.
-              Designing and developing websites and applications with a focus on
-              interaction, motion and visual experience.
-            </div>
+            <div
+              style={
+                {
+                  '--parallax-img': `url(${process.env.NEXT_PUBLIC_API_URL + '/assets/' + project?.parallax_img})`
+                } as React.CSSProperties
+              }
+              className={styles.attachment}></div>
+            <div className={styles.just_text}>{project?.parallax_text}</div>
           </Container>
         </section>
         <section className={styles.info}>
           <Container>
             <div className={styles.text_part}>
-              <div className={styles.title}>
-                We create everything digital, printable and analytical.
-              </div>
+              <div className={styles.title}>{project?.section_two_title}</div>
               <div className={styles.description}>
-                <p>
-                  Won’t seasons, appear days them stars replenish divided. All
-                  second forth. Him place was seas man and gathering creepeth
-                  called fly. Them sea place lights, midst bearing fourth above.
-                </p>
+                <p>{project?.section_two_description}</p>
                 <div className={styles.list}>
-                  <div>
-                    <IconAngledArrow />
-                    <span>Brand Development</span>
-                  </div>
-                  <div>
-                    <IconAngledArrow />
-                    <span>Art Direction</span>
-                  </div>
-                  <div>
-                    <IconAngledArrow />
-                    <span>Marketing Strategy</span>
-                  </div>
-                  <div>
-                    <IconAngledArrow />
-                    <span>Mobile App Design</span>
-                  </div>
+                  {keyWordsTwo.map((key, index) => (
+                    <div key={index}>
+                      <IconAngledArrow />
+                      <span>{key}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -162,10 +181,10 @@ export default function DetailPage({ data }: IProps) {
           </div>
           <div className={styles.text_part}>
             <div className={styles.text}>
-              <h1>Have a project in mind? Let’s get to work.</h1>
+              <h1>Aklınızda bir proje var mı? Hadi çalışalım.</h1>
               <XLink className={styles.circle_color} href={'/'}>
                 <IconExploreArrow />
-                <span>GET IN TOUCH</span>
+                <span>İletişime Geç</span>
               </XLink>
             </div>
           </div>

@@ -66,9 +66,9 @@ export default function XHeader(props: IProps) {
                 src={
                   props.color === 'light'
                     ? !headerBg
-                      ? '/assets/balance_dark.png'
-                      : '/assets/balance_light.png'
-                    : '/assets/balance_light.png'
+                      ? '/assets/balance_dark.svg'
+                      : '/assets/balance_light.svg'
+                    : '/assets/balance_light.svg'
                 }
                 alt={'balance-software'}
                 fill

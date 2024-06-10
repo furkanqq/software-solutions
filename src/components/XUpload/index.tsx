@@ -3,13 +3,13 @@ import styles from './index.module.scss';
 import React, { useState } from 'react';
 
 interface IProps {
-  func: (data: FileList | null) => void;
+  func: (data: File | null) => void;
   label?: string;
 }
 
 export const XUpload: React.FC<IProps> = ({ label, func }) => {
   const [dragOver, setDragOver] = useState(false);
-  const [selected, setSelected] = useState<FileList | null>(null);
+  const [selected, setSelected] = useState<File | null>(null);
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -24,15 +24,21 @@ export const XUpload: React.FC<IProps> = ({ label, func }) => {
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     const files = event.dataTransfer.files;
-    setSelected(files);
-    setDragOver(false);
-    func(files);
+    if (files.length > 0) {
+      const file = files[0];
+      setSelected(file);
+      setDragOver(false);
+      func(file);
+    }
   };
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    setSelected(files);
-    func(files);
+    if (files && files.length > 0) {
+      const file = files[0];
+      setSelected(file);
+      func(file);
+    }
   };
 
   const handleClick = () => {
@@ -55,8 +61,13 @@ export const XUpload: React.FC<IProps> = ({ label, func }) => {
         ) : (
           <span className={styles.raquo}>+</span>
         )}
-        <span>{selected && selected[0]?.name}</span>
-        <input onChange={handleFileSelect} id="fileInput" type="file" />
+        <span>{selected?.name}</span>
+        <input
+          onChange={handleFileSelect}
+          style={{ display: 'none' }}
+          id="fileInput"
+          type="file"
+        />
       </div>
     </div>
   );

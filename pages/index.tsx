@@ -5,7 +5,6 @@ import { IconExploreArrow } from '@/src/assets/IconExploreArrow';
 import { IconFooterArrow } from '@/src/assets/IconFooterArrow';
 import { IconChevronDown } from '@/src/assets/IconChevronDown';
 import { IconExplore } from '@/src/assets/IconExplore';
-import { IconPlay } from '@/src/assets/IconPlay';
 
 import XProjectCarousel from '@/src/composite/XProjectCarousel';
 import Container from '@/src/components/XContainer';
@@ -186,10 +185,6 @@ export default function HomePage({
             <div className={styles.content}>
               <h1>{parse(homeData?.banner_title)}</h1>
               <p>{homeData?.banner_text}</p>
-              <div className={styles.watch}>
-                <span>Watch</span>
-                <IconPlay />
-              </div>
             </div>
             <div className={styles.explore}>
               <div className={styles.image_holder}>
@@ -198,8 +193,8 @@ export default function HomePage({
                     <IconExplore className={styles.icon_explore} />
                     <IconExploreArrow
                       className={styles.icon_explore_arrow}
-                      height={28}
-                      width={28}
+                      height={32}
+                      width={32}
                     />
                   </XLink>
                 </div>
@@ -302,8 +297,7 @@ export default function HomePage({
                       brand?.image
                     }
                     alt={'icon'}
-                    width={120}
-                    height={32}
+                    fill
                   />
                 </div>
               ))}
@@ -340,14 +334,14 @@ export default function HomePage({
                     <label>{service.spot_text}</label>
                     <h2>{service.title}</h2>
                     <p>{service.short_description}</p>
-                    <XLink
-                      href={'hizmet/' + service?.slug}
+                    <a
+                      href={'hizmetler/' + service?.slug}
                       className={styles.more}>
                       <span>Bilgi Al</span>
                       <span>
                         <IconExploreArrow />
                       </span>
-                    </XLink>
+                    </a>
                   </div>
                 )
             )}

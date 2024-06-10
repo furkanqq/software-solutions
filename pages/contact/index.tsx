@@ -101,7 +101,7 @@ export default function ContactPage() {
         <XErrorMessage text={error} />
         <XPageTitle
           title="Talep ve İsteklerinizi Bize Yazabilirsiniz."
-          bgImage={'/assets/contact-us.jpg'}
+          bgImage={'/assets/contact.jpg'}
           marqueTitle="İLETİŞİM"
           bgColor="white"
         />
