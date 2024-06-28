@@ -11,7 +11,6 @@ import XHeader from '@/src/composite/XHeader';
 
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import Layouts from '@/src/layouts';
-import { useEffect, useState } from 'react';
 
 interface IProps {
   data: {

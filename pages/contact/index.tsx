@@ -40,6 +40,15 @@ export default function ContactPage() {
     mail: null
   });
 
+  const config = {
+    to: form.mail,
+    htmlFile: {
+      htmlName: '/template/feedback',
+      title: 'Balance Software Contact'
+    },
+    mailRequest: form
+  };
+
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -215,7 +224,7 @@ export default function ContactPage() {
                 </div>
                 <XButton
                   className={styles.send_button}
-                  // loader={loading}
+                  loader={loading}
                   color="outline">
                   Gönder
                 </XButton>

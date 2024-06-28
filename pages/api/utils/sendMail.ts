@@ -1,20 +1,20 @@
 import * as nodemailer from 'nodemailer';
-import * as fs from 'fs';
 import * as handlebars from 'handlebars';
+import * as fs from 'fs';
 import path from 'path';
 
 export type EmailDeliveryResponse = {
   accepted: string[];
   rejected: string[];
-  ehlo: string[];
   envelopeTime: number;
+  ehlo: string[];
   messageTime: number;
   messageSize: number;
-  response: string;
   envelope: {
     from: string;
     to: string[];
   };
+  response: string;
   messageId: string;
 };
 
@@ -83,7 +83,7 @@ export async function sendMail(
     const replacements: Record<string, string> = {};
 
     for (const key in mailRequest) {
-      replacements[key] = mailRequest[key];
+      replacements[key] = mailRequest[key] as string;
     }
 
     const htmlToSend: string = template(replacements);

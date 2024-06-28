@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiResponse, NextApiRequest } from 'next';
 import { sendMail } from '../utils/sendMail';
 
 export type UserMailConfigTypes = {
@@ -19,16 +19,16 @@ export default async function handler(
       const userMailConfig: UserMailConfigTypes = {
         username: 'furkanilhanresmi@gmail.com',
         password: 'lojlpkfdnuoadnsn',
+        host: 'smtp.gmail.com',
         port: 587,
-        host: 'smtp.gmail.com'
       };
 
       const request = {
         detailed_message:
           'Bizimle iletişime geçtiğiniz için teşekkür ederiz. İletişim talebinizi aldık ve en kısa sürede size dönüş yapacağız. Herhangi bir ek bilgiye ihtiyaç duyarsanız, lütfen bu e-postaya yanıt vererek bizimle iletişime geçmekten çekinmeyin. İlginiz için tekrar teşekkür eder, iyi çalışmalar dileriz.',
         phone_number: null,
-        full_name: null,
         subject: 'Feedback',
+        full_name: null,
         mail: null
       };
 
