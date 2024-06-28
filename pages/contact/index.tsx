@@ -17,7 +17,6 @@ import XFooter from '@/src/composite/XFooter';
 
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import { FormEvent, useEffect, useState } from 'react';
-// import { sendEmail } from '@/src/helpers/sendEmail';
 import Layouts from '@/src/layouts';
 
 type FormType = {
@@ -41,12 +40,12 @@ export default function ContactPage() {
   });
 
   const config = {
-    to: form.mail,
     htmlFile: {
-      htmlName: '/template/feedback',
-      title: 'Balance Software Contact'
+      title: 'Balance Software Contact',
+      htmlName: '/template/feedback'
     },
-    mailRequest: form
+    mailRequest: form,
+    to: form.mail
   };
 
   async function handleSubmit(event: React.FormEvent) {

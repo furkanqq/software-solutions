@@ -1,11 +1,11 @@
 import styles from './index.module.scss';
 
+import Container from '@/src/components/XContainer';
 import { XImage } from '@/src/components/XImage';
 
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { IPropsProjects } from '@/pages';
 import React, { useRef } from 'react';
-import Container from '@/src/components/XContainer';
 import { gsap } from 'gsap';
 
 gsap.registerPlugin(ScrollTrigger);
