@@ -20,7 +20,7 @@ export default async function handler(
         username: 'furkanilhanresmi@gmail.com',
         password: 'lojlpkfdnuoadnsn',
         host: 'smtp.gmail.com',
-        port: 587,
+        port: 587
       };
 
       const request = {
