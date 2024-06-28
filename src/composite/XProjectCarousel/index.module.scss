@@ -1,15 +1,16 @@
 .projects {
+  position: relative;
   background-color: rgba(var(--colors-light));
   margin-top: 56px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   height: 100vh;
+  width: 100%;
   overflow: hidden;
   .sticky_part {
     height: 100vh;
     top: 0px;
-    padding-inline: 100px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -28,13 +29,14 @@
 
         .thumbnail {
           background-color: #ccc;
-          min-width: 500px;
           height: 500px;
           position: relative;
+          border-radius: 4px;
+          overflow: hidden;
 
           img {
-            min-width: 500px;
-            height: 500px;
+            height: 100%;
+            width: 100%;
             object-fit: cover;
             border-radius: 4px;
           }

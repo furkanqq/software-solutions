@@ -252,7 +252,8 @@
         &::after {
           position: absolute;
           content: '';
-          width: 280px;
+          max-width: 280px;
+          width: 100%;
           height: 320px;
           border-left: 6px solid rgba(var(--colors-off-white));
           border-top: 6px solid rgba(var(--colors-off-white));
@@ -264,6 +265,8 @@
         img {
           position: absolute;
           object-fit: cover;
+          width: 100%;
+          height: 100%;
         }
       }
     }
@@ -343,6 +346,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     .slider {
       display: flex;
       align-items: center;
@@ -357,14 +361,15 @@
       &::-webkit-scrollbar {
         display: none;
       }
-    }
-    .brand_item {
-      position: relative;
-      overflow: hidden;
-      height: 60px;
-      width: 140px;
-      img {
-        object-fit: contain;
+      .brand_item {
+        position: relative;
+        overflow: hidden;
+        height: 60px;
+        width: 140px;
+
+        img {
+          object-fit: contain;
+        }
       }
     }
   }
@@ -379,57 +384,6 @@
   100% {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
-  }
-}
-
-// Slide section
-.projects {
-  background-color: rgba(var(--colors-light));
-  padding: 56px 0px;
-  margin-top: 56px;
-  height: 300vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  .sticky_part {
-    // position: sticky;
-    top: 176px;
-    width: 100%;
-    display: flex;
-    gap: 20px;
-    overflow: auto;
-    .items {
-      display: flex;
-      .item {
-        min-width: 800px;
-        height: 500px;
-        margin-right: 20px;
-        display: inline-flex;
-        justify-content: center;
-        flex-direction: column;
-
-        .thumbnail {
-          background-color: #ccc;
-          min-width: 800px;
-          height: 500px;
-        }
-
-        .information {
-          margin-top: 24px;
-
-          .left {
-            .category {
-              color: rgba(var(--colors-dark), 0.5);
-              text-transform: uppercase;
-            }
-
-            .title {
-              font-size: 24px;
-            }
-          }
-        }
-      }
-    }
   }
 }
 
@@ -674,6 +628,9 @@
     }
     .card_part {
       grid-template-columns: 1fr;
+      .card {
+        height: fit-content;
+      }
     }
   }
 
@@ -709,12 +666,6 @@
           }
         }
       }
-    }
-  }
-
-  .brand {
-    .slider {
-      justify-content: initial !important;
     }
   }
 

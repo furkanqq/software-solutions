@@ -17,6 +17,7 @@ import XFooter from '@/src/composite/XFooter';
 
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import { FormEvent, useEffect, useState } from 'react';
+// import { sendEmail } from '@/src/helpers/sendEmail';
 import Layouts from '@/src/layouts';
 
 type FormType = {
@@ -56,6 +57,14 @@ export default function ContactPage() {
       setLoading(false);
       return;
     }
+
+    await fetch('/api/contact', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(config),
+      method: 'POST'
+    });
 
     await nextFetcher(url, {
       method: 'POST',
@@ -206,7 +215,7 @@ export default function ContactPage() {
                 </div>
                 <XButton
                   className={styles.send_button}
-                  loader={loading}
+                  // loader={loading}
                   color="outline">
                   Gönder
                 </XButton>

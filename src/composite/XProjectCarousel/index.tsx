@@ -3,12 +3,18 @@ import styles from './index.module.scss';
 import { XImage } from '@/src/components/XImage';
 
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { IPropsProjects } from '@/pages';
 import React, { useRef } from 'react';
 import { gsap } from 'gsap';
+import Container from '@/src/components/XContainer';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function XProjectCarousel({ data }: any) {
+interface XProjectCarouselProps {
+  data: IPropsProjects[];
+}
+
+export default function XProjectCarousel({ data }: XProjectCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -34,31 +40,33 @@ export default function XProjectCarousel({ data }: any) {
 
   return (
     <section className={styles.projects} ref={containerRef}>
-      <div className={styles.sticky_part} ref={scrollRef}>
-        {data?.map((item: any, index: number) => (
-          <div className={`${styles.items} panel`} key={index}>
-            <div className={styles.item}>
-              <div className={styles.thumbnail}>
-                <XImage
-                  src={
-                    process.env.NEXT_PUBLIC_API_URL +
-                    '/assets/' +
-                    item?.highlight_image
-                  }
-                  alt={item.title}
-                  fill
-                />
-              </div>
-              <div className={styles.information}>
-                <div className={styles.left}>
-                  <div className={styles.category}>{item?.category}</div>
-                  <div className={styles.title}>{item?.title}</div>
+      <Container>
+        <div className={styles.sticky_part} ref={scrollRef}>
+          {data?.map((item: IPropsProjects, index: number) => (
+            <div className={`${styles.items} panel`} key={index}>
+              <div className={styles.item}>
+                <div className={styles.thumbnail}>
+                  <XImage
+                    src={
+                      process.env.NEXT_PUBLIC_API_URL +
+                      '/assets/' +
+                      item?.highlight_image
+                    }
+                    alt={item.title}
+                    fill
+                  />
+                </div>
+                <div className={styles.information}>
+                  <div className={styles.left}>
+                    <div className={styles.category}>{item?.category}</div>
+                    <div className={styles.title}>{item?.title}</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 }

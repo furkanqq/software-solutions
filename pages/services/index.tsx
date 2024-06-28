@@ -9,6 +9,7 @@ import { XLink } from '@/src/components/XLink';
 import XFooter from '@/src/composite/XFooter';
 import XHeader from '@/src/composite/XHeader';
 
+import { PortfolioType } from '@/src/config/portfolio.config';
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import { useEffect, useState, useRef } from 'react';
 import Layouts from '@/src/layouts';

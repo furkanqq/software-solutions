@@ -33,6 +33,10 @@
       justify-content: flex-end;
       align-items: center;
 
+      a{
+        color: rgba(var(--colors-dark));
+      }
+
       button {
         height: 50px;
         width: 100px;

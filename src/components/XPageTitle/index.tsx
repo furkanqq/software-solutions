@@ -44,6 +44,23 @@ export const XPageTitle: React.FC<IProps> = ({
     mail: null
   });
 
+  const configForm = {
+    detailed_message: form.detailed_message,
+    phone_number: form.phone_number,
+    full_name: form.name + ' ' + form.surname,
+    subject: 'Offer Form',
+    mail: form.mail
+  };
+
+  const config = {
+    to: form.mail,
+    htmlFile: {
+      htmlName: '/template/feedback',
+      title: 'Balance Software Contact'
+    },
+    mailRequest: configForm
+  };
+
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -61,6 +78,14 @@ export const XPageTitle: React.FC<IProps> = ({
       setLoading(false);
       return;
     }
+
+    await fetch('/api/contact', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(config),
+      method: 'POST'
+    });
 
     await nextFetcher(url, {
       method: 'POST',

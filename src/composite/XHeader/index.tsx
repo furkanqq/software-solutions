@@ -87,7 +87,18 @@ export default function XHeader(props: IProps) {
                     : 'outline'
                   : 'outline'
               }>
-              Teklif Al
+              <a
+                style={{
+                  color:
+                    props.color === 'light'
+                      ? !headerBg
+                        ? 'white'
+                        : 'black'
+                      : 'black'
+                }}
+                href="/hizmetler/kurumsal-yazilim-cozumler">
+                Teklif Al
+              </a>
             </XButton>
             <XMobile />
           </div>

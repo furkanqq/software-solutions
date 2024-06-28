@@ -88,15 +88,31 @@ interface IPropsFaq {
   id: number;
 }
 
-interface IPropsProjects {
+export interface IPropsProjects {
   status: 'published' | 'archived' | 'draft';
+  section_one_description: string;
+  section_two_description: string;
+  section_one_title: string;
+  section_two_title: string;
   highlight_image: string;
+  key_words_two: string;
+  parallax_text: string;
+  little_three: string;
+  parallax_img: string;
+  public_date: string;
   sort: number | null;
   highlight: boolean;
-  spot_text: string;
+  little_one: string;
+  little_two: string;
   filter_id: number;
+  key_words: string;
+  spot_text: string;
+  category: string;
+  customer: string;
+  location: string;
   image: string;
   title: string;
+  slug: string;
   id: number;
 }
 
