@@ -69,6 +69,8 @@ export default function DetailPage({ data }: IProps) {
     .split(',')
     .map((feature) => feature.trim());
 
+  console.log('first');
+
   return (
     <Layouts>
       <XHeader />
