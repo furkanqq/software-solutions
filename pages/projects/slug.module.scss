@@ -110,6 +110,12 @@
       font-size: 20px;
       color: rgba(var(--colors-dark), 0.6);
     }
+    .just_textarea {
+      text-align: center;
+      padding-inline: 120px;
+      font-size: 16px;
+      color: rgba(var(--colors-dark), 0.6);
+    }
   }
 }
 
@@ -117,6 +123,13 @@
   margin-top: 56px;
   padding-block: 56px;
   background-color: rgba(var(--colors-light));
+  .just_textarea {
+    text-align: center;
+    padding-inline: 120px;
+    font-size: 16px;
+    color: rgba(var(--colors-dark), 0.6);
+    margin-top: 60px;
+  }
   .text_part {
     display: flex;
     gap: 200px;

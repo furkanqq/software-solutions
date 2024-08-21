@@ -4,25 +4,25 @@ import * as fs from 'fs';
 import path from 'path';
 
 export type EmailDeliveryResponse = {
+  accepted: string[];
+  rejected: string[];
+  envelopeTime: number;
+  ehlo: string[];
+  messageTime: number;
+  messageSize: number;
   envelope: {
     from: string;
     to: string[];
   };
-  envelopeTime: number;
-  messageTime: number;
-  messageSize: number;
-  accepted: string[];
-  rejected: string[];
-  messageId: string;
   response: string;
-  ehlo: string[];
+  messageId: string;
 };
 
 export type MailOptions = {
-  subject: string;
   from: string;
-  html: string;
   to: string;
+  subject: string;
+  html: string;
 };
 
 export type UserMailConfigTypes = {
@@ -90,20 +90,20 @@ export async function sendMail(
 
     // Transporter
     const transporter: nodemailer.Transporter = nodemailer.createTransport({
+      host: host,
+      port: port,
+      secure: false, // false ise TLS kullanılacak
       auth: {
         user: username,
         pass: password
-      },
-      secure: false, // false ise TLS kullanılacak
-      host: host,
-      port: port
+      }
     });
 
     const mailOptions: MailOptions = {
-      subject: htmlFile.title,
-      html: htmlToSend,
       from: username,
-      to: to
+      to: to,
+      subject: htmlFile.title,
+      html: htmlToSend
     };
     // Email sending process
     const info: EmailDeliveryResponse = await transporter.sendMail(mailOptions);

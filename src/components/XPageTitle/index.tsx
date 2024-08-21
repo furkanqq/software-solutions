@@ -45,20 +45,20 @@ export const XPageTitle: React.FC<IProps> = ({
   });
 
   const configForm = {
-    full_name: form.name + ' ' + form.surname,
     detailed_message: form.detailed_message,
     phone_number: form.phone_number,
+    full_name: form.name + ' ' + form.surname,
     subject: 'Offer Form',
     mail: form.mail
   };
 
   const config = {
+    to: form.mail,
     htmlFile: {
-      title: 'Balance Software Contact',
-      htmlName: '/template/feedback'
+      htmlName: '/template/feedback',
+      title: 'Balance Software Contact'
     },
-    mailRequest: configForm,
-    to: form.mail
+    mailRequest: configForm
   };
 
   async function handleSubmit(event: React.FormEvent) {

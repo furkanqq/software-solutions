@@ -16,7 +16,9 @@ interface IProps {
   data: {
     status: 'published' | 'archived' | 'draft';
     section_one_description: string;
+    section_one_description_textarea: string;
     section_two_description: string;
+    section_two_description_textarea: string;
     section_one_title: string;
     section_two_title: string;
     meta_description: string;
@@ -146,6 +148,10 @@ export default function DetailPage({ data }: IProps) {
                 />
               </div>
             </div>
+            <div className={styles.just_textarea}>
+              {project?.section_one_description_textarea}
+            </div>
+
             <div
               style={
                 {
@@ -172,8 +178,12 @@ export default function DetailPage({ data }: IProps) {
                 </div>
               </div>
             </div>
+            <div className={styles.just_textarea}>
+              {project?.section_two_description_textarea}
+            </div>
           </Container>
         </section>
+
         <section className={styles.parallax_part}>
           <div className={styles.parallax_holder}>
             <div></div>
