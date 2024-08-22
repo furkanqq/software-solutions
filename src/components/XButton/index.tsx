@@ -41,7 +41,7 @@ export const XButton: React.FC<IXButtonProps> = ({
       {loader ? (
         <div className={cn(styles.loaderLayer, styles[`loader-${color}`])} />
       ) : (
-        <span x-attr="x-text">{children}</span>
+        <span>{children}</span>
       )}
       {rightIcon && !loader ? (
         <div className={cn(styles.iconLayer, styles.rightIcon)}>

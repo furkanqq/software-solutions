@@ -38,12 +38,10 @@ export default async function handler(
         data?.mailRequest,
         userMailConfig
       );
-      console.log(data.to, 'data.to');
       await sendMail(data?.to, data?.htmlFile, request, userMailConfig);
 
       return res.status(200).json({ message: 'Success' });
     } catch (error) {
-      console.error('API Error:', error);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
   } else {

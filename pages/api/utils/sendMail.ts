@@ -5,8 +5,8 @@ import path from 'path';
 
 export type EmailDeliveryResponse = {
   accepted: string[];
-  rejected: string[];
   envelopeTime: number;
+  rejected: string[];
   ehlo: string[];
   messageTime: number;
   messageSize: number;
@@ -107,8 +107,7 @@ export async function sendMail(
     };
     // Email sending process
     const info: EmailDeliveryResponse = await transporter.sendMail(mailOptions);
-    console.log('Mail sent:', info.messageId);
   } catch (error) {
-    console.error('Send Mail Error:', error);
+    console.error('Error sending mail:', error);
   }
 }
