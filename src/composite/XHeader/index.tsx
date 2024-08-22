@@ -9,12 +9,14 @@ import { XLink } from '@/src/components/XLink';
 import { useEffect, useState } from 'react';
 import XMobile from '../XMobileMenu';
 import XNavbar from '../XNavbar';
+import { is } from 'valibot';
 
 interface IProps {
   color?: 'light' | 'dark';
 }
 
 export default function XHeader(props: IProps) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrollY, setScrollY] = useState(0);
   const [isHeaderVisible, setIsHeaderVisible] = useState<Boolean>(true);
   const [headerBg, setHeaderBg] = useState<Boolean>(false);
@@ -55,8 +57,8 @@ export default function XHeader(props: IProps) {
       className={cn(
         styles.header,
         !isHeaderVisible && styles.active,
-        !headerBg && styles.bgColor,
-        props.color === 'light' && styles.header_light
+        !headerBg && !isOpen && styles.bgColor,
+        props.color === 'dark' && styles.header_light
       )}>
       <Container>
         <div className={styles.header_content}>
@@ -100,7 +102,7 @@ export default function XHeader(props: IProps) {
                 Teklif Al
               </a>
             </XButton>
-            <XMobile />
+            <XMobile setIsOpen={setIsOpen} isOpen={isOpen} />
           </div>
         </div>
       </Container>

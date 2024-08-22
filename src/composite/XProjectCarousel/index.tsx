@@ -30,7 +30,7 @@ export default function XProjectCarousel({ data }: XProjectCarouselProps) {
           pin: true,
           scrub: 1
         },
-        xPercent: -100 * (panels.length - 1),
+        xPercent: -103 * (panels.length - 1),
         ease: 'none'
       });
     }, containerRef);

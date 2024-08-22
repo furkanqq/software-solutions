@@ -16,7 +16,7 @@ import XHeader from '@/src/composite/XHeader';
 import { nextFetcher } from '@/src/helpers/fetcherHelper';
 import parse from 'html-react-parser';
 import Layouts from '@/src/layouts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import moment from 'moment';
 import 'moment/locale/tr';
 
@@ -192,6 +192,20 @@ export default function HomePage({
   const [faqFilter, setFaqFilter] = useState<number>(0);
   const [faqFilterId, setFaqFilterId] = useState<number>(faqFilterData[0]?.id);
   const [faqContent, setFaqContent] = useState<number>(0);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <Layouts>
       <main>
@@ -364,7 +378,7 @@ export default function HomePage({
           </Container>
         </section>
 
-        <XProjectCarousel data={projectsData} />
+        {windowWidth > 900 && <XProjectCarousel data={projectsData} />}
 
         <section className={styles.faq}>
           <Container>

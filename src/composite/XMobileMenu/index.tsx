@@ -13,8 +13,13 @@ import {
 } from '@/src/config/nav.config';
 import React, { useState } from 'react';
 
-export default function XMobile() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+export default function XMobile({
+  isOpen,
+  setIsOpen
+}: {
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
+}) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
 

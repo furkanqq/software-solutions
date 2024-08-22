@@ -86,13 +86,13 @@ export default function ContactPage() {
           }
         }
         setLoading(false);
-        setForm({
-          detailed_message: null,
-          phone_number: null,
-          full_name: null,
-          subject: null,
-          mail: null
-        });
+        // setForm({
+        //   detailed_message: null,
+        //   phone_number: null,
+        //   full_name: null,
+        //   subject: null,
+        //   mail: null
+        // });
         setSuccess('Başarıyla Gönderildi.');
       })
       .catch((err: Error) => {
@@ -132,22 +132,23 @@ export default function ContactPage() {
                   sabırsızlanıyoruz. Formu doldurarak veya direkt arayarak
                   bizimle iletişime geçebilirsiniz.
                 </p>
-                <XLink
+                {/* <XLink
                   href="https://wa.me/+905456631949?text=Merhaba bir konu danışabilir miyim?"
                   className={styles.address}>
                   <IconPhone height={30} width={30} />
-                  +90 545 663 19 49
+                </XLink> */}
+                <XLink
+                  href="mailto:hello@balance.software"
+                  target="_blank"
+                  className={styles.address}>
+                  <IconMail height={30} width={30} /> hello@balance.software
                 </XLink>
                 <XLink
                   href="https://www.google.com/maps/place/UBM+Plaza/@41.0581472,28.9912873,17z/data=!3m2!4b1!5s0x14cab70422955527:0x6f26b7f8f460c7ac!4m6!3m5!1s0x14cab7069d1cbe57:0x95a1f32376644bed!8m2!3d41.0581472!4d28.9938622!16s%2Fg%2F1t_ryt1b?entry=ttu"
+                  target="_blank"
                   className={styles.address}>
                   <IconMap height={36} width={36} /> 19 Mayıs Mahallesi 19 Mayıs
                   Caddesi UBM Plaza no:37/21 34360 Şişli/İstanbul
-                </XLink>
-                <XLink
-                  href="mailto:info@balance.software"
-                  className={styles.address}>
-                  <IconMail height={30} width={30} /> info@balance.software
                 </XLink>
               </div>
             </div>
