@@ -16,3 +16,12 @@
     gap: 24px;
   }
 }
+
+@media (max-width: 640px) {
+  .wrapper {
+    .title {
+      padding-inline: 24px;
+      font-size: 16px;
+    }
+  }
+}

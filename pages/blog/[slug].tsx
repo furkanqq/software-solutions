@@ -61,24 +61,12 @@ export default function DetailPage({ data }: IProps) {
                   fill
                 />
               </div>
-              <div className={styles.content}>
-                {parse(data?.content)}
-                <p>
-                  {`Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden
-              oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin
-              edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır.
-              Virginia'daki Hampden-Sydney College'dan Latince profesörü
-              Richard McClintock, bir Lorem Ipsum pasajında geçen ve
-              anlaşılması en güç sözcüklerden biri olan 'consectetur'
-              sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin
-              bir kaynağa ulaşmıştır.`}
-                </p>
-              </div>
+              <div className={styles.content}>{parse(data?.content)}</div>
             </Container>
           </section>
         )}
 
-        <section className={styles.benefits}>
+        {/* <section className={styles.benefits}>
           <Container className={styles.content}>
             <div className={styles.title}>
               <span>OUR BENEFITS</span>
@@ -95,7 +83,7 @@ export default function DetailPage({ data }: IProps) {
               </XLink>
             </div>
           </Container>
-        </section>
+        </section> */}
       </main>
       <XFooter bgColor="white" />
     </Layouts>

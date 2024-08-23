@@ -2,14 +2,12 @@
   overflow: hidden;
   background-color: rgba(var(--colors-off-white));
 
-
   .wrapper {
     padding-top: 156px;
     padding-bottom: 56px;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-
 
     @media (max-width: 992px) {
       .info {
@@ -37,9 +35,8 @@
       height: fit-content;
       min-width: 50%;
 
-
-
-      h3 {}
+      h3 {
+      }
 
       .desc {
         color: rgba(var(--colors-dark), 0.5);
@@ -60,8 +57,6 @@
           padding: 24px;
         }
       }
-
-
     }
   }
 
@@ -103,14 +98,12 @@
             line-height: 1;
             margin: 0;
             text-transform: uppercase;
-
           }
         }
       }
     }
   }
 }
-
 
 // with background image
 .container_image {
@@ -121,7 +114,7 @@
 
   &::before {
     position: absolute;
-    content: "";
+    content: '';
     left: 0;
     right: 0;
     bottom: 0;
@@ -137,7 +130,6 @@
     justify-content: space-between;
     position: relative;
     z-index: 2;
-
 
     .info {
       .title {
@@ -159,7 +151,7 @@
 
         &::after {
           position: absolute;
-          content: "";
+          content: '';
           left: 0;
           top: 6px;
           width: 6px;
@@ -177,9 +169,8 @@
       height: fit-content;
       min-width: 50%;
 
-
-
-      h3 {}
+      h3 {
+      }
 
       .desc {
         color: rgba(var(--colors-dark), 0.5);
@@ -200,8 +191,6 @@
           padding: 24px;
         }
       }
-
-
     }
   }
 
@@ -230,7 +219,6 @@
             margin: 0;
             text-transform: uppercase;
             color: rgba(var(--colors-light));
-
           }
         }
       }
@@ -247,5 +235,70 @@
   100% {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    .wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+
+      .info {
+        text-align: center;
+        .title {
+          font-size: 40px;
+        }
+      }
+
+      .form {
+        width: 100%;
+      }
+    }
+
+    .main_marq {
+      .slide {
+        .box {
+          .item {
+            h2 {
+              font-size: 14vw;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container_image {
+    .wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+
+      .info {
+        text-align: center;
+
+        .title {
+          font-size: 40px;
+        }
+      }
+
+      .form {
+        width: 100%;
+      }
+    }
+
+    .main_marq {
+      .slide {
+        .box {
+          .item {
+            h2 {
+              font-size: 14vw;
+            }
+          }
+        }
+      }
+    }
   }
 }

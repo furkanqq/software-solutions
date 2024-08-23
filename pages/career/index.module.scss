@@ -5,7 +5,6 @@
   position: relative;
   overflow: hidden;
 
-
   &::before {
     content: '';
     width: 80vw;
@@ -15,7 +14,7 @@
     position: absolute;
     top: -15vw;
     right: -30vw;
-    opacity: .01;
+    opacity: 0.01;
     pointer-events: none;
   }
 
@@ -78,7 +77,6 @@
           }
         }
       }
-
     }
 
     .form {
@@ -107,10 +105,13 @@
           display: block;
           max-width: fit-content;
           padding: 0px 24px;
-
         }
       }
     }
   }
+}
 
+
+@media (max-width: 640px) {
+  
 }

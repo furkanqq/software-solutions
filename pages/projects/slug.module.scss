@@ -1,4 +1,6 @@
 .banner {
+  overflow: hidden;
+  position: relative;
   height: 50vh;
   padding-top: 90px;
   display: flex;
@@ -8,10 +10,24 @@
     justify-content: space-between;
     gap: 52px;
     .title {
-      width: 40%;
+      width: 60%;
       font-size: 5em;
       font-weight: 500;
       line-height: 84px;
+    }
+    .line {
+      position: absolute;
+      right: 240px;
+      top: -240px;
+      display: flex;
+      justify-content: space-between;
+      width: 600px;
+      height: 1200px;
+      transform: rotate(40deg);
+      div {
+        width: 50px;
+        background-color: rgba(0, 0, 0, 0.064);
+      }
     }
     .detail {
       display: grid;

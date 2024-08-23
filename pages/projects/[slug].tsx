@@ -78,7 +78,7 @@ export default function DetailPage({ data }: IProps) {
         <section className={styles.banner}>
           <Container className={styles.content}>
             <div className={styles.title}>{project?.title}</div>
-            <div className={styles.detail}>
+            {/* <div className={styles.detail}>
               <div className={styles.peace}>
                 <span>Kategori</span>
                 <span>{project?.category}</span>
@@ -95,6 +95,11 @@ export default function DetailPage({ data }: IProps) {
                 <span>Lokasyon</span>
                 <span>{project?.location}</span>
               </div>
+            </div> */}
+            <div className={styles.line}>
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
           </Container>
         </section>

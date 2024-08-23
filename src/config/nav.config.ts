@@ -37,11 +37,12 @@ export const Navigation: NavigationType[] = [
       {
         title: 'Ekibimiz',
         path: '/ekibimiz'
-      },
-      {
-        title: 'Kariyer',
-        path: '/kariyer'
       }
+      // ,
+      // {
+      //   title: 'Kariyer',
+      //   path: '/kariyer'
+      // }
     ],
     title: 'Kurumsal',
     path: '/kurumsal',

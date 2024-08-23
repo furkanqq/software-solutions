@@ -26,7 +26,6 @@
   }
 }
 
-
 // Benefits Section
 
 .benefits {
@@ -223,6 +222,109 @@
             display: none;
             font-size: 14px;
             padding: 24px 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992) {
+  .faq {
+    .faq_wrapper {
+      grid-template-columns: 1fr !important;
+      .tab_menu {
+        ul {
+          height: 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 24px;
+          overflow: scroll;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          li {
+            margin-bottom: 0px;
+            font-size: 12px;
+            display: flex;
+            border-right: 1px solid rgba(var(--colors-dark), 0.1);
+            padding-right: 8px;
+            &:hover {
+              border-right: 2px solid rgba(var(--colors-dark), 1);
+              margin-left: 0;
+            }
+          }
+
+          .active {
+            border-right: 2px solid rgba(var(--colors-dark), 1);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    .content {
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+  .benefits {
+    padding-block: 20px;
+    .content {
+      grid-template-columns: 1fr;
+
+      .title {
+        h1 {
+          font-size: 24px;
+          font-weight: 600;
+        }
+      }
+      .describe {
+        p {
+          font-size: 14px;
+        }
+        a {
+          font-size: 12px;
+        }
+      }
+    }
+    .card_part {
+      grid-template-columns: 1fr;
+      .card {
+        height: fit-content;
+      }
+    }
+  }
+  .faq {
+    padding: 56px 0;
+    .faq_wrapper {
+      .tab_menu {
+        ul {
+          li {
+            font-size: 8px;
+          }
+        }
+      }
+
+      .tab_content {
+        .items {
+          .item {
+            .header {
+              .title {
+                font-size: 16px;
+              }
+            }
+            .content {
+              font-size: 10px;
+            }
           }
         }
       }
